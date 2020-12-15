@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>CPU结构和功能</title>
+    <link href="/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/"/>
+    <url>/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/</url>
+    
+    <content type="html"><![CDATA[<h1>CPU结构和功能</h1><h3 id="一、CPU的任务">一、CPU的任务</h3><ul><li>取指令：从存储器（register、main-memory、cache）读取指令</li><li>解释指令：对指令解码，确定要进行的操作</li><li>取数据：指令的执行可能需要从存储器或I/O中读取数据</li><li>处理数据：对数据完成要求的算术/逻辑运算</li><li>写数据：执行的结果可能需要写回存储器或I/O</li></ul><h3 id="二、CPU的要求">二、CPU的要求</h3><ul><li>CPU能暂时的存储部分数据</li><li>CPU必须知道当前执行指令的位置，以便获取下一条指令的位置</li><li>CPU必须在执行指令期间保存指令和数据</li></ul><p><img src="/img/cpu_structure_function1.jpg" alt=""></p><p><img src="/img/cpu_structure_function2.jpg" alt=""></p><h3 id="三、寄存器的组成">三、寄存器的组成</h3><h4 id="1-CPU中寄存器主要可以分为两类：">1. CPU中寄存器主要可以分为两类：</h4><ul><li>用户可见寄存器：允许机器语言或者汇编语言的编程人员通过优化寄存器的使用而减少对内存的访问</li><li>控制和状态寄存器：由控制器来控制CPU的操作，并由拥有特权的操作系统程序来控制程序的执行</li></ul><h4 id="2-用户可见寄存器：">2. 用户可见寄存器：</h4><ul><li>通用寄存器：可被程序员指派各种用途</li><li>数据寄存器：用于保存数据，不能用于操作数地址的计算</li><li>地址寄存器：用于可以是自身有某种通用性或者专用性的寻址方式</li><li>标志寄存器：保存条件码、允许程序员读出，但不能更改</li></ul><h4 id="3-寄存器的设计出发点：">3. 寄存器的设计出发点：</h4><ul><li>使用完全通用寄存器还是规定各寄存器的用途</li><li>寄存器的数量</li><li>寄存器的长度</li></ul><h4 id="4-控制和状态寄存器：">4. 控制和状态寄存器：</h4><ul><li>程序计数器（PC）：存放待取指令的地址</li><li>指令寄存器（IR）：存放最近取来的地址</li><li>存储器地址寄存器（MAR）：存放存储器位置的地址</li><li>存储器缓冲寄存器（MBR）：存有将被写入或最近从存储器读出的字</li></ul><h4 id="5-程序状态字（PSW）：">5. 程序状态字（PSW）：</h4><ul><li>符号（sign）：容纳算术运算结果的符号位</li><li>零（zero）：当结果是0时置位</li><li>进位（carry）：操作导致向最高位有向上进位或借位时被置位</li><li>等于（equal）：逻辑结果相等置位</li><li>溢出（overflow）：用于指示算术运算溢出</li><li>中断允许/禁止（interrupt enable/disable）：用于允许/禁止中断</li><li>监管（supervisor）：指出CPU是执行在监管模式还是用户模式</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>计算机体系结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2020/12/13/hello-world/"/>
     <url>/2020/12/13/hello-world/</url>
