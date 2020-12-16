@@ -17,25 +17,9 @@
   <meta name="description" content="">
   <meta name="author" content="He wei">
   <meta name="keywords" content="">
-  <title>CPU结构和功能 - BrightHewei</title>
+  <title>分类 - 20COANOTES - BrightHewei</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -63,7 +47,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -174,59 +158,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="CPU结构和功能">
+            <span class="h2" id="subtitle" title="分类 - 20COANOTES">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-author" aria-hidden="true"></i>
-      He wei
-    </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-15 23:32" pubdate>
-        2020年12月15日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      607 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      6
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
-      </span>
-    
-  
-</div>
 
             
           </div>
@@ -239,177 +173,40 @@
 
   <main>
     
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 1 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2020</p>
+    
+    <a href="/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">CPU结构和功能</span>
+      <time style="float: right;">12-15</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">CPU结构和功能</h1>
-            
-              <p class="note note-info">
-                
-                  本文最后更新于：2020年12月16日 中午
-                
-              </p>
-            
-            <div class="markdown-body">
-              <h1>CPU结构和功能</h1>
-<h3 id="一、CPU的任务">一、CPU的任务</h3>
-<ul>
-<li>取指令：从存储器（register、main-memory、cache）读取指令</li>
-<li>解释指令：对指令解码，确定要进行的操作</li>
-<li>取数据：指令的执行可能需要从存储器或I/O中读取数据</li>
-<li>处理数据：对数据完成要求的算术/逻辑运算</li>
-<li>写数据：执行的结果可能需要写回存储器或I/O</li>
-</ul>
-<h3 id="二、CPU的要求">二、CPU的要求</h3>
-<ul>
-<li>CPU能暂时的存储部分数据</li>
-<li>CPU必须知道当前执行指令的位置，以便获取下一条指令的位置</li>
-<li>CPU必须在执行指令期间保存指令和数据</li>
-</ul>
-<p><img src="/img/article_img/cpu_structure_function1.jpg" srcset="/img/loading.gif" alt=""></p>
-<p><img src="/img/article_img/cpu_structure_function2.jpg" srcset="/img/loading.gif" alt=""></p>
-<h3 id="三、寄存器的组成">三、寄存器的组成</h3>
-<h4 id="1-CPU中寄存器主要可以分为两类：">1. CPU中寄存器主要可以分为两类：</h4>
-<ul>
-<li>用户可见寄存器：允许机器语言或者汇编语言的编程人员通过优化寄存器的使用而减少对内存的访问</li>
-<li>控制和状态寄存器：由控制器来控制CPU的操作，并由拥有特权的操作系统程序来控制程序的执行</li>
-</ul>
-<h4 id="2-用户可见寄存器：">2. 用户可见寄存器：</h4>
-<ul>
-<li>通用寄存器：可被程序员指派各种用途</li>
-<li>数据寄存器：用于保存数据，不能用于操作数地址的计算</li>
-<li>地址寄存器：用于可以是自身有某种通用性或者专用性的寻址方式</li>
-<li>标志寄存器：保存条件码、允许程序员读出，但不能更改</li>
-</ul>
-<h4 id="3-寄存器的设计出发点：">3. 寄存器的设计出发点：</h4>
-<ul>
-<li>使用完全通用寄存器还是规定各寄存器的用途</li>
-<li>寄存器的数量</li>
-<li>寄存器的长度</li>
-</ul>
-<h4 id="4-控制和状态寄存器：">4. 控制和状态寄存器：</h4>
-<ul>
-<li>程序计数器（PC）：存放待取指令的地址</li>
-<li>指令寄存器（IR）：存放最近取来的地址</li>
-<li>存储器地址寄存器（MAR）：存放存储器位置的地址</li>
-<li>存储器缓冲寄存器（MBR）：存有将被写入或最近从存储器读出的字</li>
-</ul>
-<h4 id="5-程序状态字（PSW）：">5. 程序状态字（PSW）：</h4>
-<ul>
-<li>符号（sign）：容纳算术运算结果的符号位</li>
-<li>零（zero）：当结果是0时置位</li>
-<li>进位（carry）：操作导致向最高位有向上进位或借位时被置位</li>
-<li>等于（equal）：逻辑结果相等置位</li>
-<li>溢出（overflow）：用于指示算术运算溢出</li>
-<li>中断允许/禁止（interrupt enable/disable）：用于允许/禁止中断</li>
-<li>监管（supervisor）：指出CPU是执行在监管模式还是用户模式</li>
-</ul>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/20COANOTES/">20COANOTES</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a>
-                    
-                      <a class="hover-with-bg" href="/tags/CS/">CS</a>
-                    
-                  </div>
-                
+
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext row">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2020/12/13/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments">
-                
-                
-  <div id="gitalk-container"></div>
-  <script type="text/javascript">
-    Fluid.utils.waitElementVisible('gitalk-container', function() {
-      Fluid.utils.createCssLink('/css/gitalk.css')
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', function () {
-        var gitalk = new Gitalk({
-          clientID: 'd3a61c01092e540b35cf',
-          clientSecret: 'fd5b647d5589db2d810105ac37aa2eec9759e0e9',
-          repo: 'Blog-Comment',
-          owner: 'hewei-nju',
-          admin: ["hewei-nju"],
-          id: 'bd16742e7416f147620694d76ecff4f7',
-          language: 'zh-CN',
-          labels: ["Gitalk"],
-          perPage: 10,
-          pagerDirection: 'last',
-          createIssueManually: false,
-          distractionFreeMode: false
-        });
-        gitalk.render('gitalk-container');
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -516,15 +313,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
