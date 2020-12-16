@@ -325,8 +325,8 @@ img[srcset] {
   --post-link-color: #0366d6;
   --link-hover-color: #30a9de;
   --link-hover-bg-color: #f8f9fa;
-  --navbar-bg-color: #2f4154;
-  --navbar-text-color: #fff;
+  --navbar-bg-color: #c9d6de;
+  --navbar-text-color: #1e2022;
 }
 @media (prefers-color-scheme: dark) {
   :root {
