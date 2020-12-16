@@ -334,21 +334,28 @@
 <p><img src="/img/article_img/cpu_structure_function4.png" srcset="/img/loading.gif" alt="指令周期状态图"></p>
 <h4 id="9-数据流：">9. 数据流：</h4>
 <ol>
-<li><img src="/img/article_img/cpu_structure_function5.png" srcset="/img/loading.gif" alt="数据流与取指周期">
+<li>
+<p><img src="/img/article_img/cpu_structure_function5.png" srcset="/img/loading.gif" alt="数据流与取指周期"></p>
 <ul>
 <li>控制器向PC发送请求 -&gt; PC将存有的下一条指令的地址传给MAR -&gt; MAR放到地址总线上</li>
 <li>控制器将控制信号放到控制总线上 -&gt; 存储器接收信号 -&gt; 存储器获取指令地址并将对应的指令放到数据总线上</li>
 <li>MBR从数据总线上获取指令然后传给IR</li>
 </ul>
 </li>
-<li><img src="/img/article_img/cpu_structure_function6.png" srcset="/img/loading.gif" alt="数据流间接周期">
+<li>
+<p><img src="/img/article_img/cpu_structure_function6.png" srcset="/img/loading.gif" alt="数据流间接周期"></p>
 <ul>
-<li>控制器将控制信号放到控制总线上 -&gt; 存储器接收信号并将指令的地址放到数据总线上</li>
-<li>MBR读取数据并传给MAR -&gt; MAR将该地址传放到地址总线上 -&gt; 存储器读取并将对应的指令放到数据总线上</li>
-<li>MBR从数据总线上读取指令</li>
-</ul>
+<li>
+<p>MBR存储的是指令的地址 -&gt; MBR将地址传给MAR -&gt; MAR将该地址传放到地址总线上</p>
 </li>
-<li><img src="/img/article_img/cpu_structure_function7.png" srcset="/img/loading.gif" alt="数据流与中断周期">
+<li>
+<p>控制器将控制信号放到控制总线上 -&gt; 存储器接收信号并读取指令的地址</p>
+</li>
+<li>
+<p>存储器根据地址将对应指令放到数据线上 -&gt; MBR读取指令</p>
+</li>
+</ul>
+<p><img src="/img/article_img/cpu_structure_function7.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>控制器向MAR传送信号 -&gt; MAR将当前数据要保存到的地址放到地址总线上</li>
 <li>控制器向PC传送信号 -&gt; PC将当前要保存的数据传入MBR -&gt; MBR将数据放到数据总线上</li>
