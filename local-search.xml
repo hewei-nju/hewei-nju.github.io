@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>计算机功能和互连的顶层视图</title>
+    <link href="/2020/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BA%92%E8%BF%9E%E7%9A%84%E9%A1%B6%E5%B1%82%E8%A7%86%E5%9B%BE/"/>
+    <url>/2020/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BA%92%E8%BF%9E%E7%9A%84%E9%A1%B6%E5%B1%82%E8%A7%86%E5%9B%BE/</url>
+    
+    <content type="html"><![CDATA[<h1>计算机功能和互连的顶层视图</h1><p><img src="/img/article_img/top_view1.png" alt="Top level view"></p><h1>1. 计算机元素</h1><ol><li>数据和指令存在一个单独的读写存储器中</li><li>存储器中的内容依据位置寻址无关于数据类型</li><li>执行指令的顺序是从当前指令到下一个，除非显式的修改</li></ol><h3 id="1-Memory">1. Memory</h3><ol><li>单个的存储器<ul><li>数据和指令存在一个单独的读写存储器中</li><li>存储器中的内容依据位置寻址无关于数据类型</li></ul></li></ol><p><img src="/img/article_img/top_view2.png" alt="Memory"></p><ol start="2"><li>问题：数据在CPU和主存中传输的速度远远的慢于CPU执行的速度</li></ol><p><img src="/img/article_img/top_view3.png" alt="Memory wall"></p><ol start="3"><li><p>解决方法：</p><ul><li>增加一个cache或者其他的缓冲装置来减少CPU对主存的访问频率</li><li>增加一次传输的数据宽度</li></ul></li><li><p>约束：</p><ul><li>容量：越大越好</li><li>速度：能够跟得上处理器</li><li>价格：相对于其他组件合理</li></ul></li><li><p>约束之间的关系：</p><ul><li>更短的访问时间、每位数据的开销更大</li></ul></li><li><p>需求：</p><ul><li>大容量的数据存储</li><li>高速度的访问性能</li></ul></li><li><p>解决方案：</p><ul><li>采用一种层次结构而不是单个的存储器</li></ul></li></ol><p><img src="/img/article_img/top_view4.png" alt="hierarchy"></p><h3 id="2-I-O">2. I/O</h3><ol><li><p>在外设和CPU、主存之间交换数据</p></li><li><p>问题：I/O的性能跟不上CPU的执行速度</p></li></ol><p><img src="/img/article_img/top_view5.png" alt="I/O performance"></p><ol start="3"><li>解决方法：<ul><li>缓冲机制</li><li>新的接口技术</li></ul></li></ol><h3 id="3-CPU">3. CPU</h3><ol><li><p>从一条执行到下一条，除非发生显示的改变</p></li><li><p>问题：CPU会经常出于空闲状态等待I/O设备读写完成</p></li><li><p>解决方法：</p><ul><li><p>中断：其他设备可以中断正常的执行过程的机制</p></li><li><p>中断检测：在指令周期里加上一个中断周期</p><p><img src="/img/article_img/top_view6.png" alt="interrupt detection"></p></li></ul></li><li><p>多级中断：</p><ul><li><img src="/img/article_img/top_view7.png" alt="sequential interrupt processing"></li><li><img src="/img/article_img/top_view8.png" alt="nested interrupt processing"></li></ul></li></ol><p><img src="/img/article_img/top_view9.png" alt="theoretical max performance"></p><h3 id="4-Bus">4. Bus</h3><ol><li>总线是一种连接多个设备的数据传输通路</li></ol><p><img src="/img/article_img/top_view10.png" alt="interconnection solution"></p><ol start="2"><li>数据传输类型：任何总线都可以被分为三种类型<ul><li>数据线：在系统模块中传输数据</li><li>地址线：指定数据源或接收数据的端口，也就是传输地址</li><li>控制线：控制设备对数据线地址线上的内容的读取</li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>20COA-NOTES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CS</tag>
+      
+      <tag>计算机系统结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>概论</title>
     <link href="/2020/12/16/%E6%A6%82%E8%AE%BA/"/>
     <url>/2020/12/16/%E6%A6%82%E8%AE%BA/</url>
