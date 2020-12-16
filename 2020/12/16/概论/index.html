@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="He wei">
   <meta name="keywords" content="">
-  <title>Cache存储器 - BrightHewei</title>
+  <title>概论 - BrightHewei</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Cache存储器">
+            <span class="h2" id="subtitle" title="概论">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-16 16:59" pubdate>
-        2020年12月16日 下午
+      <time datetime="2020-12-16 20:45" pubdate>
+        2020年12月16日 晚上
       </time>
     </span>
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      968 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20
+      10
        分钟
     </span>
   
@@ -251,7 +251,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Cache存储器</h1>
+            <h1 style="display: none">概论</h1>
             
               <p class="note note-info">
                 
@@ -260,292 +260,112 @@
               </p>
             
             <div class="markdown-body">
-              <h1>Cache存储器</h1>
-<h2 id="1-为什么使用Cache？">1. 为什么使用Cache？</h2>
+              <h1>概论</h1>
+<h3 id="1-结构和组织">1. 结构和组织</h3>
+<ul>
+<li>计算机结构：对程序员可见的系统属性，这些属性直接决定了程序的逻辑执行
+<ul>
+<li>指令集、数据类型、输入输出机制、寻址技术</li>
+</ul>
+</li>
+<li>计算机组成：实现结构规范的操作单元及其互连
+<ul>
+<li>硬件细节，如控制信号、计算机和外设的接口以及存储器使用的技术</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-冯诺伊曼机">2. 冯诺伊曼机</h2>
+<ul>
+<li>组成部分：
+<ul>
+<li>存储器：地址和存储的内容</li>
+<li>处理单元：执行信息的实际处理</li>
+<li>控制单元：指挥信息的处理</li>
+<li>输入设备：将信息送入计算机中</li>
+<li>输出设备：将处理结果以某种形式显示在计算机外</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/intro1.png" srcset="/img/loading.gif" alt="冯诺依曼机结构图"></p>
+<ul>
+<li>重要思想：存储程序，及把数中据和程序存储到计算机中</li>
+</ul>
+<h2 id="3-摩尔定律">3. 摩尔定律</h2>
+<ul>
+<li>内容：单芯片上包含的晶体管数量每年/18个月翻一番</li>
+<li>影响：
+<ul>
+<li>因为单片芯片的价格不变而导致芯片的逻辑电路和存储器电路成本显著下降</li>
+<li>更小的体积使得更容易放置在各种环境中</li>
+<li>更短的电路提高了芯片的工作速度</li>
+<li>减少了电能的消耗和冷却的要求</li>
+<li>集成电路上的连接比焊接更加可靠，由于芯片电路的增加，减少了芯片之间的连接。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/intro2.png" srcset="/img/loading.gif" alt="data process"></p>
+<h2 id="4-计算机性能">4. 计算机性能</h2>
+<ul>
+<li>重要参数：外观、价格、大小、安全性、稳定性、续航</li>
+<li>用来评估的一些标准：
+<ul>
+<li>CPU： speed</li>
+<li>Memory：capacity、speed</li>
+<li>I/O：capacity、speed</li>
+</ul>
+</li>
+</ul>
+<p><strong>main goal/driver</strong>： increase of CPU speed</p>
+<h2 id="5-CPU性能">5. CPU性能</h2>
+<ul>
+<li>
+<p>系统时钟：</p>
+<ul>
+<li>时钟频率/时钟速度：一秒钟内计算运转的周期数</li>
+<li>clock cycle/clock tick：单次CPU的脉冲/时钟称为一个时钟周期/时钟滴答声</li>
+<li>周期时间：两次脉冲间的时间</li>
+<li>处理器的速度由时钟产生的脉冲频率来指示，用每秒周期数/赫兹数测量</li>
+</ul>
+</li>
+<li>
+<p>指令执行速度：</p>
+<ul>
+<li>处理器由时钟驱动，时钟固定频率为$f$或等价为固定时钟周期$t$, $t = 1/ f$</li>
+<li>$I_{c}$: 一个程序的指令条数</li>
+<li>$CPI(average cycle per instruction)$:每条指令的平均周期数</li>
+<li>$CPI_{i}$: $i$类型执行所需周期数；$I_{i}$：某一给定程序中所执行的$i$类型指令的条数</li>
+<li><img src="/img/article_img/intro3.png" srcset="/img/loading.gif" alt="CPI"></li>
+<li>处理器执行完一个给定的程序所需的时间$T = I_{c} * CPI * t$</li>
+<li><img src="/img/article_img/intro4.png" srcset="/img/loading.gif" alt="T"></li>
+<li><img src="/img/article_img/intro5.png" srcset="/img/loading.gif" alt="MIPS"></li>
+<li>$R_{i}$时第i个程序高级语言指令执行的速度</li>
+<li><img src="/img/article_img/intro6.png" srcset="/img/loading.gif" alt="平均结果"></li>
+</ul>
+</li>
+<li>
+<p><strong>基本来说，用户更加关心系统的执行时间，而非它的执行速度。如果我们获得了各种测试程序的指令执行速度的算术平均值，那么我们就一定能得到一个与执行时间倒数之和成正比的结果，但这不与执行时间之和成反比。</strong></p>
+</li>
+<li>
+<p><strong>指令执行速度的算术平均值并不能准确地刻画执行时间；另一方面，指令执行速度的调和平均值是平均执行时间的倒数</strong></p>
+</li>
+<li>
+<p>阿姆达尔定律：</p>
+<ul>
+<li>
+<p>考虑系统性能，人们会通过改变技术/设计来提高性能，如并行处理器、cache的使用、高速I/O访问等。</p>
+</li>
+<li>
+<p>但之加速技术/设计的一个方面并不能很好的提高性能的相应改善。</p>
+</li>
+<li>
+<p>一个程序在多处理器上运行与单处理器上运行的加速比：</p>
+<p>假设一个程序有$f$可以无限并行，无调度负载；$(1-f)$只能串行；$T_{sin}$:单个处理器上运行的时间；$T_{n}$:n个处理器系统上运行的时间；则</p>
+<p>$speedup = T_{sin} / T_{n} = [T(1-f) + Tf] / [T(1-f) + Tf/ n] = 1 / [1-f + f / n]$</p>
 <ol>
-<li>内存墙的存在（内存性能严重限制CPU性能的发挥）</li>
+<li>f非常小，使用并行处理器有一些影响</li>
+<li>n的增大，加速比被限制</li>
 </ol>
-<h2 id="2-解决内存墙问题的方法">2. 解决内存墙问题的方法</h2>
-<ol>
-<li>同时使用速度快容量小的Cache与速度慢容量大的存储块</li>
-<li>cache包含主存一部分内存的副本</li>
-<li>cache位于CPU和主存之间，或者位于CPU内部</li>
-</ol>
-<h2 id="3-Cache如何工作得？">3. Cache如何工作得？</h2>
-<ul>
-<li>check：当处理器需要读取一个数据时，先去cache里检查一下是否在cache里</li>
-<li>hit：如果在，直接将这个数据传给处理器</li>
-<li>miss：如果不在，从主存中将包括这个数据的固定大小的块写进cache，并把需要的数据传给处理器</li>
-</ul>
-<p><img src="/img/article_img/cache1.png" srcset="/img/loading.gif" alt="cache workFlow"></p>
-<h2 id="4-cache工作流程的一些问题">4. cache工作流程的一些问题</h2>
-<ul>
-<li>如何确定一个数据是否在cache里？
-<ul>
-<li>冯诺依曼计算机结构确定“无论什么数据都是以相同的方式寻址”</li>
-<li>cache包含一个tag用来确定cache的某一行对应主存的那一部分</li>
-<li>内存中的数据是由标签来进行指向的，而不是依据数据类型进行访问</li>
-</ul>
 </li>
-<li>为什么在cache-miss时是从主存中读取一个块而不是一个字？
-<ul>
-<li>因为程序的局部性原理</li>
-<li>在程序执行过程中，处理器会倾向于向一块地方集中的访问数据</li>
-<li>局部性分为：
-<ul>
-<li>时间局部性</li>
-<li>空间局部性</li>
-<li>顺序访问（数组之类的）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/img/article_img/cache2.png" srcset="/img/loading.gif" alt="temporal locality"></p>
-<p><img src="/img/article_img/cache3.png" srcset="/img/loading.gif" alt="spatial locality"></p>
-<h2 id="5-把数据搬到Cache">5. 把数据搬到Cache</h2>
-<ul>
-<li>使用时间局部性</li>
-<li>经典的cache组织</li>
-</ul>
-<p><img src="/img/article_img/cache4.png" srcset="/img/loading.gif" alt="typical cache organization"></p>
-<h2 id="6-一次搬用一整块内容而不是一个字">6. 一次搬用一整块内容而不是一个字</h2>
-<ul>
-<li>使用空间局部性原理</li>
-<li>cache结构</li>
-</ul>
-<p><img src="/img/article_img/cache5.png" srcset="/img/loading.gif" alt="cache structure"></p>
-<h2 id="7-同比起来，使用cache会多更多的操作，为什么能节省时间呢？">7. 同比起来，使用cache会多更多的操作，为什么能节省时间呢？</h2>
-<ul>
-<li>访问cache的速度比访问内存的速度快很多</li>
-<li>由于局部性原理的存在，cache的命中率会比较高</li>
-<li>一次搬用一个块的数据比多次搬用一个字的时间少</li>
-</ul>
-<h2 id="8-平均访问时间">8. 平均访问时间</h2>
-<ul>
-<li>
-<p>假设命中率为$p$，$T_{c}$为访问cache的时间，$T_{m}$是访问存储器的时间，那么平均访问时间为：$T_{A} = pT_{c} + (1-p)(T_{c} + T_{M}) = T_{c} + (1-p)T_{M}$</p>
-</li>
-<li>
-<p>当$p &gt; T_{c} / T_{M}$时，$T_{A} &lt; T_{M}$</p>
-</li>
-<li>
-<p>问题：cache的容量远小于存储器的容量</p>
-</li>
-</ul>
-<h2 id="9-cache设计考虑因素">9. cache设计考虑因素</h2>
-<ul>
-<li>大小</li>
-<li>映射策略</li>
-<li>替换策略</li>
-<li>写策略</li>
-<li>行大小</li>
-<li>数量</li>
-</ul>
-<h2 id="10-Cache-Size">10. Cache Size</h2>
-<ul>
-<li>增加行大小 -&gt; 增加命中率$p$, 同时也会增加cache的访问时间</li>
-<li><img src="/img/article_img/cache6.png" srcset="/img/loading.gif" alt="cache_size_hit _ratio"></li>
-</ul>
-<h2 id="11-Mapping-Function">11. Mapping Function</h2>
-<ul>
-<li>用来将主中的块映射到cache行的策略/算法</li>
-<li>一种覆盖cache中哪一行的策略</li>
-<li>映射函数的选择决定了cache行的组织</li>
-<li>类型：
-<ul>
-<li>直接映射</li>
-<li>全相关映射</li>
-<li>组相关映射</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-直接映射">1. 直接映射</h4>
-<ul>
-<li>将存储器中的块固定的对应于cache中可以用的行中</li>
-<li>$i = j mod C$, $i$:cache行号，$j$:数据块的块号, $C$:cache总行数</li>
-<li>tag：前n位，$n = log_{2}M - log_{2}C$</li>
-</ul>
-<p><img src="/img/article_img/cache7.png" srcset="/img/loading.gif" alt="​address​"></p>
-<p><strong>1. 优点</strong>：</p>
-<ul>
-<li>简单</li>
-<li>映射速度快</li>
-<li>检查速度快</li>
-</ul>
-<p><strong>2.缺点</strong>：</p>
-<ul>
-<li>抖动大：当一个程序需要多次交替的访问两个映射在同一行的块，会发生多次的块替换</li>
-</ul>
-<p>comment：适用于大容量的cache</p>
-<h4 id="2-全相关映射">2. 全相关映射</h4>
-<ul>
-<li>允许将存储器中的块映射到cache的任意行</li>
-<li>tag：前n位， $n = log_{2}M$</li>
-</ul>
-<p><img src="/img/article_img/cache8.png" srcset="/img/loading.gif" alt="address"></p>
-<p><strong>1. 优点</strong>：</p>
-<ul>
-<li>避免了抖动</li>
-</ul>
-<p><strong>2.缺点</strong>：</p>
-<ul>
-<li>复杂的实现</li>
-<li>cache的查询消耗大</li>
-</ul>
-<p>comment：是用于小容量的cache</p>
-<h4 id="3-组相关映射">3. 组相关映射</h4>
-<ul>
-<li>cache被分为$s$个组，每组$k$行。</li>
-<li>$j$为块号，$i = j mod s$，第j块被映射到第i组。</li>
-<li>称为k-路组</li>
-<li>tag：前n位，$n = log_{2}M - log_{2}S$</li>
-</ul>
-<p><img src="/img/article_img/cache9.png" srcset="/img/loading.gif" alt="address"></p>
-<p><strong>1. 优点</strong>：</p>
-<ul>
-<li>集成了直接映射和全相关映射的优点</li>
-</ul>
-<p><strong>2. 缺点</strong>：</p>
-<ul>
-<li>同时也集成了直接映射和全相关映射的缺点</li>
-</ul>
-<p>comment：对任意容量的cache在性能上进行了很好的权衡</p>
-<h2 id="12-映射策略的对比">12. 映射策略的对比</h2>
-<h5 id="1-相关性：每个块可能在cache中的行数">1. 相关性：每个块可能在cache中的行数</h5>
-<ul>
-<li>直接映射：1</li>
-<li>全相关映射：C</li>
-<li>组相关映射：k</li>
-</ul>
-<h5 id="2-相关性与性能">2. 相关性与性能</h5>
-<ul>
-<li>相关性越低，命中率越低</li>
-<li>相关性越低，检查速度越快</li>
-<li>相关性越低，tag长度越短</li>
-</ul>
-<h2 id="13-替换策略">13. 替换策略</h2>
-<ol>
-<li>
-<p>当cache的行被填充时，一个新的块需要插入cache，那么此时就可能将cache中已有的块丢弃，也就是替换掉</p>
-</li>
-<li>
-<p>对于直接映射：一个确定的块有且只有一个对应的cache行可以装填</p>
-</li>
-<li>
-<p>对于全相关和组相关映射而言，替换策略是必需的，并且必须通过硬件来实现。</p>
-</li>
-<li>
-<p><strong>最常用的集中替换算法</strong></p>
-<ul>
-<li>least recently use（LRU）-- 最近最少使用</li>
-<li>first in first out（FIFO）-- 先进先出</li>
-<li>least frequently used（LFU）-- 最不经常被使用</li>
-<li>random – 随机</li>
-</ul>
-<h4 id="1-LRU">1. LRU</h4>
-<ul>
-<li>根据最近一次被用到的时间进行排序
-<ul>
-<li>以二路组为例，我们将一位置为1，则另一位被置为0</li>
-</ul>
-</li>
-<li>替换cache中当前最长时间没被使用的块</li>
-<li>将设最近被使用的块不久还将会被使用</li>
-<li>特别适合二路组关联映射</li>
-</ul>
-<h4 id="2-FIFO">2. FIFO</h4>
-<ul>
-<li>和使用时间关系不大，根据进入cache的时间来排序</li>
-<li>假设越靠后的数据越容易被再次使用到</li>
-<li>实现：循环/循环缓冲技术</li>
-<li>通过计数器来时间（时间戳）</li>
-</ul>
-<h4 id="3-Random">3.Random</h4>
-<ul>
-<li>随机的替换对应的行</li>
-<li>假设每个存储位置都等概率被再次访问到</li>
-</ul>
-</li>
-</ol>
-<h2 id="14-写策略">14. 写策略</h2>
-<ul>
-<li>内存与cache的一致性要求
-<ul>
-<li>当一个块在cache中被替换时，需要考虑块是否被个别更改可</li>
-</ul>
-</li>
-<li>两种情况：
-<ul>
-<li>如果没有更改，可以直接替换</li>
-<li>如果更改了，对应在内存中的块需要被更新</li>
-</ul>
-</li>
-<li>两种策略：
-<ul>
-<li>写入法（write through）</li>
-<li>写回法（write back）</li>
-</ul>
-</li>
-</ul>
-<h4 id="1-写入法">1. 写入法</h4>
-<ul>
-<li>
-<p>当cache中的行发生改变时，立即对内存中对应的块进行更新</p>
-</li>
-<li>
-<p>优点：确保了内存中的数据始终被更新过了</p>
-</li>
-<li>
-<p>缺点：</p>
-<ul>
-<li>
-<p>产生大量的内存访问，出现时间瓶颈</p>
-</li>
-<li>
-<p>减慢了写操作</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-写回法">2. 写回法</h4>
-<ul>
-<li>只更新cache中的数据，当这个快被替换或者遇到I/O操作需要对主存这块区域读取数据时，才发生更新</li>
-<li>使用dirty bit/ use bit，来代表是否被修改了</li>
-<li>优点：减少了对内存的写操作</li>
-<li>缺点：内存中对应的内容时过时的，因此当存在I/O操作时，只能允许通过cache进行，因此会造成复杂的电路以及潜在的瓶颈</li>
-</ul>
-<h2 id="15-行大小">15. 行大小</h2>
-<ul>
-<li>当行大小从很小的容量增加到比较大的容量时：
-<ul>
-<li>命中率提高</li>
-<li>更多有用的数据可以被带入cache</li>
-</ul>
-</li>
-<li>当行大小变的非常大时：
-<ul>
-<li>命中率提高，但提高的速度明显减慢
-<ul>
-<li>更大的行，导致cache的行数减少，这将导致频繁的替换</li>
-<li>每个额外的字都会离被需要的字更远，因此更小的可能性会在不久的将来被访问在</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>块大小和命中率之间的关系更加复杂</li>
-</ul>
-<h2 id="16-cache行数量">16. cache行数量</h2>
-<ul>
-<li>unified（统一）：
-<ul>
-<li>提高指令与数据负载自动平衡的命中率</li>
-<li>只有一个cache需要被设计和实现</li>
-</ul>
-</li>
-<li>split（分隔）：
-<ul>
-<li>消除指令获取/解码单元和执行单元之间对缓存的争用，这对指令的流水线很重要</li>
 </ul>
 </li>
 </ul>
@@ -581,18 +401,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/16/%E6%A6%82%E8%AE%BA/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">概论</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/">
-                        <span class="hidden-mobile">CPU结构和功能</span>
+                      <a href="/2020/12/16/Cache%E5%AD%98%E5%82%A8%E5%99%A8/">
+                        <span class="hidden-mobile">Cache存储器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -618,7 +432,7 @@
           repo: 'Blog-Comment',
           owner: 'hewei-nju',
           admin: ["hewei-nju"],
-          id: 'd0037ef76372576f701b85ffe60cf6ae',
+          id: '28412b1ec4d1534c155f10296362ef4b',
           language: 'zh-CN',
           labels: ["Gitalk"],
           perPage: 10,
