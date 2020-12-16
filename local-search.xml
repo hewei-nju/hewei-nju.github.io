@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Cache存储器</title>
+    <link href="/2020/12/16/Cache%E5%AD%98%E5%82%A8%E5%99%A8/"/>
+    <url>/2020/12/16/Cache%E5%AD%98%E5%82%A8%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h1>Cache存储器</h1><h2 id="1-为什么使用Cache？">1. 为什么使用Cache？</h2><ol><li>内存墙的存在（内存性能严重限制CPU性能的发挥）</li></ol><h2 id="2-解决内存墙问题的方法">2. 解决内存墙问题的方法</h2><ol><li>同时使用速度快容量小的Cache与速度慢容量大的存储块</li><li>cache包含主存一部分内存的副本</li><li>cache位于CPU和主存之间，或者位于CPU内部</li></ol><h2 id="3-Cache如何工作得？">3. Cache如何工作得？</h2><ul><li>check：当处理器需要读取一个数据时，先去cache里检查一下是否在cache里</li><li>hit：如果在，直接将这个数据传给处理器</li><li>miss：如果不在，从主存中将包括这个数据的固定大小的块写进cache，并把需要的数据传给处理器</li></ul><p><img src="/img/article_img/cache1.png" alt="cache workFlow"></p><h2 id="4-cache工作流程的一些问题">4. cache工作流程的一些问题</h2><ul><li>如何确定一个数据是否在cache里？<ul><li>冯诺依曼计算机结构确定“无论什么数据都是以相同的方式寻址”</li><li>cache包含一个tag用来确定cache的某一行对应主存的那一部分</li><li>内存中的数据是由标签来进行指向的，而不是依据数据类型进行访问</li></ul></li><li>为什么在cache-miss时是从主存中读取一个块而不是一个字？<ul><li>因为程序的局部性原理</li><li>在程序执行过程中，处理器会倾向于向一块地方集中的访问数据</li><li>局部性分为：<ul><li>时间局部性</li><li>空间局部性</li><li>顺序访问（数组之类的）</li></ul></li></ul></li></ul><p><img src="/img/article_img/cache2.png" alt="temporal locality"></p><p><img src="/img/article_img/cache3.png" alt="spatial locality"></p><h2 id="5-把数据搬到Cache">5. 把数据搬到Cache</h2><ul><li>使用时间局部性</li><li>经典的cache组织</li></ul><p><img src="/img/article_img/cache4.png" alt="typical cache organization"></p><h2 id="6-一次搬用一整块内容而不是一个字">6. 一次搬用一整块内容而不是一个字</h2><ul><li>使用空间局部性原理</li><li>cache结构</li></ul><p><img src="/img/article_img/cache5.png" alt="cache structure"></p><h2 id="7-同比起来，使用cache会多更多的操作，为什么能节省时间呢？">7. 同比起来，使用cache会多更多的操作，为什么能节省时间呢？</h2><ul><li>访问cache的速度比访问内存的速度快很多</li><li>由于局部性原理的存在，cache的命中率会比较高</li><li>一次搬用一个块的数据比多次搬用一个字的时间少</li></ul><h2 id="8-平均访问时间">8. 平均访问时间</h2><ul><li><p>假设命中率为$p$，$T_{c}$为访问cache的时间，$T_{m}$是访问存储器的时间，那么平均访问时间为：$T_{A} = pT_{c} + (1-p)(T_{c} + T_{M}) = T_{c} + (1-p)T_{M}$</p></li><li><p>当$p &gt; T_{c} / T_{M}$时，$T_{A} &lt; T_{M}$</p></li><li><p>问题：cache的容量远小于存储器的容量</p></li></ul><h2 id="9-cache设计考虑因素">9. cache设计考虑因素</h2><ul><li>大小</li><li>映射策略</li><li>替换策略</li><li>写策略</li><li>行大小</li><li>数量</li></ul><h2 id="10-Cache-Size">10. Cache Size</h2><ul><li>增加行大小 -&gt; 增加命中率$p$, 同时也会增加cache的访问时间</li><li><img src="/img/article_img/cache6.png" alt="cache_size_hit _ratio"></li></ul><h2 id="11-Mapping-Function">11. Mapping Function</h2><ul><li>用来将主中的块映射到cache行的策略/算法</li><li>一种覆盖cache中哪一行的策略</li><li>映射函数的选择决定了cache行的组织</li><li>类型：<ul><li>直接映射</li><li>全相关映射</li><li>组相关映射</li></ul></li></ul><h4 id="1-直接映射">1. 直接映射</h4><ul><li>将存储器中的块固定的对应于cache中可以用的行中</li><li>$i = j mod C$, $i$:cache行号，$j$:数据块的块号, $C$:cache总行数</li><li>tag：前n位，$n = log_{2}M - log_{2}C$</li></ul><p><img src="/img/article_img/cache7.png" alt="​address​"></p><p><strong>1. 优点</strong>：</p><ul><li>简单</li><li>映射速度快</li><li>检查速度快</li></ul><p><strong>2.缺点</strong>：</p><ul><li>抖动大：当一个程序需要多次交替的访问两个映射在同一行的块，会发生多次的块替换</li></ul><p>comment：适用于大容量的cache</p><h4 id="2-全相关映射">2. 全相关映射</h4><ul><li>允许将存储器中的块映射到cache的任意行</li><li>tag：前n位， $n = log_{2}M$</li></ul><p><img src="/img/article_img/cache8.png" alt="address"></p><p><strong>1. 优点</strong>：</p><ul><li>避免了抖动</li></ul><p><strong>2.缺点</strong>：</p><ul><li>复杂的实现</li><li>cache的查询消耗大</li></ul><p>comment：是用于小容量的cache</p><h4 id="3-组相关映射">3. 组相关映射</h4><ul><li>cache被分为$s$个组，每组$k$行。</li><li>$j$为块号，$i = j mod s$，第j块被映射到第i组。</li><li>称为k-路组</li><li>tag：前n位，$n = log_{2}M - log_{2}S$</li></ul><p><img src="/img/article_img/cache9.png" alt="address"></p><p><strong>1. 优点</strong>：</p><ul><li>集成了直接映射和全相关映射的优点</li></ul><p><strong>2. 缺点</strong>：</p><ul><li>同时也集成了直接映射和全相关映射的缺点</li></ul><p>comment：对任意容量的cache在性能上进行了很好的权衡</p><h2 id="12-映射策略的对比">12. 映射策略的对比</h2><h5 id="1-相关性：每个块可能在cache中的行数">1. 相关性：每个块可能在cache中的行数</h5><ul><li>直接映射：1</li><li>全相关映射：C</li><li>组相关映射：k</li></ul><h5 id="2-相关性与性能">2. 相关性与性能</h5><ul><li>相关性越低，命中率越低</li><li>相关性越低，检查速度越快</li><li>相关性越低，tag长度越短</li></ul><h2 id="13-替换策略">13. 替换策略</h2><ol><li><p>当cache的行被填充时，一个新的块需要插入cache，那么此时就可能将cache中已有的块丢弃，也就是替换掉</p></li><li><p>对于直接映射：一个确定的块有且只有一个对应的cache行可以装填</p></li><li><p>对于全相关和组相关映射而言，替换策略是必需的，并且必须通过硬件来实现。</p></li><li><p><strong>最常用的集中替换算法</strong></p><ul><li>least recently use（LRU）-- 最近最少使用</li><li>first in first out（FIFO）-- 先进先出</li><li>least frequently used（LFU）-- 最不经常被使用</li><li>random – 随机</li></ul><h4 id="1-LRU">1. LRU</h4><ul><li>根据最近一次被用到的时间进行排序<ul><li>以二路组为例，我们将一位置为1，则另一位被置为0</li></ul></li><li>替换cache中当前最长时间没被使用的块</li><li>将设最近被使用的块不久还将会被使用</li><li>特别适合二路组关联映射</li></ul><h4 id="2-FIFO">2. FIFO</h4><ul><li>和使用时间关系不大，根据进入cache的时间来排序</li><li>假设越靠后的数据越容易被再次使用到</li><li>实现：循环/循环缓冲技术</li><li>通过计数器来时间（时间戳）</li></ul><h4 id="3-Random">3.Random</h4><ul><li>随机的替换对应的行</li><li>假设每个存储位置都等概率被再次访问到</li></ul></li></ol><h2 id="14-写策略">14. 写策略</h2><ul><li>内存与cache的一致性要求<ul><li>当一个块在cache中被替换时，需要考虑块是否被个别更改可</li></ul></li><li>两种情况：<ul><li>如果没有更改，可以直接替换</li><li>如果更改了，对应在内存中的块需要被更新</li></ul></li><li>两种策略：<ul><li>写入法（write through）</li><li>写回法（write back）</li></ul></li></ul><h4 id="1-写入法">1. 写入法</h4><ul><li><p>当cache中的行发生改变时，立即对内存中对应的块进行更新</p></li><li><p>优点：确保了内存中的数据始终被更新过了</p></li><li><p>缺点：</p><ul><li><p>产生大量的内存访问，出现时间瓶颈</p></li><li><p>减慢了写操作</p></li></ul></li></ul><h4 id="2-写回法">2. 写回法</h4><ul><li>只更新cache中的数据，当这个快被替换或者遇到I/O操作需要对主存这块区域读取数据时，才发生更新</li><li>使用dirty bit/ use bit，来代表是否被修改了</li><li>优点：减少了对内存的写操作</li><li>缺点：内存中对应的内容时过时的，因此当存在I/O操作时，只能允许通过cache进行，因此会造成复杂的电路以及潜在的瓶颈</li></ul><h2 id="15-行大小">15. 行大小</h2><ul><li>当行大小从很小的容量增加到比较大的容量时：<ul><li>命中率提高</li><li>更多有用的数据可以被带入cache</li></ul></li><li>当行大小变的非常大时：<ul><li>命中率提高，但提高的速度明显减慢<ul><li>更大的行，导致cache的行数减少，这将导致频繁的替换</li><li>每个额外的字都会离被需要的字更远，因此更小的可能性会在不久的将来被访问在</li></ul></li></ul></li><li>块大小和命中率之间的关系更加复杂</li></ul><h2 id="16-cache行数量">16. cache行数量</h2><ul><li>unified（统一）：<ul><li>提高指令与数据负载自动平衡的命中率</li><li>只有一个cache需要被设计和实现</li></ul></li><li>split（分隔）：<ul><li>消除指令获取/解码单元和执行单元之间对缓存的争用，这对指令的流水线很重要</li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>20COA-NOTES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机体系结构</tag>
+      
+      <tag>CS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CPU结构和功能</title>
     <link href="/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/"/>
     <url>/2020/12/15/CPU%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/</url>
