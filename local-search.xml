@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>计算机算术</title>
+    <link href="/2020/12/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/"/>
+    <url>/2020/12/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%97%E6%9C%AF/</url>
+    
+    <content type="html"><![CDATA[<h1>数的表示</h1><h2 id="1-二进制表示">1. 二进制表示</h2><ol><li>为了表示多个数值，必须对多个位进行组合<ul><li>如果有k位，最多能区分出$2^{k}$个不同的值</li></ul></li></ol><h2 id="2-整数类型：">2. 整数类型：</h2><ul><li>无符号整数</li><li>有符号整数： 原码、反码、补码<ul><li>原码和反码在进行加法运算时都会造成不必要的硬件需求，于是出现了补码</li></ul></li></ul><ol><li><p>补码表示：</p><p>$[X]<em>{c} = X</em>{n}X_{n-1}…X_{2}X_{1}$</p><p>=&gt; $X = -X_{n}*2^{n-1} + … + X_{2} * 2^{1} + X_{1} * 2^{0} =&gt; (-2^{n-1} &lt;= X&lt;= 2^{n-1} - 1) $</p></li></ol><h2 id="3-浮点数表示">3. 浮点数表示</h2><ol><li>实数表示（科学计数法）</li><li><strong>定点表示法</strong>的值的范围极大的被限制了</li><li>科学计数法: $\pm S*B^{\pm E}$<ul><li>$\pm$: plus or minus</li><li>S: significant</li><li>B: base</li><li>E: exponent</li></ul></li><li><img src="img/article_img/compute1.png" alt="representation"></li><li>规格化的数：<ul><li>任何一个浮点数都能表示为多个式子：$0.110 \times 2^{5}, 110 \times 2^{2}$</li><li>规格化表示：$\pm 1.bbb…b \times 2^{\pm E}$</li><li>符号位：第一位</li><li>第一位有效数字是 1 ；不需要保存在有效字段中</li><li>真正的$e = E - 127$</li><li>基是2</li></ul></li><li><img src="/img/article_img/compute2.png" alt="value range"></li><li>精度和范围之间有一个平衡：<ul><li>增加exponent的位数，意味着减少S的位数，即扩大表示范围-&gt;精度减少；反之亦然</li></ul></li><li>使用更大的基底？<ul><li>获得了更大的表示范围，同时也会减小精度</li></ul></li></ol><h2 id="4-IEEE-Standard-754">4. IEEE Standard 754</h2><ul><li>确定了32位/64位浮点数的格式</li><li><img src="/img/article_img/compute3.png" alt="format"></li><li>确定了两种扩展方式<ul><li>包括了指数域和有效值域的扩展</li><li>减少了高度交换数据带来的错误和中间溢出</li><li><img src="/img/article_img/compute4.png" alt="interpretation"></li></ul></li></ul><h2 id="5-十进制表示">5. 十进制表示</h2><ul><li>浮点数的算术问题：<ul><li>精度的限制</li><li>高代价的转换</li><li>应用需求：<ul><li>计算长的字符串表示的数字、可计算的</li></ul></li><li>解决方案：<ul><li>使用4位2进制表示0，1，…，9（BCD, Binary-Coded Decimal)</li></ul></li></ul></li><li>Natural Binary Coded Decimal (NBCD, 8421code)<ul><li>0 - 9: 0000 - 1001</li><li>sign:<ul><li>p: 1100/0</li><li>n: 1101/1</li></ul></li></ul></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>20COA-NOTES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机体系结构</tag>
+      
+      <tag>CS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>计算机功能和互连的顶层视图</title>
     <link href="/2020/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BA%92%E8%BF%9E%E7%9A%84%E9%A1%B6%E5%B1%82%E8%A7%86%E5%9B%BE/"/>
     <url>/2020/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BA%92%E8%BF%9E%E7%9A%84%E9%A1%B6%E5%B1%82%E8%A7%86%E5%9B%BE/</url>
