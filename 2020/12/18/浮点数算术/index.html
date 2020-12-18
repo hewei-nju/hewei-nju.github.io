@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="He wei">
   <meta name="keywords" content="">
-  <title>十进制运算 - BrightHewei</title>
+  <title>浮点数算术 - BrightHewei</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="十进制运算">
+            <span class="h2" id="subtitle" title="浮点数算术">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-17 21:07" pubdate>
-        2020年12月17日 晚上
+      <time datetime="2020-12-18 17:09" pubdate>
+        2020年12月18日 下午
       </time>
     </span>
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      711 字
+      1.6k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      18
        分钟
     </span>
   
@@ -251,90 +251,224 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">十进制运算</h1>
+            <h1 style="display: none">浮点数算术</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月18日 下午
+                  本文最后更新于：2020年12月18日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1>十进制运算</h1>
-<h2 id="加法🌙">加法🌙</h2>
-<p><img src="/img/article_img/Dec1.png" srcset="/img/loading.gif" alt="Addition"></p>
-<ul>
-<li>当有进位时，就对整个二进制表示加 <strong>0110</strong>；这相当于16进制和10进制的转换需要✔️</li>
-</ul>
-<h1>减法</h1>
-<p><img src="/img/article_img/Dec2.png" srcset="/img/loading.gif" alt="Subtraction"></p>
-<p><img src="/img/article_img/Dec3.png" srcset="/img/loading.gif" alt="example"></p>
+              <h1>浮点数算术</h1>
+<h2 id="1-加减法">1. 加减法</h2>
 <ul>
 <li>
-<p>emmm！对于减法的实现，我们很容易会和二进制补码联系起来，就是重复利用已经实现好的加法器进行运算​​</p>
+<p>确保两个操作数得指数相同</p>
+<p>$X + Y = (X_{s} \times B^{X_{E} - Y_{E}} + Y_{S}) \times B^{Y_{E}}$</p>
+<p>$X - Y = (X_{s} \times B^{X_{E} - Y_{E}} - Y_{S}) \times B^{Y_{E}}$</p>
+<p>$X_{E} \leq Y_{E}$</p>
 </li>
 <li>
-<p>$N_{1} - N_{2} = N_{1} + (10 ^{n} - N_{2})$</p>
-</li>
-<li>
-<p>因为我们使用NBCD码进行减法运算时，它是将每4位当作一个块，计算数字后乘以10的底来运算的</p>
-</li>
-<li>
-<p>$N_{1} - N_{2} = [10^{n} - (10^n - N_{1} + N_{2})]$</p>
-</li>
-<li>
-<p>修正后步骤即为：</p>
-<ul>
-<li>$N_{1} - N_{2}$; 现对$N_{1}$对照着表格进行转换(其实就是9 - X),记转换后的为$N^{'}$</li>
-<li>然后对$N^{'}$与$N_{2}$进行上面的加法（复用）</li>
-<li>考虑加法结果的进位
-<ul>
-<li>进位为0：直接进行转换即为结果</li>
-<li>进位为1：直接在低位+1，然后取负即为结果</li>
-</ul>
-</li>
-</ul>
-<p>😆简单证明：</p>
-<p>NBCD减法算法的简单证明✔️:</p>
-<ul>
-<li>给定$N_{1}, N_{2}$; 假设它们用$4n$位01串表示的NBCD码，均为整数，不带符号，因为有符号的数计算同理。</li>
-<li>计算$Ans = N1 - N2$； $N_{1} = (a_{n,4}…a_{n,1})…(a_{1,4}…a_{1,1}); N_{2} = (b_{n,4}…b_{n,1})…(b_{1,4}…b_{1,1})$</li>
-<li>算法步骤为：
+<p>步骤</p>
 <ol>
-<li>按照转换表，对$N_{1}$的从左开始，每四位做一次转换（1001 - 4bits）得$N^{‘}<em>{1} = (a<sup>{'}_{n,4}…a</sup>{'}</em>{n,1})…(a<sup>{'}_{1,4}…a</sup>{’}<em>{1,1})$；其中$N^{'}</em>{1} = 9 \times 10^{n-1} + 9 \times 10^{n-2} + … +  9 \times 10^{0} - N_{1} = 1 \times 10^{n} - N_{1} - 1$</li>
-<li>复用NBCD码得加法得$N_{3} = N^{'}<em>{1} + N</em>{2} = 1 \times 10^{n} - N_{1} - 1 + N_{2}$（以通过NBCD码加法进位得修正）</li>
-<li>看$N_{3}$是否有进位：
-<ul>
-<li>如果$N_{3}$没有进位，则说明$10^{n} - N_{1} - 1 + N_{2} &lt; 10^{n}$； 即$N_{1} - N_{2} &gt; 1$；所以直接对$N_{3}$做一次上述转换得$N^{'}<em>{3}$; 有$N^{'}</em>{3} = 10^{n} - N_{3} - 1 = 10^{n} - (10^{n} - N_{1} - 1 +N_{2}) = N_{1} - N_{2}$即为结果。</li>
-<li>如果$N_{3}$有进位，即$10^{n} - N_{1} - 1 + N_{2} \geq 10^{n}$；即有$N_{2} - N_{1} \geq 1$；即$N_{3} = 10^{n} + N_{2} - N_{1} - 1 $；即进位表示$10^{n}$, 而$N_{3}$为$N_{2} - N_{1} - 1$; 为此，我们只要对$N_{3}$在低位加上“0001”，然后取负即为结果。</li>
-</ul>
-</li>
+<li>检查是否有0</li>
+<li>对阶：把阶数较小的向阶数较大得对齐（大阶小阶，有效位的高位左移被丢失，准确度损失大❌；小阶对大阶，有效位低位右移被丢失，损失相对较小✔️）</li>
+<li>对有效值加减</li>
+<li>规格化结果</li>
 </ol>
 </li>
+<li>
+<p><img src="/img/article_img/FPU1.png" srcset="/img/loading.gif" alt="add/sub workflow"></p>
+</li>
+<li>
+<p>阶数上溢：</p>
+<ul>
+<li>正阶数查过了阶码域能表示的范围</li>
+<li>记为$+\infty$;$-\infty$</li>
 </ul>
-<p><strong>✔️简单的例子</strong></p>
-<p>eg: 309 - 125<br>
-0011 0000 1001 （309）-<br>
-0001 0010 0101 （125）</p>
-<p>0110 1001 0000  （进行一次转换）+<br>
-0001 0010 0101 	-&gt;<br>
-0111 1011 0101</p>
-<p>0111 1011 0101 （对1011修正）+<br>
-0000 0110 0000   -&gt;<br>
-1000 0001 0101 	进位为0， 直接转换即为结果 -&gt;<br>
-0001 1000 0100 (184)</p>
-<p>eg: 125 - 309<br>
-0001 0010 0101   (125) -<br>
-0011 0000 1001   (309)</p>
-<p>1000 0111 0100   (进行了一次转换) +<br>
-0011 0000 1001   -&gt;<br>
-1011 0111 1101</p>
-<p>1011 0111 1101  （对1011、1101进行修正) +<br>
-0110 0000 0110   -&gt;<br>
-1 0001 1000 0011  (进位为1，在此基础上+1后取负) -&gt;</p>
-<p>0001 1000 0100 （-184）</p>
+</li>
+<li>
+<p>阶数下溢：</p>
+<ul>
+<li>负阶数小于阶码域能表示的最小值</li>
+<li>报告为0</li>
+</ul>
+</li>
+<li>
+<p>有效值上溢：</p>
+<ul>
+<li>相同符号的有效值相加可能会导致进位</li>
+<li>调整阶数和有效值的关系</li>
+</ul>
+</li>
+<li>
+<p>有效值下溢：</p>
+<ul>
+<li>在对阶过程中，有效值的有效位可能会右移到有效值域的外面</li>
+<li>使用一些保护位</li>
+</ul>
 </li>
 </ul>
+<h2 id="2-符号幅值加法">2. 符号幅值加法</h2>
+<ul>
+<li>如果操作数的符号相同，做加法，否则做减法
+<ul>
+<li>加法：直接相加
+<ul>
+<li>如果最高位有进位，上溢</li>
+<li>符号和加数的符号相同</li>
+</ul>
+</li>
+<li>减法：加减数的补码
+<ul>
+<li>如果最高位有进位，修正（去掉进位就是结果）</li>
+<li>否则计算它的补码后取负</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/FPU2.png" srcset="/img/loading.gif" alt="example"></p>
+<ul>
+<li>例子中：第一个表示上溢；第二个现堆0.8125取补码，然后相加后发现没有进位，那么再次取补码后取负即为结果；第三个先对0.625取补码，相加后有进位，修正符号同减数的符号（舍弃进位）</li>
+<li>简单说明：$X + Y$; 如果$X; Y$符号相同就直接相加，否则就是相当于$X - (-Y)$,做减法💨
+<ul>
+<li>先对$(-Y)$取补码得$(-Y_{c})$，假设$X， Y$都是n位，又因为我们不计入符号位，所以有$2^{n} = (-Y) + (-Y)_{c}$</li>
+<li>执行加法：$Z = X + (-Y)_{c} = X + 2^{n} - Y$</li>
+<li>如果$Z$得最高位有进位，说明$Z = 2^{n} + X - Y \geq 2<sup>{n}$；即进位即为$2</sup>{n}$，所以去掉进位即为结果</li>
+<li>如果$Z$得最高位没有进位，则说明$Z = 2^{n} + X - Y &lt; 2^{n}$, 即结果$X - Y = - (2^{n} - Z)$；即对$Z$取补码，然后取负即为结果。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/FPU3.png" srcset="/img/loading.gif" alt="addition &amp; subtraction"></p>
+<p><img src="/img/article_img/FPU4.png" srcset="/img/loading.gif" alt="addition &amp; subtraction"></p>
+<ul>
+<li>对上述例子得简单说明：
+<ul>
+<li>上述两个例子就是很好得用到了上面的符号幅值加法得算法原理！简直棒极了！！！🚀</li>
+<li>第一个例子：先对阶，然后发现是0.5 -(-0.4375)；所以要转为加法来计算—&gt;0.5 + (-(-0.4375)) = 0.5 + 0.4375, 直接相加即可。</li>
+<li>第二个例子：先对阶，然后发现是0.5+(-0.4375)；所以采用符号幅值加法，即相当于0.5-0.4375; 对0.4375得有效值取补码，然后同0.5的有效值相加，判断是否有进位，发现有进位，直接舍弃掉进位即为真正的有效值，然后再规格化就好了！</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-乘法">3. 乘法</h2>
+<ul>
+<li>运算步骤：
+<ul>
+<li>如果操作数出现0，直接返回0</li>
+<li>对两个操作数的阶码求和，减去偏移量（32bits的bias=127）（因为在浮点数表示为计算机中的01串时，会对阶码加上偏移量，即$E_{1} = E_{true, 1} + bias; E_{2} = E_{true, 2} + bias=&gt; E_{3} = E_{true, 3} + bias = E_{1} + E_{2} - bias$）</li>
+<li>有效值相乘</li>
+<li>规格化结果，并且进行舍入</li>
+<li><img src="/img/article_img/FPU5.png" srcset="/img/loading.gif" alt="multiply workflow"></li>
+<li><img src="/img/article_img/FPU6.png" srcset="/img/loading.gif" alt="example"></li>
+</ul>
+</li>
+<li>主要是需要注意下浮点数的表示，以及阶码和那个地方。其余的乘法就是普通的无符号乘法，然后判断下符号即可。</li>
+</ul>
+<h2 id="4-除法">4. 除法</h2>
+<ul>
+<li>运算步骤：
+<ul>
+<li>如果除数为0，抛出异常，或者设置结果为无穷大（看需求）</li>
+<li>被除数为0，结果为0</li>
+<li>被除数阶码减去除数阶码，然后再加上偏移量（做减法时，偏移量抵消了）</li>
+<li>对有效值进行除法</li>
+<li>对结果进行规格化和舍入</li>
+<li><img src="/img/article_img/FPU7.png" srcset="/img/loading.gif" alt="div workflow"></li>
+<li><img src="/img/article_img/FPU8.png" srcset="/img/loading.gif" alt="example"></li>
+</ul>
+</li>
+<li>需要注意的点：主要是除数为0，被除数为0的处理方法，它的时限要求不要随着需求改变；还有就是规格化时，可能会涉及到后面的保护位的使用</li>
+</ul>
+<h2 id="5-精度的考量">5. 精度的考量</h2>
+<ul>
+<li>
+<p>保护位：</p>
+<ul>
+<li>实际的浮点寄存器的比有效值要长一点</li>
+<li>这些多出来的位用来存储一些可能会用到的位，称为保护位</li>
+<li>它们通过“0”这个位来拉长有效位的右端</li>
+</ul>
+<p><img src="/img/article_img/FPU9.png" srcset="/img/loading.gif" alt="example"></p>
+<ul>
+<li>注意🍎：它们是实际拉长了有效位来计算的，但计算完结果后，截取后面的保护位，能够增大精确度</li>
+</ul>
+</li>
+<li>
+<p>舍入：</p>
+<ul>
+<li>计算后的有效值一般会存储在比较长的寄存器中</li>
+<li>当我们把数字读取位正常的浮点数的格式时，我们会忽略那些多余出来的位，因此就需要考量怎么舍入的问题：
+<ul>
+<li>就近舍入：结果被舍入为最近可表示的数</li>
+<li>向$+\infty$舍入：结果向正无穷大方向向上舍入</li>
+<li>向$-\infty$舍入：结果向负无穷大方向向下舍入</li>
+<li>朝0舍入：结果向0舍入</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>有意思的两个小例子🔔：假设浮点数16位，1位符号位，9位有效值位，6位阶码（bias：31）</p>
+<ul>
+<li>
+<p>+652.13: 0 101000 010001100 -&gt; +652.0；-7.48: 1 100001 110111101 -&gt; -7.4765</p>
+</li>
+<li>
+<p>🌼：652.13 + ( - 7.48) = 644.65</p>
+</li>
+<li>
+<p>101000 - 100001 = 000111</p>
+</li>
+<li>
+<p>calculate without guard bits:</p>
+<ul>
+<li>1 010001100  - 0 00000111 -&gt; 1 010000101</li>
+<li>=&gt; 0 101000 010000101 (645.0)</li>
+</ul>
+</li>
+<li>
+<p>calculate with guard bits:</p>
+<ul>
+<li>1 010001100 000000 - 0 000000111 011110 -&gt; 1 010000100 100010</li>
+<li>=&gt; 0 10100 010000100（644.0）</li>
+</ul>
+</li>
+<li>
+<p>为什么使用了保护为结果反而离实际结果更远了呢？👻</p>
+<ul>
+<li>因为我们把一个浮点数输入计算机中表示，它本身就是有误差的；而这个计算结果是在计算机表示更精确（使用了保护位，有效值位数多）的情况下计算出的结果，是计算机认为的准确结果，也是我们所认为计算机更加精确了的结果。</li>
+</ul>
+</li>
+<li>
+<p>🍁：652.13 - ( -7.48 ) = 659.61</p>
+</li>
+<li>
+<p>101000 - 100001 = 000111</p>
+</li>
+<li>
+<p>calculate without guard bits:</p>
+<ul>
+<li>
+<p>1 010001100  + 0 00000111 -&gt; 1 010010011</p>
+</li>
+<li>
+<p>=&gt; 0 101000 010010011 (659.0)</p>
+</li>
+<li>
+<p>calculate with guard bits:</p>
+<ul>
+<li>1 010001100 000000 + 0 000000111 011110 -&gt; 1 010010011 011110</li>
+<li>=&gt; 0 101000 010010011（659.0）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>—end!📄</p>
 
             </div>
             <hr>
@@ -367,18 +501,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/18/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%AE%97%E6%9C%AF/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浮点数算术</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/17/%E6%95%B4%E6%95%B0%E7%AE%97%E6%9C%AF/">
-                        <span class="hidden-mobile">整数算术</span>
+                      <a href="/2020/12/17/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97/">
+                        <span class="hidden-mobile">十进制运算</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -404,7 +532,7 @@
           repo: 'Blog-Comment',
           owner: 'hewei-nju',
           admin: ["hewei-nju"],
-          id: '866d8eff58bedbf106cab78df52d1821',
+          id: 'e35688a2340deaa4c46a2fe072d56a51',
           language: 'zh-CN',
           labels: ["Gitalk"],
           perPage: 10,
