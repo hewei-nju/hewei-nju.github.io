@@ -4,6 +4,65 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2021/01/30/%E9%A2%84%E6%B5%8B%EF%BC%9A%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E8%B7%B5/"/>
+    <url>/2021/01/30/%E9%A2%84%E6%B5%8B%EF%BC%9A%E6%96%B9%E6%B3%95%E4%B8%8E%E5%AE%9E%E8%B7%B5/</url>
+    
+    <content type="html"><![CDATA[<h1>预测：方法与实践</h1><p><a href="https://otexts.com/fppcn/">电子书</a></p><h2 id="一、入门">一、入门</h2><h3 id="1-主要内容和概念">1.主要内容和概念</h3><ol><li>事件（或数量）的可预测性取决于以下几个因素：<ol><li>我们对它的影响因素的了解程度;</li><li>有多少数据是可用的;</li><li>预测是否会影响我们试图预测的事物。</li></ol></li><li><strong>预测</strong>：它是指在考虑到所有可用信息的前提下，包括历史数据和可以影响预测的任何未来事件的知识，尽可能准确地预言。</li><li><strong>目标</strong>：它是指你想要发生的事情。目标理应与预测和计划联系在一起，但是这并不经常发生。很多时候，设定目标时没有任何如何去实现这些目标的计划，也没有目标是否切合实际的预测。</li><li><strong>计划</strong>：它是对预测和目标的回应。计划包括制定使得你的预测符合你的目标的适当行动。</li><li><strong>短期预测</strong>：人员、生产和运输的安排调度需要短期预测。作为安排过程中的一部分，需求预测常常也是必须的。</li><li><strong>中期预测</strong>：确定未来的资源需求需要中期预测，以便购买原材料、雇用人员或购买机器和设备。</li><li><strong>长期预测</strong>：在战略规划中会使用长期预测。此类决定必须将市场机会、环境因素和内部资源纳入考量。</li><li>在满足以下两个条件的时候可以使用<em>定量预测</em> ：<ol><li>关于过去的数字化信息是可以用的；</li><li>有理由假设过去的一些模式会在未来延续下去。</li></ol></li><li>预测过程的主要步骤**：**<ol><li>步骤1：定义问题。</li><li>步骤2：收集信息**：一般至少需要两种信息收集方式：(a) 统计数据，(b) 收集数据和进行预测方面专家的积累经验。**</li><li>步骤3：初步（探索性）分析**：总是以图形开头。有一致的模式吗？有明显的长期趋势吗？季节性重要吗？是否有证据表明商业周期存在？数据中是否包含需要专业知识解释的异常值？用于分析的变量之间的相关性有多强？**</li><li>步骤4：**选择及拟合模型。</li><li>步骤5：<strong>使用及评估预测模型。</strong></li></ol></li><li>统计预测的观点：<ol><li>我们试图预测的东西是未知的，此时可以看成一个随机变量</li><li>当某个数据是已知的时候，我们把它看成一个样本</li></ol></li></ol><h3 id="2-练习">2.练习</h3><ol><li><p>假设相关数据可以得到，列出<a href="https://otexts.com/fppcn/case-studies.html#case-studies">1.5</a>节案例3和案例4中可能有用的预测变量。</p><p>答：</p><ol><li>对于案例3：汽车类型、汽车品牌、汽车采购价格、汽车转售价格、汽车转售数量、对应的转售政策</li><li>对于案例4：乘客类型、学校假期时间、重大体育赛事时间、广告活动时间、竞争行为</li></ol></li><li><p>描述<a href="https://otexts.com/fppcn/case-studies.html#case-studies">1.5</a>节案例3中项目预测的五个步骤。</p><p>答：</p><ol><li>定义问题</li><li>收集信息</li><li>初步（探索性）分析</li><li>选择及拟合模型</li><li>使用及评估预测模型</li></ol></li></ol><h2 id="二、时间序列图形">二、时间序列图形</h2><h3 id="1-主要内容">1.主要内容</h3><ol><li>对于任何数据分析工作而言，其首要任务是数据可视化。图示化数据可以清晰地展现数据的特征，包括数据的形态、异常值、随时间变化情况以及变量间的相互关系。</li><li>时间序列是一组按照时间发生先后顺序进行排列，并且包含一些信息的数据点序列。</li><li>上述这些信息被存储在<code>ts</code>对象中</li><li>时间序列的频率：“频率”是季节模式重复之前的观测值个数。</li><li><strong>时间图</strong>：对于时间序列数据而言，我们从最简单的时间图开始。时间图是用将观测值与观测时间点作图，散点之间用直线连接。</li><li>时间序列模式：我们通常使用例如“趋势”、“季节性”等词语描述时间序列。在深入研究时间序列模式时，应该更精确的定义这些词语。<ol><li><strong>趋势</strong>：当一个时间序列数据长期增长或者长期下降时，表示该序列有 <em>趋势</em> 。在某些场合，趋势代表着“转换方向”。</li><li><strong>季节性</strong>：当时间序列中的数据受到季节性因素（例如一年的时间或者一周的时间）的影响时，表示该序列具有 <em>季节性</em> 。季节性总是一个已知并且固定的频率。</li><li><strong>周期性</strong>：当时间序列数据存在不固定频率的上升和下降时，表示该序列有 <em>周期性</em> 。这些波动经常由经济活动引起，并且与“商业周期”有关。周期波动通常至少持续两年。</li><li>当数据的波动是无规律时，表示序列存在周期性；如果波动的频率不变并且与固定长度的时间段有关，表示序列存在季节性。一般而言，周期的长度较长，并且周期的波动幅度也更大。</li></ol></li><li><strong>季节图</strong>：季节图和时间序列图很相似，不同之处是季节图是针对观察数据的“季节性”绘制的。</li><li><strong>子系列季节图</strong>：子系列季节图可以清晰的描绘出数据的潜在季节性形态，并且显示了季节性随时间的变化情况。这类图可以很好地查看各时期内数据的变化情况。是观察季节性变化最有用的方式。</li><li><strong>散点图</strong>：<img src="img%5Carticle_img%5Cprecast1.png" alt=""></li><li><strong>相关性</strong>：我们经常会用 <em>相关系数</em> 衡量两个两个变量之间的相关强度。假如已知两个变量$x$和$y$，那么它们之间的相关系数为$r = \frac{\sum (x_t-\overline{x})(y_t-\overline{y})}{\sqrt{\sum{(x_t-\overline{x})^2}} \sqrt{\sum(y_t-\overline{y})^2}}$,$r$的值始终在-1到1之间。当两个变量完全负相关时，$r$值为-1；当两个变量完全正相关时，$r$为1。<ul><li>需要注意的是，相关系数仅仅衡量了变量之间的线性关系，并且有时会导致错误的结果。</li><li>在分析变量之间关系时，不仅要看相关系数值，而且要关注生成的图形。</li></ul></li><li><strong>散点图矩阵</strong>：<ul><li>当所分析的数据有多个变量时，将每个变量与其他变量进行比较也很有意义。</li><li>对于图中的每一块区域，其行变量是垂直轴行的变量，列变量是水平轴的变量。有许多设置可以控制生成的图形的形态。在默认设置中，相关系数在图的右上方显示，散点图在左下方显示，对角线上是密度曲线。</li><li>可以通过散点图矩阵快速查看所有变量之间的相关关系。</li></ul></li><li><strong>滞后图</strong></li><li>自相关：正如相关系数可以衡量两个变量之间的线性相关关系一样，自相关系数可以测量时间序列 <strong>滞后值</strong> 之间的线性关系。<ul><li>$r_k$定义如下:$r_k = \frac{\sum_{t=k+1}<sup>{T}(y_t-\overline{y})(y_{t-k}-\overline{y})}{\sum_{t=1}</sup>{T}(y_t-\overline{y})^2}$</li><li>通过绘制自相关系数图可以描绘 <em>自相关函数</em> 或者是ACF。因此也被称为相关图。</li></ul></li><li><strong>ACF 图中的趋势性和季节性</strong>:<ul><li>当数据具有趋势性时，短期滞后的自相关值较大，因为观测点附近的值波动不会很大。时间序列的ACF一般是正值，随着滞后阶数的增加而缓慢下降。</li><li>当数据具有季节性时，自相关值在滞后阶数与季节周期相同时（或者在季节周期的倍数）较大。</li><li>当数据同时具有趋势和季节性时，我们会观察到组合效应。</li></ul></li><li><strong>白噪声</strong>：“白噪声”是一个对所有时间其自相关系数为零的随机过程。<ul><li>对于白噪声而言，我们期望它的自相关值接近0。但是由于随机扰动的存在，自相关值并不会精确地等于0。对于一个长度为TT的白噪声序列而言，我们期望在0.95的置信度下，它的自相关值处于±2/√T±2/T之间。我们可以很容易的画出ACF的边界值。如果一个序列中有较多的自相关值处于边界之外，那么该序列很可能不是白噪声序列。</li></ul></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Matlab入门</title>
+    <link href="/2021/01/18/Matlab%E5%85%A5%E9%97%A8/"/>
+    <url>/2021/01/18/Matlab%E5%85%A5%E9%97%A8/</url>
+    
+    <content type="html"><![CDATA[<h1>Matlab入门</h1><ol><li><p><code>向上的箭头</code>：表示回到上一个变量</p></li><li><p><code>save file</code>：将当前内容保存到<code>file.mat</code>文件内</p></li><li><p><code>load file</code>：加载<code>file.mat</code>的内容</p></li><li><p>当您关闭 MATLAB 时，工作区将被清空。可以使用 MAT 文件来保存变量。这样，当您重新打开 MATLAB 时，可以将变量加载到工作区中。</p><p>如果您只想加载或保存<em>部分</em>变量，可以使用函数的两个输入。尝试从文件 <code>myData.mat</code> 中仅加载变量 <code>m</code>：<code>&gt;&gt; load myData m</code></p><p>然后尝试将变量 <code>m</code> 保存到名为 <code>justm.mat</code> 的新 MAT 文件中：<code>&gt;&gt; save justm m</code></p></li><li><p>命令行窗口通常只显示4位小数，可以使用<code>format long</code>函数控制显示的精度</p><p><code>&gt;&gt; format long</code></p><p><code>&gt;&gt; x = pi/2</code></p><p><code>x = 1.570796326794897</code></p><p>使用<code>format short</code>可以切换回默认显示</p></li><li><p>有一些解包含虚数<code>i</code>,这是MATLAB中的内置常量</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Matlab</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>内存</title>
+    <link href="/2021/01/07/%E5%86%85%E5%AD%98/"/>
+    <url>/2021/01/07/%E5%86%85%E5%AD%98/</url>
+    
+    <content type="html"><![CDATA[<h1>内存</h1><h3 id="一、-Review：Memory">一、 Review：Memory</h3><ol><li>存储器由一定数量的单元构成，每个单元可以被唯一标识，每个单元都有存储一个数值的能力<ul><li>地址：单元的唯一标识符（采用二进制）</li><li>地址空间：可唯一标识的单元总数</li><li>寻址能力：存储在每个单元中的信息的位数<ul><li>大多数存储器是字节寻址的，而执行科学计算的计算机通常是64位寻址的</li></ul></li></ul></li><li>寻址能力的影响因素：主要由设计时地址的位数决定<ul><li>地址总线的根数</li><li>寻址机制的不同</li></ul></li><li>计算机内存真正能使用的内存大小的影响因素：<ol><li>地址空间</li><li>寻址能力</li></ol></li><li><strong>注意</strong>：4G内存的电脑插入8G的内存条并不会变化，因为寻址能力并不会变强，也就是说插入8G的内存条后，受到了寻址能力的制约。</li><li>地址空间越大，内存的容量就会越大嘛？<ul><li>不一定，因为每个单元的存储大小可能会发生改变</li></ul></li></ol><p><img src="/img/article_img/InternalMemory1.png" alt=""></p><h3 id="二、Semiconductor-Main-Memory">二、Semiconductor Main Memory</h3><ol><li>几乎所有的主存储器都采用半导体芯片</li><li>Memory cell（存储器位元）：半导体存储器最基本的元件</li><li>半导体元件所具有的一些性质：<ul><li>呈现出2种稳定的状态，分别表示0和1</li><li>能够至少写入一次信息来改变状态</li><li>能够读取出信息</li></ul></li></ol><p><img src="/img/article_img/InternalMemory2.png" alt=""></p><p><img src="/img/article_img/InternalMemory3.png" alt=""></p><h3 id="三、READ-WRITE-MEMORY">三、READ-WRITE-MEMORY</h3><h4 id="1-RAM">1. RAM</h4><ol><li>Random Access Memory（随机访问存储器）：通过编排的寻址逻辑，存储器的单个字直接被存取</li><li>明显特征是：<ul><li>可以便捷的从存储器中读取数据和向存储器中写入新数据，且读出操作都是通过使用电信号来完成的</li><li><strong>volatile（易失性）：一旦断电，数据就会丢失</strong></li></ul></li><li>类型：<ul><li>DRAM：Dynamic RAM（动态指的是由一种存储电荷被丢失的趋势）</li><li>SRAM：Static RAM</li></ul></li><li>DRAM<ul><li>存储数据是通过对电容器进行充电<ul><li>对一个电容器充电或放电后的状态解读为1或0</li></ul></li><li>需要周期性的充电去刷新保存数据<ul><li>原因：电容器有一种丢失电荷的趋势</li><li>通过一个电荷量的阈值来决断它的状态是0还是1</li><li>本质上是：模拟设备</li></ul></li><li><img src="/img/article_img/InternalMemory4.png" alt=""></li></ul></li><li>SRAM<ul><li>用传统的触发器逻辑门配置存储数据<ul><li>与处理器中使用的逻辑元件相同</li></ul></li><li>只要有电的时候，让就会存储数据</li><li>不会漏电，只要有电，不需要刷新数据就可以保存</li><li><img src="/img/article_img/InternalMemory5.png" alt=""></li></ul></li><li>DRAM和SRAM的比较<ol><li>相同点：<ul><li>Volatile（易失性）</li><li>电被持续性地供给存储器来保持其中数据的值</li></ul></li><li>不同点：<ul><li>DRAM有比SRAM更简单更小的单元，但是需要周期性的刷新</li><li>DRAM相对于SRAM更加高密度并且廉价</li><li>通常来说，SRAM的访问比DRAM的访问快</li><li>SRAM可以用来做Cache，DRAM用来做内存</li></ul></li></ol></li><li>Advanced DRAM Organization（高级DRAM组织）<ul><li>问题：<ul><li>传统的DRAM芯片被它内部的结构和与处理器相连接的总线所限制</li></ul></li><li>类型：<ul><li>Synchronous DRAM（SDRAM）</li><li>DDR SDRAM</li></ul></li></ul></li><li>Synchronous DRAM<ul><li>传统的DRAM通常是异步的<ul><li>处理器向处理器提供地址和控制级别内存，指示在特定位置的一组数据内存应该从DRAM中读取或写入</li><li>DRAM执行各种内部功能，比如激活高电容的行和列行，感应数据，并通过输出缓冲区将数据路由出去，以及处理器必须等待这个延迟</li><li>在延迟之后，DRAM要么写数据，要么读数据</li></ul></li></ul></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>20COA-NOTES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>计算机体系结构</tag>
+      
+      <tag>CS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>不想复习毛概所以水文章</title>
     <link href="/2021/01/05/%E4%B8%8D%E6%83%B3%E5%A4%8D%E4%B9%A0%E6%AF%9B%E6%A6%82%E6%89%80%E4%BB%A5%E6%B0%B4%E6%96%87%E7%AB%A0/"/>
     <url>/2021/01/05/%E4%B8%8D%E6%83%B3%E5%A4%8D%E4%B9%A0%E6%AF%9B%E6%A6%82%E6%89%80%E4%BB%A5%E6%B0%B4%E6%96%87%E7%AB%A0/</url>

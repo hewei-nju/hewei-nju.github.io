@@ -195,6 +195,214 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2020/12/18/%E9%94%99%E8%AF%AF%E4%BF%AE%E6%AD%A3/">错误修正</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/18/%E9%94%99%E8%AF%AF%E4%BF%AE%E6%AD%A3/">
+          
+          
+            
+          
+          错误修正
+
+
+半导体存储系统是很容易出错的
+
+
+错误类型：
+
+硬故障
+
+永久性的物理故障，以至于影响存储单元不能可靠的存储数据，称为固定的“1”或“0”或其之间跳转的故障
+
+
+软差错
+
+随即非破坏性事件，改变了存储单元的内容，但是不破坏存储器
+可以是电源问题或$a$粒子引起
+
+
+
+
+
+基本思想：增加一些额外的位用来存储纠错信息
+
+
+过程：
+
+
+输入的数据：M位的数据D和映射函数$f$产生的K位纠错
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-18 21:59" pubdate>
+              2020-12-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/20COA-NOTES/">20COA-NOTES</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a>
+            
+              <a href="/tags/CS/">CS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/18/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%AE%97%E6%9C%AF/">浮点数算术</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/18/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%AE%97%E6%9C%AF/">
+          
+          
+            
+          
+          浮点数算术
+1. 加减法
+
+
+确保两个操作数得指数相同
+$X + Y = (X_{s} \times B^{X_{E} - Y_{E}} + Y_{S}) \times B^{Y_{E}}$
+$X - Y = (X_{s} \times B^{X_{E} - Y_{E}} - Y_{S}) \times B^{Y_{E}}$
+$X_{E} \leq Y_{E}$
+
+
+步骤
+
+检查是否有0
+对阶：把
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-18 17:09" pubdate>
+              2020-12-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/20COA-NOTES/">20COA-NOTES</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a>
+            
+              <a href="/tags/CS/">CS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/17/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97/">十进制运算</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/17/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97/">
+          
+          
+            
+          
+          十进制运算
+加法🌙
+
+
+当有进位时，就对整个二进制表示加 0110；这相当于16进制和10进制的转换需要✔️
+
+减法
+
+
+
+
+emmm！对于减法的实现，我们很容易会和二进制补码联系起来，就是重复利用已经实现好的加法器进行运算​​
+
+
+$N_{1} - N_{2} = N_{1} + (10 ^{n} - N_{2})$
+
+
+因为我们使用NBCD码进行减法运算时，它是将每4位当作一个块，计算数字后
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-17 21:07" pubdate>
+              2020-12-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/20COA-NOTES/">20COA-NOTES</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a>
+            
+              <a href="/tags/CS/">CS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2020/12/17/%E6%95%B4%E6%95%B0%E7%AE%97%E6%9C%AF/">整数算术</a>
       </h1>
 
