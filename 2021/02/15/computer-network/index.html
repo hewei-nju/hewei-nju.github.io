@@ -278,7 +278,7 @@
 </li>
 <li>网络的雏形：使用**（transceiver）收发器**进行简单的结合，被称为“面向终端的计算机通信网”
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network1.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network1.png" srcset="/img/loading.gif" alt=""></li>
 <li>拓扑结构：星形</li>
 <li>网络中心是一台高性能计算机，负责整个网络的控制工作。多个终端围绕在它的周围，在多个终端上安装有收发器设备，<strong>作用是为终端发送或接收数据</strong>，此时的网络工作是在电信网络的基础设施上完成的。</li>
 <li>PSTN：公用电话交换网（常说的电话网），电话网只能传说模拟型号，为实现计算机中数字数据的传输，通信的双方使用<strong>调制解调器</strong>来进行数字信号和模拟信号之间的转换。</li>
@@ -288,12 +288,12 @@
 <li>随着计算机用户的增加，网络中每增加一个终端，线路控制器要付出很大的代价，同时对主机造成了很大的负担，严重的影响了主机的工作。此时迫切的需要一个能够帮助主机分担工作的设备，于是<strong>前端处理机FEP</strong>就出现了。
 <ul>
 <li>前端处理机也称为：通信控制器，承担原来主机的全部通信任务，将主机从繁重的通信任务中释放出来，更好的运行应用程序。（现在普遍存在的网卡就是前端处理机的化身）</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network2.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network2.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>远程终端的增加不仅会给主机带来负担，同时通讯费用也会迅速增加，特别是利用高速通信线路进行传输的时候，为了降低通信成本，在终端密集的地方出现了线路集中器，它是一种智能复用器，可以通过低速线路将多个终端集中起来，对后面的高速线路进行复用，这样高速线路的容量就可以远远小于各低速线路容量和，从而降低通信费用。
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network3.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network3.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -302,7 +302,7 @@
 <li>从通信资源的分配角度来看，交换就是按照某种方式动态分配传输线路的资源。
 <ul>
 <li>电路交换是电信网中采用的数据传输方式，在使用电路交换时，必须在通信双方之间建立一条物理连接，这条连接占用了双方通信所需要的资源，而这些资源在双方通信时不会被其他用户占用，直到通信结束。</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network4.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network4.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>为什么传统电路交换不适合计算机数据传输？
@@ -331,14 +331,14 @@
 <ol>
 <li><strong>采用存储转发技术</strong>，基于数据从发送方到接收方中间要经过多个节点的暂时存储，然后根据接收方的地址找到下一个接收该数据的节点，并将数据转发除去，知道到达接收方为止。
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network5.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network5.png" srcset="/img/loading.gif" alt=""></li>
 <li>比如现在要从主机H1向H5发送分组，分组从H1出发后，经过结点交换机A C E的转发，最终到达目的主机H5。</li>
 </ul>
 </li>
 <li>分组交换技术的另一个特点：发送数据之前要对数据进行分段处理。通常我们把要发送的整块数据称为一个报文，在发送报文之前，先把较长的报文划分成为一个个更小的等长数据段，在每个数据段前面加上一些必要的控制信息组成首部，这样就形成了一个分组。
 <ul>
 <li>分组有时候也称为包，分组的首部称为包头</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network6.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network6.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -354,21 +354,21 @@
 <ul>
 <li>节点交换机则是进行分组的存储转发</li>
 <li>路由器</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network7.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network7.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 </ol>
 </li>
 <li>分组交换网中一个报文的传输全过程
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network8.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network8.png" srcset="/img/loading.gif" alt=""></li>
 <li>对于一个报文M，分成了三个分组M1，M2，M3，分别用不同的颜色表示</li>
 <li>对于M1，M2，M3三个分组都到达了目的主机，但是中间经过的结点交换机并不相同，即它们是经过不同的路径传输的</li>
 </ol>
 </li>
 <li>当网络中出现故障时的通信情况
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network9.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network9.png" srcset="/img/loading.gif" alt=""></li>
 <li>分组传输过程中，当网络中某条通路断开或结点交换机出现故障时，分组避开故障点，重新选择新的路径，传输工作基本不受影响。</li>
 <li>由此可见，当部分结点或链路被摧毁时，分组交换仍然可以保持网络畅通</li>
 </ol>
@@ -390,7 +390,7 @@
 </li>
 <li>20世纪40年代的电报通信中也采取了基于存储转发原理的<strong>报文交换</strong>，通过实例比较<strong>电路交换</strong>，<strong>报文交换</strong>，以及<strong>分组交换</strong>的区别
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network10.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network10.png" srcset="/img/loading.gif" alt=""></li>
 <li>A，D分别是原点和终点，B，c是在A和D之间的中间节点，箭头方向代表时间</li>
 <li>电路交换：
 <ul>
@@ -425,7 +425,7 @@
 </ol>
 <h3 id="三、Internet的发展与网络的分类">三、Internet的发展与网络的分类</h3>
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network11.png" srcset="/img/loading.gif" alt="">
+<li><img src="/img/article_img/computer_network11.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>计算机从早期的以主机为中心变为现在以网络为中心</li>
 <li>早期计算机网络是面向终端的星形网，个终端通过通信线路共享昂贵的中心计算机的硬件和软件资源</li>
@@ -443,15 +443,15 @@
 </li>
 <li>Internet发展的第二个阶段
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network12.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network12.png" srcset="/img/loading.gif" alt=""></li>
 <li>三级计算机网络：主干网、地区王、校园网</li>
 <li>各网络之间使用路由器连接，两个主机之间的通信可能需要经过多级网络</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network13.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network13.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>Internet标准化工作
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network14.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network14.png" srcset="/img/loading.gif" alt=""></li>
 <li>ISOC(Internet Society)Internet协会</li>
 <li>ISOC下面有个技术组织因特网体系结构委员会—IAB（Internet Architecture Board），负责Internet有关协议的开发</li>
 <li>IAB下面设有两个部门
@@ -498,7 +498,7 @@
 <li>按照拓扑结构分类
 <ul>
 <li>星形、总线型、环形、树形、网状</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network15.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network15.png" srcset="/img/loading.gif" alt=""></li>
 <li>规则拓扑结构的网络往往是局域网，而不规则的网状结构通常应用于城域网和广域网</li>
 </ul>
 </li>
@@ -536,13 +536,13 @@
 </li>
 <li>第二阶段：OSI“一统天下”
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network16.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network16.png" srcset="/img/loading.gif" alt=""></li>
 <li>两个使用该标准的主机可以在世界上任何地方通信</li>
 <li>OSI七层模型失败的教训：
 <ol>
 <li>糟糕的时机
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network17.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network17.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>糟糕的技术
@@ -602,8 +602,8 @@
 <ul>
 <li>信道带宽越宽，能够通过的信号的高频分量就越多，也就可以用更高的速率来传送码元。因此<strong>信道带宽</strong>是影响信道传输速率的一个因素。</li>
 <li>信号在信道上的传输存在差异，有的频率高一些，有些低一些，但信道所能通过的频率范围总是有限的。当信号的频率超出这个范围时，信号中的高频分量就会收到衰减，坡形边界变模糊，导致接收方对码元的提取困难。</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network18.png" srcset="/img/loading.gif" alt=""></li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network19.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network18.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network19.png" srcset="/img/loading.gif" alt=""></li>
 <li>任何实际信道都是不理想的，在信号传输过程中会有外界干扰，有噪声且带宽受限，所以信号会产生失真。如果传输距离很远或者噪声干扰很大，或者传输媒体很差就会导致信号失真严重，接收方无法识别出正确的信号波形，最后出现错误。考虑这种错误的情况，我们采用<strong>信道容量</strong>来衡量一个信道的<strong>数据传输率</strong>。</li>
 </ul>
 </li>
@@ -628,7 +628,7 @@
 <li>
 <p>对于一个带宽确定的信道，如果信噪比不能再提高，码元的传输速率也达到了极限，还有什么方式可以提高数据传输速率？</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network20.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network20.png" srcset="/img/loading.gif" alt=""></li>
 <li>如果将数字信号直接用不同的高低电平传送，每一个码元信号携带的信息量就是1bit，此时波特率和比特率相等。</li>
 <li>如果将原始数字数据按照每三位一组进行编码，然后采用某种调制的方法来表示这样的信号，那么每一个调制后的码元信号，携带的信息量就是3bit。如果采用相同速率来传输码元的话，那么编码后的数据传输率就是没有编码时的3倍。由此可见，通过编码的方式，可以提高数据传输速率。</li>
 </ul>
@@ -659,7 +659,7 @@
 <li>
 <p>利用载波进行调制的方法有三种</p>
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network21.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network21.png" srcset="/img/loading.gif" alt=""></li>
 <li>调幅：使载波的振幅随信号的不同而变化</li>
 <li>调频：使载波的频率随信号的不同而变化</li>
 <li>调相：使载波的初始相位随信号的不同而变化</li>
@@ -669,9 +669,9 @@
 <p>基带数字信号的编码方法</p>
 <ol>
 <li>当数字数据用数字信号发送时，<strong>不归零码</strong>是最简单的基带数字信号传输方法。但在传输连续的0或1时，很难确定每个码元的界限，这就会导致接收方无法从比特流中提取出同步的<strong>位信号</strong>。因此需要用某种方法使得接收方和发送方同步。</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network22.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network22.png" srcset="/img/loading.gif" alt=""></li>
 <li>编码就是一种可以用于同步的方法，常用的编码方法有<strong>曼彻斯特编码</strong>和<strong>差分曼彻斯特编码</strong>，都是通过在码元中间出现电平转换来产生同步信号。</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network23.png" srcset="/img/loading.gif" alt="这张图片还没看懂，没理解意思，感觉怪怪的！！！"></li>
+<li><img src="/img/article_img/computer_network23.png" srcset="/img/loading.gif" alt="这张图片还没看懂，没理解意思，感觉怪怪的！！！"></li>
 <li>在<strong>曼彻斯特编码</strong>中，每个码元的中间有一次电平的跳变。电平从低变高代表信号0，从高到低代表信号1</li>
 <li>在<strong>差分曼彻斯特编码</strong>中，每个码元的中间有一次电平的跳变，同时在信号开始时，不改变电平表示1，信号开始时改变电平表示0</li>
 <li>与曼彻斯特编码相比，差分曼彻斯特编码的抗干扰能力更好一些</li>
@@ -688,29 +688,29 @@
 </li>
 <li>导向传输媒体
 <ol>
-<li>双绞线，<img src="%5Cimg%5Carticle_img%5Ccomputer_network24.png" srcset="/img/loading.gif" alt="">：最古老但又最常用的传输媒体，把两根相互绝缘的铜导线用规则的方法绞合在一起，就构成了双绞线。
+<li>双绞线，<img src="/img/article_img/computer_network24.png" srcset="/img/loading.gif" alt="">：最古老但又最常用的传输媒体，把两根相互绝缘的铜导线用规则的方法绞合在一起，就构成了双绞线。
 <ul>
 <li>模拟传输和数字传输都可以使用双绞线进行，通信距离一般是几公里到十几公里</li>
 <li>双绞线的绞合可以减少相邻导线的电磁干扰</li>
 <li>根据绞合的紧密程度，可以将双绞线分为三类线，四类线，五类线，六类线，七类线等等</li>
 <li>绞合度越高，抗干扰性能越好，获得的带宽也就越宽</li>
 <li>为了提高双绞线的抗干扰能力，还可以在双绞线的外面加上一层用金属丝编成的屏蔽层—屏蔽双绞线，价格稍高</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network25.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network25.png" srcset="/img/loading.gif" alt=""></li>
 <li>由于价格和性能都不错，广泛应用于电话系统和通信系统中</li>
 </ul>
 </li>
-<li>同轴电缆，<img src="%5Cimg%5Carticle_img%5Ccomputer_network26.png" srcset="/img/loading.gif" alt="">
+<li>同轴电缆，<img src="/img/article_img/computer_network26.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>由于外导体屏蔽层的作用，同轴电缆具有很好的抗干扰性能，通常用于传输较高速率的数据，主要用于有线电视网的传输中</li>
 </ul>
 </li>
-<li>光纤，<img src="%5Cimg%5Carticle_img%5Ccomputer_network27.png" srcset="/img/loading.gif" alt="">
+<li>光纤，<img src="/img/article_img/computer_network27.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>非常透明的玻璃芯和包层组成，利用光波在纤芯中传导时，遇到折射率较低的包层而发生全反射现象，将光沿着光纤传输下去</li>
 <li>光纤包层分为玻璃和塑料两种。玻璃光纤损耗小，成本高，通常用于远距离的宽带传输中。塑料光纤损耗大成本低，通常用于短距离的基带传输中</li>
 <li>光纤传送模式
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network28.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network28.png" srcset="/img/loading.gif" alt=""></li>
 <li>光纤中只要光纤射在光纤表面的入射角足够大，就能产生全反射现象。因此，在一条光纤中，会存在多条入射角不同的光线，这种光纤被称为多模光纤。</li>
 <li>由于光脉冲在多模光纤中传输时，会逐渐展宽造成失真，所以多模光纤只适合于近距离传输。</li>
 <li>如果将光纤的直径减小到只有一个光的波长，那么光纤就能向波导那样使光线一直向前传输，而不会产生多次反射，这种就是单模光纤。</li>
@@ -728,14 +728,14 @@
 </li>
 </ul>
 </li>
-<li>光缆，<img src="%5Cimg%5Carticle_img%5Ccomputer_network29.png" srcset="/img/loading.gif" alt="">
+<li>光缆，<img src="/img/article_img/computer_network29.png" srcset="/img/loading.gif" alt="">
 <ol>
-<li>光缆结构：<img src="%5Cimg%5Carticle_img%5Ccomputer_network30.png" srcset="/img/loading.gif" alt="">
+<li>光缆结构：<img src="/img/article_img/computer_network30.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>加强芯，填充物，包层和保护套可以是机械强度达到几公斤</li>
 </ul>
 </li>
-<li>光线联网：<img src="%5Cimg%5Carticle_img%5Ccomputer_network31.png" srcset="/img/loading.gif" alt="">LED
+<li>光线联网：<img src="/img/article_img/computer_network31.png" srcset="/img/loading.gif" alt="">LED
 <ul>
 <li>将点到点的链路串联起来构成一个环路，通过T形接头连接到计算机上</li>
 <li>T形接头分<strong>无源</strong>和<strong>有源</strong>两种，上面图片的是有源T形接头的内部结构</li>
@@ -748,8 +748,8 @@
 </li>
 <li>非导向传输媒体
 <ol>
-<li>无线传输使用的频带分布：<img src="%5Cimg%5Carticle_img%5Ccomputer_network32.png" srcset="/img/loading.gif" alt=""></li>
-<li>短波，<img src="%5Cimg%5Carticle_img%5Ccomputer_network33.png" srcset="/img/loading.gif" alt="">
+<li>无线传输使用的频带分布：<img src="/img/article_img/computer_network32.png" srcset="/img/loading.gif" alt=""></li>
+<li>短波，<img src="/img/article_img/computer_network33.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>短波通信主要是利用大气中电离层对无线电波的反射进行传输，电离层的不稳定所产生的衰弱现象和电离层反射所产生的多径效应使得短波通信的质量比较差，因此必须使用短波无线电台进行数据传输时，一般都是低速传输</li>
 </ol>
@@ -758,7 +758,7 @@
 <ol>
 <li>空间中直线传播，可以穿透电离层进入太空</li>
 <li>微波通信方式主要有两种，店面微波接力通信和卫星通信</li>
-<li>地面微波接力通信，<img src="%5Cimg%5Carticle_img%5Ccomputer_network34.png" srcset="/img/loading.gif" alt="">
+<li>地面微波接力通信，<img src="/img/article_img/computer_network34.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>由于地球表面是球面，微波是直线传输，为了实现远距离传输就在地球表面的高处建立天线塔作为中继站，把前一站发送过来的信号放大后发送给下一站这个过程就是微波接力</li>
 <li>可以传输电话、电报、图像、数据等信息</li>
@@ -773,7 +773,7 @@
 </li>
 <li>卫星通信
 <ol>
-<li>利用高空中人造卫星作为中继站进行的微波接力通信，<img src="%5Cimg%5Carticle_img%5Ccomputer_network35.png" srcset="/img/loading.gif" alt=""></li>
+<li>利用高空中人造卫星作为中继站进行的微波接力通信，<img src="/img/article_img/computer_network35.png" srcset="/img/loading.gif" alt=""></li>
 <li>特点
 <ul>
 <li>通信距离远，适合光波通信，保密性差，与地面微波接力通信特点差不多</li>
@@ -792,7 +792,7 @@
 <ol>
 <li>EIA-232-E标准
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network36.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network36.png" srcset="/img/loading.gif" alt=""></li>
 <li>DTE（数据终端设备）：具有一定数据处理能力及数据收发能力的设别，如计算机</li>
 <li>DCE（数据电路端接设备）：在DTE和传输线路之间提供信号变换和编码功能，并负责建立、保持和释放数据链路的连接，如MODEM（调制解调器）</li>
 <li>232标准是上图中计算机与调制解调器连接时的标准</li>
@@ -800,7 +800,7 @@
 <ol>
 <li>机械特性，规定插头有25针引脚</li>
 <li>电气特性，规定逻辑1用-3V或更低电压来表示，逻辑0用+3V或更高电压表示。两台设备直接相连时最大距离不能超过15米，接口数据传输率不超过20K比特每秒</li>
-<li>功能特性，规定DTE和DCE之间个信号线的功能及连接情况，<img src="%5Cimg%5Carticle_img%5Ccomputer_network37.png" srcset="/img/loading.gif" alt=""></li>
+<li>功能特性，规定DTE和DCE之间个信号线的功能及连接情况，<img src="/img/article_img/computer_network37.png" srcset="/img/loading.gif" alt=""></li>
 <li>规程特性，规定DTE和DCE之间信号持续的应答关系和操作过程
 <ul>
 <li>232标准将数据传输过程分为3个阶段
@@ -812,7 +812,7 @@
 </li>
 <li>具体操作过程
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network38.png" srcset="/img/loading.gif" alt="">
+<li><img src="/img/article_img/computer_network38.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>连接建立阶段：
 <ul>
@@ -847,7 +847,7 @@
 <li>568标准：美国电子工业协会和电信行业写回联合发布的一个关于双绞线的标准（下面重点为双绞线线序标准）
 <ol>
 <li>双绞线中一共有8根信号线，按照标准的线序插入到RJ45的水晶头中</li>
-<li>568B标准：<img src="%5Cimg%5Carticle_img%5Ccomputer_network39.png" srcset="/img/loading.gif" alt="">
+<li>568B标准：<img src="/img/article_img/computer_network39.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>大多数情况下四个引脚传输数据，另外四个作为备用引脚</li>
 <li>1号引脚：发送高电平数据</li>
@@ -856,17 +856,17 @@
 <li>6号引脚：接收低电平数据</li>
 <li>使用双绞线的设备，其接口的功能特征和双绞线的功能特征一一对应
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network40.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network40.png" srcset="/img/loading.gif" alt=""></li>
 <li>要实现计算机与集线器之间的数据传输的话，集线器接口的功能特征就要与双绞线的功能特征在发送和接收上刚好相反的，这样才能左到计算机发送的数据被集线器接收，集线器发送的数据也能被计算机接收</li>
 <li>考虑到兼容性，目前大多数网线都是按照568B的标准制作的
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network41.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network41.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>但是如果我们要用网线将两个相同的设备连接起来（如两台计算机），由于同类设备接口功能特性相同，如果采用两端线序相同的网线直连的话，就没有办法将数据的发送引脚和对方的接收引脚对应上，也就不能实现数据传输了。因此根据网线两端连接设备的不同，网线分为<strong>直通线</strong>和<strong>交叉线</strong>
 <ol>
 <li>直通线：网线两端采用相同的线序</li>
-<li>交叉线：网线两端的线序刚好相反，<img src="%5Cimg%5Carticle_img%5Ccomputer_network42.png" srcset="/img/loading.gif" alt="">，后面新产生的标准也就是568A标准</li>
+<li>交叉线：网线两端的线序刚好相反，<img src="/img/article_img/computer_network42.png" srcset="/img/loading.gif" alt="">，后面新产生的标准也就是568A标准</li>
 <li>实际应用中关于直通线和交叉线的使用：<strong>不同类型的设备之间采用直通线，相同类型的设备采用交叉线</strong>这个原则
 <ul>
 <li>类型主要是按照DCE和DTE进行划分的，常见的网络设备中，计算机和路由器属于DTE设备，交换机和集线器属于DCE设备</li>
@@ -888,7 +888,7 @@
 <ol>
 <li>时分复用
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network43.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network43.png" srcset="/img/loading.gif" alt=""></li>
 <li>特点
 <ul>
 <li>将时间划分成一个个等长的时分复用帧，每一个时分复用帧的用户在每个时分复用帧中占的固定序号的时系</li>
@@ -901,7 +901,7 @@
 </li>
 <li>频分复用
 <ol>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network44.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network44.png" srcset="/img/loading.gif" alt=""></li>
 <li>特点
 <ul>
 <li>将信道的带宽划分为小的频带，为每个用户分配一个固定的频带，之后这个用户就始终占用这个频带进行通信</li>
@@ -915,7 +915,7 @@
 <li>光纤通信中，在同一根光纤中同时传输具有不同波长的光载波信号技术</li>
 <li>波分复用为每个用户分配相互隔离的光谱频带，所以也称为光的频分复用</li>
 <li>由于光信号的频率非常高，所以人们习惯上用波长而不是频率来表示光信号，因此也就有了波分复用这个名称</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network45.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network45.png" srcset="/img/loading.gif" alt=""></li>
 <li>在发送端具有不同波长的光信号经过棱柱或衍射光栅汇总在一起，并耦合到一根光纤上进行传输，到了接收端再经过棱柱或衍射光栅分离出来</li>
 </ol>
 </li>
@@ -1000,7 +1000,7 @@
 <ol>
 <li>封装成帧（framing）就是在一段数据前后分别添加首部和尾部，然后就构成了一个帧</li>
 <li>首部和尾部的一个重要作用就是进行帧定界，此外首部和尾部还包括很多控制信息</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network46.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network46.png" srcset="/img/loading.gif" alt=""></li>
 <li>帧的发送是从首部开始的，到尾部结束。为了提高数据传输效率，应该使帧的数据部分长度尽可能地大于首部和尾部的长度，但是每种数据链路层协议都对帧的数据部分长度设置了上限，我们把这个值称为<strong>最大传输单元</strong>，简称MTU。</li>
 </ol>
 </li>
@@ -1008,11 +1008,11 @@
 <p>透明传输</p>
 <ol>
 <li>由于帧的首部和尾部通常会采用一些特殊字符和比特组合来作为帧开始和结束的标记，所以在帧的数据部分就不允许再出现与这些定界符号相同的内容，否则就会出现帧定界的错误</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network47.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network47.png" srcset="/img/loading.gif" alt=""></li>
 <li>上图中，数据部分出现了与帧结束部分相同的内容，接收方就会误认为这是真的结尾而把它接受下来，然而真正的帧并没有传输结束，后续的数据部分就只能成为一个无效帧被丢弃。</li>
 <li>为解决上述这个问题，在<strong>发送方的数据链路层</strong>就需要对数据部分出现的与帧定界符相同的字符进行处理。比如我们可以在这些字符前面插入一个转义字符，接收方在接收时，再将这些转义字符去点，同时忽略其后面字符的含义。如果转义字符也出现在数据部分，那么就在转义字符前面也插入一个转义字符，接收方收到连续的两个转义字符后，删掉前面一个就好
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network48.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network48.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -1026,7 +1026,7 @@
 <li>
 <p>循环冗余校验（CRC）的原理</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network49.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network49.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>在发送端，先把数据划分成组，假定每K个比特</li>
@@ -1072,14 +1072,14 @@
 <ol>
 <li>基本原理
 <ol>
-<li>正常情况，<img src="%5Cimg%5Carticle_img%5Ccomputer_network50.png" srcset="/img/loading.gif" alt="">
+<li>正常情况，<img src="/img/article_img/computer_network50.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>接收方接受到发送发发来的一帧正确的数据后，将其提交给主机</li>
 <li>然后向发送方发送一个<strong>确认帧ACK</strong></li>
 <li>发送方收到确认帧之后，才能发送下一帧数据</li>
 </ul>
 </li>
-<li>数据帧出错，<img src="%5Cimg%5Carticle_img%5Ccomputer_network51.png" srcset="/img/loading.gif" alt="">
+<li>数据帧出错，<img src="/img/article_img/computer_network51.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>如果传输过程中数据出现差错，接收方收到数据后，通过循环冗余校验可以很容易的发现错误</li>
 <li>此时接收方向发送方发出一个<strong>否认帧NAK</strong></li>
@@ -1087,7 +1087,7 @@
 <li>这种处理方式交错<strong>差错重传</strong></li>
 </ul>
 </li>
-<li>数据帧丢失，<img src="%5Cimg%5Carticle_img%5Ccomputer_network52.png" srcset="/img/loading.gif" alt="">
+<li>数据帧丢失，<img src="/img/article_img/computer_network52.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>数据帧在传输过程中可能会丢失，由于接收方收不到数据，所以不会发出确认帧。而发送放如果一直等待下去就会出现<strong>死锁</strong></li>
 <li>为了防止这种情况的出现，发送方没法送出一帧数据，都要启动一个超时计时器</li>
@@ -1095,7 +1095,7 @@
 <li>这种处理方式称为<strong>超时重传</strong></li>
 </ul>
 </li>
-<li>数据帧被接收方接收了，但确认帧却丢失了，<img src="%5Cimg%5Carticle_img%5Ccomputer_network53.png" srcset="/img/loading.gif" alt="">
+<li>数据帧被接收方接收了，但确认帧却丢失了，<img src="/img/article_img/computer_network53.png" srcset="/img/loading.gif" alt="">
 <ul>
 <li>由于确认帧丢失，发送方也会进行超时重传，但<strong>问题是接收方已经接受过这一帧数据了</strong>，这样就会出现重复帧的问题</li>
 <li>为了解决重复帧的问题，我们可以给每一个发送的不同的数据帧都带上不同的序号，根据序号，接收方就可以很容易的判断重复帧</li>
@@ -1109,7 +1109,7 @@
 <ol>
 <li>停止等待协议的优点是简单易实现，但是缺点是信道利用率太低
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network54.png" srcset="/img/loading.gif" alt="">
+<li><img src="/img/article_img/computer_network54.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>假设发送方发送一帧数据的时间是$$T_D$$，数据在发送方和接收方之间的信道上往返的传输时间是$$RTT$$，发送方接收确认帧的时间是$$T_A$$，从上图中可以看出发送方在每一帧数据发送的过程中有效数据占用信道传输的时间仅为$$T_D$$，而整个过程需要的时间远大于$$T_D$$，所以停等协议的信道利用率很低，从图中发现这个问题出现的原因是<strong>发送方在等待接收方确认的过程中信道一直出于空闲状态</strong></li>
 <li>为了解决上述问题，出现了连续ARQ协议</li>
@@ -1124,7 +1124,7 @@
 <li>
 <p>流水线传输（连续ARQ协议）</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network55.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network55.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>
@@ -1181,7 +1181,7 @@
 <li>
 <p>发送窗口的作用</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network56.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network56.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>对发送方的流量加以控制，只有在发送窗口内的帧才能被连续发送出去。
@@ -1293,7 +1293,7 @@
 </li>
 <li>PPP协议的帧格式
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network57.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network57.png" srcset="/img/loading.gif" alt=""></li>
 <li>首部和尾部部分分别为4个字段和2个字段。首部的第一个字段和尾部的最后一个字段都是标志字段，规定值是十六进制的<code>7E</code>，二进制形式<code>01111110</code>，表示一个帧的开始和结束，也就是帧的定界符。首部中的地址字段A设置为十六进制的<code>FF</code>，控制字段设置为十六进制的<code>03</code>，事实上这两个字段并没有真正的意义</li>
 <li>PPP首部的第四个字段是一个协议字段，占2个字节
 <ul>
@@ -1343,7 +1343,7 @@
 <ol>
 <li>PPP协议最典型的应用就是用户通过向ISP拨号介入Internet的过程。在这个过程中PPP的工作可以用下面状态图来描述：
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network58.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network58.png" srcset="/img/loading.gif" alt=""></li>
 <li>PPP链路的起始和终止状态永远是图中的静止状态，此时在用户的PC机和ISP的路由器之间是不存在物理连接的</li>
 <li>当用户向ISP的路由器发出呼叫时，路由器就能检测到呼叫的载波信号</li>
 <li>在双方建立了物理层连接后，PPP就进入链路建立状态。它的目的时建立链路层的LCP连接。这时LCP通过请求配置帧，开始协商一些配置选项，包括链路上最大帧长、所使用的鉴别协议等等</li>
@@ -1414,7 +1414,7 @@
 <p>机制：主机从1站开始，逐个询问各站是否有数据要发送。</p>
 <ul>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network59.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network59.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>如果1站没有数据要发送，就发送一个空指帧给主机表示没有数据</p>
@@ -1449,7 +1449,7 @@
 <li>
 <p>分散式控制：令牌环网</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network60.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network60.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>工作原理：
@@ -1469,7 +1469,7 @@
 </li>
 <li>针对上述令牌环网的缺点，利用总线型局域网的优势，令牌总线网就产生了
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network61.png" srcset="/img/loading.gif" alt="">
+<li><img src="/img/article_img/computer_network61.png" srcset="/img/loading.gif" alt="">
 <ol>
 <li>令牌总现网在物理上是一个总线型的网络，但在逻辑上却构成了一个环，使令牌可以像在令牌环网中那样在网络中流动。</li>
 <li>与环形的网络相比，令牌总现网具有更高的可靠性。比如在上述的7个站中，如果C站出现了故障，而G站未工作，剩下的5个站在逻辑上依旧可以组成一个令牌环网。这里令牌传递的顺序与站的物理位置无关</li>
@@ -1510,7 +1510,7 @@
 <li>
 <p>工作过程</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network62.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network62.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>上图中主机A和主机B共享同一个信道。主机A先发送数据帧1，没有冲突</li>
@@ -1528,7 +1528,7 @@
 <li>重发策略：同纯ALOHA</li>
 <li>工作过程
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network63.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network63.png" srcset="/img/loading.gif" alt=""></li>
 <li>以上面情况为例，主机A在发送数据帧2时，主机B产生了数据帧3，但按照时隙ALOHA的要求，数据帧3不能立即发送，而是要等到下一个时隙开始时才能发送。这样就避免了冲突</li>
 <li>由此可见，与纯ALOHA相比，时隙ALOHA可以提高信道的吞吐量，改善性能</li>
 </ul>
@@ -1585,7 +1585,7 @@
 <li>检测到冲突后，停止发送数据，并且发送人为干扰信号，强化冲突。<strong>目的</strong>：让信道上的每个站都能知道冲突的发生，这样信道就能很快地空闲下来</li>
 <li>从前面的介绍中可以发现，由于电磁波的传播时延，在每个站刚刚发送数据开始的一段时间间隔内，仍然有发生冲突的可能，因此把这段时间称为冲突检测时间
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network64.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network64.png" srcset="/img/loading.gif" alt=""></li>
 <li>总线一端的A站在$$t=0$$时刻向F发送数据帧</li>
 <li>假设数据帧在A和F两站之间单程的传播时间为$$T$$.</li>
 <li>F站在A站发出数据帧的某一时刻也想发送数据，于是就监听信道</li>
@@ -1641,7 +1641,7 @@
 <li>
 <p>在5层体系结构中，把数据链路层分为两个子层</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network65.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network65.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>
@@ -1687,7 +1687,7 @@
 <li>
 <p>这样分成两个不同的子层，在IEEE802参考模型中存在两个不同的PDU</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network66.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network66.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>LLC-PDU：高层数据首先被交给LLC子层，加上LLC首部幸成LLC的PDU</li>
@@ -1697,7 +1697,7 @@
 <li>
 <p>IEEE802参考模型的架构</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network67.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network67.png" srcset="/img/loading.gif" alt=""></li>
 <li>将802参考模型分成若干个子标准</li>
 <li>802.1是一个总述，用来描述OSI模型与网络管理在IEEE802参考模型中发挥的作用</li>
 <li>802.2用来描述LLC子层。在IEEE802参考模型中只有一个802.2文档是用来描述LLC子层的
@@ -1714,7 +1714,7 @@
 <li>
 <p>在802体系结构定义下局域网的地址结构</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network68.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network68.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>局域网中，地址表示采用二进制来进行描述。在IEEE802的体系结构中，局域网的地址使用的是MAC地址，使用的是48比特的二进制数来进行定义的，实际记录采用的是十六进制</li>
@@ -1744,7 +1744,7 @@
 </li>
 </ol>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network69.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network69.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol start="2">
 <li>上图就是以太网的MAC帧格式。第一个字段6字节是目的地址，第二个字段6字节是源地址，第三字段2字节用来标识这个帧所携带的数据部分它封装的高层协议，最后一个字段4字节是它的校验字段，合到一起就成为了一个以太网的帧格式。然后被物理层发送出去</li>
@@ -1773,7 +1773,7 @@
 <li>Repeater（中继器）：在物理层上实现局域网互联的设备，负责连接各个电缆段，对信号进行放大和整形，驱动长线电缆连接。
 <ul>
 <li>不能无线增加长度，<strong>“543”规则</strong></li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network70.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network70.png" srcset="/img/loading.gif" alt=""></li>
 <li>使用中继器续连时，500m最多5段；4个中继器；最多三段500米可以连接计算机</li>
 </ul>
 </li>
@@ -1792,7 +1792,7 @@
 <ol>
 <li>细缆和网卡的连接方式
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network71.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network71.png" srcset="/img/loading.gif" alt=""></li>
 <li>通过BNC的T型头直接与网卡连接，省去了连接的电缆</li>
 </ul>
 </li>
@@ -1804,12 +1804,12 @@
 <li>传输媒体：UTP</li>
 <li>RJ-45连接器
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network72.png" srcset="/img/loading.gif" alt="水晶头"></li>
+<li><img src="/img/article_img/computer_network72.png" srcset="/img/loading.gif" alt="水晶头"></li>
 </ul>
 </li>
 <li>星形拓扑结构
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network75.png" srcset="/img/loading.gif" alt="星形拓扑和级连"></li>
+<li><img src="/img/article_img/computer_network75.png" srcset="/img/loading.gif" alt="星形拓扑和级连"></li>
 <li>扩展网络距离，两个集线器连接一条级连线</li>
 </ul>
 </li>
@@ -1817,11 +1817,11 @@
 <li>曼彻斯特编码</li>
 <li>使用HUB互连
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network73.png" srcset="/img/loading.gif" alt="集线器"></li>
+<li><img src="/img/article_img/computer_network73.png" srcset="/img/loading.gif" alt="集线器"></li>
 </ul>
 </li>
 <li>网络跨距500m</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network74.png" srcset="/img/loading.gif" alt="集线器和计算机的互连"></li>
+<li><img src="/img/article_img/computer_network74.png" srcset="/img/loading.gif" alt="集线器和计算机的互连"></li>
 </ul>
 <ol>
 <li>在使用双绞线的网络中，如果要扩展网络距离，就要使用级连的方式</li>
@@ -1829,8 +1829,8 @@
 <ol>
 <li>距离最远的两排主机之间最多只能间隔4个集线器
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network76.png" srcset="/img/loading.gif" alt=""></li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network77.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network76.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network77.png" srcset="/img/loading.gif" alt=""></li>
 <li>很显然第一张图可以，第二张图不行</li>
 </ul>
 </li>
@@ -1855,7 +1855,7 @@
 <p>网络跨距问题</p>
 <ul>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network78.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network78.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>系统中最多两个集线器，且距离不大于5m，两台主机之间最大距离205m</p>
@@ -1886,7 +1886,7 @@
 <li>
 <p>网桥基本原理</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network79.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network79.png" srcset="/img/loading.gif" alt=""></li>
 <li>网桥可以连接多段不同的网络。上图中的网络有2个口（端口A和端口B）。端口A连接了一个集线器所连接的网络，端口B连接了另一个集线器所连接的网络将这个网络分成了两个部分。一个是1，2，3三台主机，另外一个是4，5，6三台主机</li>
 <li>网桥内部和中继器不同的是，网桥有一个表，这个表就是MAC地址表。网桥内部的MAC地址表记录的是它的端口和主机的对应关系。比如上图中，记录下来端口A对应主机1，2，3，端口B对应主机4，5，6.</li>
 <li>网桥可以依据上述表记录的消息来决策是否转发数据</li>
@@ -1919,7 +1919,7 @@
 <li>
 <p>网桥在工作时能有效的对各个不同的网络区域进行分隔</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network80.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network80.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>上图中，B1和B2是两个网桥，它们不同口上所连接的局域网都可以在独立的进行数据传输，数据通信可以同时进行，大大的提高了数据传输效率。</li>
@@ -1958,7 +1958,7 @@
 <li>
 <p>局域网交换机的原理</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network81.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network81.png" srcset="/img/loading.gif" alt=""></li>
 <li>如上图，与网桥类似，局域网交换机的内部也有一个MAC地址表来记录每个端口与对应主机之间的关系。与网桥也类似的是当进行决策转发时，交换机也可以去根据源地址和目的地址是否在同一网络内来决策是否转发这个数据。与此同时交换机还采用了交换技术</li>
 </ul>
 </li>
@@ -1989,7 +1989,7 @@
 <p>Cut Through（直通式）</p>
 <ul>
 <li>考虑存储转发式需要缓存全部的数据帧，代价太大。因此考虑缓存比较少的数据量，比方说根据前面的以太网帧的结构，实际上交换机只需要去识别所接到帧的目的MAC地址信息就可以了</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network82.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network82.png" srcset="/img/loading.gif" alt=""></li>
 <li>而目的MAC地址正好出现在以太网帧的前6个字节，因此没有必要缓存全部的数据帧，而只需要缓存前6个字节就可以获取所需要的目的MAC地址。</li>
 <li>由于上面缓存的数据量少，缓存所花费的时间少</li>
 <li>但也存在问题，无法进行CRC校验，可能会转发报文碎片</li>
@@ -2023,7 +2023,7 @@
 <p>使用9芯的D型连接器</p>
 </li>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network83.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network83.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>但是与百兆和10兆的技术不兼容，只是一个临时的过度技术</p>
@@ -2063,7 +2063,7 @@
 </ul>
 </li>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network84.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network84.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>帧扩展</p>
@@ -2071,7 +2071,7 @@
 <li>千兆位以太网的挑战—它的最小帧长度需要做一个扩充</li>
 <li>把最小帧长度一直扩展为512字节</li>
 <li>对于小于512字节的小帧，添加扩展位</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network85.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network85.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>
@@ -2084,7 +2084,7 @@
 </li>
 <li>如果一个站点需要连续发送短帧，则第一个帧需要增加扩展位到512字节后再发出去。一旦第一个帧成功发送，那么后续短帧就可以连续发送，直到1500字节
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network86.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network86.png" srcset="/img/loading.gif" alt=""></li>
 <li>允许站点连续发送多个短帧，直到1500字节</li>
 <li>在后续短帧进行发送的时候，短帧与短帧之间要通过帧间隙来进行分隔，帧间隙是既非0又非1的符号，这就是帧突发技术</li>
 </ul>
@@ -2097,7 +2097,7 @@
 <ol>
 <li>因特网（Internet）：全球最大的、开放的，由众多网络相互连接而成的特定计算机网络，采用TCP/IP协议簇，前身位ARPANET</li>
 <li>互联网（Internet）：泛指多个计算机网络互连形成的计算机网络</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network87.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network87.png" srcset="/img/loading.gif" alt=""></li>
 </ol>
 <h3 id="二、IP地址和子网掩码">二、IP地址和子网掩码</h3>
 <ol>
@@ -2120,7 +2120,7 @@
 <li>采用“尽力传递”的设计思想：因为IP协议无法提供可靠的数据传输，主要原因在于IP协议采用无连接的分组传输机制
 <ul>
 <li>面向连接：指的是在通信之前需要建立连接，在通信当中需要维护连接，在通信后需要释放连接，如下图的打电话</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network88.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network88.png" srcset="/img/loading.gif" alt=""></li>
 <li>无连接就是无需去建立维护和断开连接，最典型的例子就是发短信</li>
 <li>无连接方式的通信双方无法知道对方的状态，所以不可靠（没有差错恢复，同时可能有数据丢失）</li>
 <li>纠错重传问题交给传输层解决</li>
@@ -2154,7 +2154,7 @@
 <li>
 <p>32比特的二进制数被人为的分为两部分</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network89.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network89.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>网络ID</li>
@@ -2177,47 +2177,47 @@
 <ol>
 <li>A类地址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network90.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network90.png" srcset="/img/loading.gif" alt=""></li>
 <li>前8个比特为网络号，后24个比特为主机号</li>
 <li>0作为第一个比特</li>
 </ul>
 </li>
 <li>B类地址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network91.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network91.png" srcset="/img/loading.gif" alt=""></li>
 <li>前16比特为网络号，后16比特为主机号</li>
 <li>前两个比特位10</li>
 </ul>
 </li>
 <li>C类地址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network92.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network92.png" srcset="/img/loading.gif" alt=""></li>
 <li>前24比特为网络号，后8比特为主机号</li>
 <li>前三比特为110</li>
 </ul>
 </li>
 <li>D类地址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network93.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network93.png" srcset="/img/loading.gif" alt=""></li>
 <li>1110开始的为D类地址，为多个地址</li>
 </ul>
 </li>
 <li>E类地址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network94.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network94.png" srcset="/img/loading.gif" alt=""></li>
 <li>以11110开始的是E类地址，E类地址是保留做未来使用的</li>
 </ul>
 </li>
 </ol>
 </li>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network95.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network95.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>通过第一个十进制数就可以很清楚的分别属于哪类IP地址</li>
 </ul>
 </li>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network96.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network96.png" srcset="/img/loading.gif" alt=""></p>
 <ul>
 <li>全0表示自己，全1表示所有</li>
 <li>Host：本机（不能参与通信，仅在主机未获得自身IP地址时临时使用的一个IP地址）</li>
@@ -2282,14 +2282,14 @@
 <li>
 <p>网络中两个层都有自己的地址，数据链路层有自己的MAC地址，网络层TCP/IP协议中有自己的IP地址。面临一个问题，这两个地址如何进行映射？</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network97.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network97.png" srcset="/img/loading.gif" alt=""></li>
 <li>换句话说，在传输过程中，很可能我已经知道对方的IP地址，却不知道MAC地址，这时候就需要做一个转换。为什么IP地址和MAC地址需要进行转换？形象点：IP地址相当于人名，MAC地址相当于人本身</li>
 </ul>
 </li>
 <li>
 <p>基本原理</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network98.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network98.png" srcset="/img/loading.gif" alt=""></li>
 <li>比如上图中，绿色箭头两端的电脑需要从尾端向箭头端的主机发送数据，发送主机已经知道对方主机的IP地址，却不知道MAC地址</li>
 <li>由于局域网是一个易于传播的环境，因此，请求主机只需要向网络发送一个广播的ARP请求，并且等待对方的这个请求主机的返回一个ARP应答即可</li>
 <li>其中有个小问题：为何要广播发送请求，得到应答后，然后再单播的通信呢？直接广播发送数据就行了。
@@ -2302,7 +2302,7 @@
 <li>
 <p>ARP协议的改进</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network99.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network99.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>首先给参与通信的每台主机都分配了一个ARP Cache，这个ARP Cache实际上就是一个IP地址和MAC地址的映射表，它就相当于进行人的记忆。</li>
@@ -2323,14 +2323,14 @@
 <li>
 <p>基于<strong>信任机制</strong>/利用ARP协议漏洞的入侵方式</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network100.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network100.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>B，C之间进行敏感数据的操作，这时A主机想要冒充C来与B进行通信。A主机IP地址为<code>202.118.1.3</code>，它就可以主动的向B主机发送一个虚假的ARP请求，告诉B主机<code>202.118.1.1</code>所对应的MAC地址是我A的MAC地址。当然B主机比较老实，高速A主机<code>202.118.1.2</code>是我B主机的MAC地址，这时候B主机试图向C主机发送数据，也就是向<code>202.118.1.1</code>发送数据，实际上这个数据会发送给A。因为B主机会把<code>202.118.1.1</code>所对应的A的MAC地址进行使用，最终数据就发送给了A主机</li>
 <li>上述还存在一些其他情况，B，C主机的管理员可能会在平时进行沟通。很可能B主机向C主机发送数据后，管理员会高速C主机说，我把这个数据已经发过去了，这时候C主机可能发现没有接受到数据从而发现A主机所进行的攻击.</li>
 <li>上面的攻击模式可以更进一步：A主机先向B主机发送一个假得ARP请求，告诉B主机<code>202.118.1.1</code>所对应的MAC地址是A的MAC地址；接下来A主机再向C主机发送一个假得ARP请求告诉C主机<code>202.118.1.2</code>所对应的MAC地址是我A的MAC地址。这时候可以发现A主机出于一个镶嵌再B，C主机之间的位置。如果A主机上运行一个非常良好的转发程序—也就是说当B把数据给A的时候，A把数据传给C；当C把数据传给A时，A再把数据传给B。这样B，C之间的所有数据都会被A主机截获，甚至于A主机可以篡改B，C之间的所有数据通信，这样所造成的危害及其严重。------这就是ARP协议所面临的非常严重的攻击漏洞
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network101.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network101.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 </ol>
@@ -2374,7 +2374,7 @@
 <li>路由器在不同的网络间转发IP分组，实现IP数据报的“寻路”功能。</li>
 </ol>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network102.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network102.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol start="3">
 <li>
@@ -2390,7 +2390,7 @@
 <p>TOS：Type of service—服务类型字段。这个字段8比特中，前3个比特是优先级比特（也就是可以给出IP数据报的8个优先级），其余的5个比特中，有4个比特是目前有意义的，分别为D T R C，最后一个比特是保留比特</p>
 <ul>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network103.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network103.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>D为1：低时延服务</p>
@@ -2435,7 +2435,7 @@
 <li>分片的问题：IP数据报是被链路层的帧所封装的，因此IP数据报的长度实际上受限于数据链路层的帧的长度。而数据链路层的帧的最大长度一定不是无限长的，上限值即MTU。这个最大长度最终限制了IP数据报所能携带的数据的数据量。因此在传输过程中可能发生—由于不同部分的网络它的MTU不同，可能会导致网络传输当中出现分片的问题。
 <ul>
 <li>MTU：最大传输单元，指局域网中的最长帧。</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network104.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network104.png" srcset="/img/loading.gif" alt=""></li>
 <li>如上图，A，B所在网络和C，D所在网络它们的两端网络MTU=1500，但是这两个网络之间，通过路由器连接的这段中转网络它的MTU是620字节。某一时刻A主机发送一个IP数据报时，长度很可能会超出中间网络的MTU。这时候，通过中转的MTU=620的网络进行中转时，就会面临中转网络的MTU小于要传输的IP数据报的长度，此时要想完成数据的传输，就要在<strong>路由器</strong>上对IP数据报进行分片。</li>
 </ul>
 </li>
@@ -2446,7 +2446,7 @@
 <li>分片由路由器完成</li>
 <li>分片时，应该对IP数据报的数据段进行操作，IP数据报的首部要进行微调，并不参与IP数据报的分片过程
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network105.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network105.png" srcset="/img/loading.gif" alt=""></li>
 <li>如上图，A主机想要把一个数据报发给D主机。初始的时候，A发出的数据报由于它要最大限度地使用网络地MTU，因此可能发出这样一个IP数据报—首部长度20字节，数据部分为1400字节，总长度1420字节。这个数据报就会被A主机发到中转路由器，路由器接受到这个IP数据报时，下一段网络地MTU=620小于要传输地数据报地长度。</li>
 <li>此时，路由器会将IP数据报的数据部分（<strong>注意，不含首部</strong>）分成若干份。让前两份数据都是600字节，最后一个200字节，整成若干个小数据段发送。<strong>但是，显然是不能直接发送的，因为最后还要进行排序和连接</strong>。</li>
 <li>给每个数据段前面加上一个分片的首部，通过分片首部的数据来描述和记录当前分片在原始IP数据报中的位置等相关信息。一旦组合后，原来分段后的数据前面加上20字节的首部就形成了一个IP数据报，恰好能在下一段网络中转发出去</li>
@@ -2454,7 +2454,7 @@
 <li>接受方缓冲去区中，它一旦接到一个分片，会分析首部的信息，并且把对应的分片的数据放到主机D的接收缓冲区的对应位置中，把这个数据重新组合起来，然后加上原始的首部，恢复原始的IP数据报。这样D主机就可以接到分片重组后的数据。</li>
 <li>从上面可以知道，每一个分片需要记录它的分片偏移量
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network106.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network106.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>分片的重组
@@ -2481,7 +2481,7 @@
 <li>
 <p>IP路由</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network107.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network107.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>路由器转发数据的时候，以<strong>路由表</strong>为依据。（路由表类似带有距离的路标）</li>
@@ -2491,19 +2491,19 @@
 <ul>
 <li>确定到达目的的网络的数据传输路径</li>
 <li>在目的网络中用直接寻址方法到达信宿</li>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network108.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network108.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>如果需要进行间接寻址，就需要经过中转的路由设备的转发。很有必要的在中转的每一站中都要去设置它的下一站的转发地址—（下一站的转发地址：网关）。尤其是在主机的相关配置中，网关的概念需要明确。因为在给主机配置IP地址的时候，都要指定这个主机的网关的IP地址。</li>
 <li>网关
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network109.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network109.png" srcset="/img/loading.gif" alt=""></li>
 <li>直白点：指的是这个设备所在网络的默认出口地址</li>
 </ul>
 </li>
 <li>一个IP数据报在一个网络中，经过中转路由器转发的时候的转发策略以及如何工作
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network110.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network110.png" srcset="/img/loading.gif" alt=""></li>
 <li>比方说在当前的网络当中，H1要向H2发送数据。</li>
 <li>作为H1这个主机，首先需要查找本机的路由表，把这个数据发给他所在的默认网关—就是它出口路由器R1的IP地址</li>
 <li>接下来，R1路由器需要去查找本机的路由表。首先对第一行的掩码与目的IP地址进行与运算，发现结果与路由表对应的目的IP地址不匹配；然后进行第二行的同样运算，发现匹配。所以将数据从接口1（路由表右边）转发给H2这个主机。</li>
@@ -2511,7 +2511,7 @@
 </li>
 <li>实际传输过程中，IP数据报经过路由表时，并不知道网络的整体状况，只能看到一个路由表，这是决策过程如下：
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network111.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network111.png" srcset="/img/loading.gif" alt=""></li>
 <li>路由器会将目的IP地址同子网掩码从第一行开始，一行一行进行与运算，并与表格的目的网络列地址进行比对，找到相同的一行，然后将数据从对应的从下一站转发出去。</li>
 <li>注意，最后一行是默认路由，在任何情况下都会匹配。即前面所有的信息都没匹配时，最后一个一定会匹配。</li>
 </ul>
@@ -2533,7 +2533,7 @@
 <li>不适合于拓扑结构和传输流量经常改变的复杂网络</li>
 <li>最大的问题：当网络状态发生变化时，路由表的信息仍然保持不变，这时候会导致网络运行出现异常
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network112.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network112.png" srcset="/img/loading.gif" alt=""></li>
 <li>上图中，三台路由器以环形方式连接三个网络。所构成的网络分别配置路由之后，网络是完全通畅的，即A，B，C之间可以相互传输数据。但是网络可能会出现故障，比如Ra和Rb这两台路由器所连接的网络出现了故障，网线断了。这时会导致这个网线所对应的两台路由器的两个路有消息出现失效。这时候对于Ra和Rb这两台路由器来说，它们并不知道实际上它们可以通过Rc来转发来完成数据的传输。这时候如果管理员不进一步的去手工维护路由表的话，那么对于网络A到网络B之间的所有数据传输都是无法进行的。只有当管理员进行手工维护后，修改对应路由信息，这个网络才能保证畅通。</li>
 <li>当网络很复杂是，网络出现故障时，网络管理员进行手工维护是困难极大的。</li>
 </ul>
@@ -2549,7 +2549,7 @@
 <li>
 <p>基本概念</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network113.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network113.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li>每个路由器都会周期性的向它相邻的路由器发送一个它到所有其他路由器的距离的向量</li>
@@ -2589,7 +2589,7 @@
 <li>
 <p>RIP协议建立路由表的初始过程</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network114.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network114.png" srcset="/img/loading.gif" alt=""></li>
 <li>上图有A，B，C三台路由器，连接了四个网络。对于每台路由器来说，在刚刚启动时，都会在自己的路由表中记录下来本路由器所直接连接的网络信息。</li>
 <li>初始化后，对应网络之间想要进行数据传输是不可能的，因为路由信息并不完整</li>
 </ul>
@@ -2598,7 +2598,7 @@
 <p>当三台路由器的初始化阶段结束后，接下来会启动RIP协议的距离向量算法来传递自己的路由表。</p>
 <ul>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network115.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network115.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>比如，A，B之间交换路由表，当A接到B路由器的路由表后，发现B路由表中它到10.3的这个网络的路由信息A是不知道的，遵循新路由则更新，所以A路由器需要把10.3.0.0这个路由信息添加到本机的路由表中。它接到B到10.3.0.0是0跳，那么A就需要先把数据发给B，然后再到目的的10.3.0.0.这时就需要增加1跳，后续则同理。</p>
@@ -2615,7 +2615,7 @@
 <li>
 <p>具体例子描述更新三原则</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network116.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network116.png" srcset="/img/loading.gif" alt=""></li>
 <li>某一时刻，R路由器的路由表如左图所示，那么它的邻居R6向自己发送了一个路由表。</li>
 <li>根据R6的路由表NET1的信息，可以发现不需要R的NET1 hops=0，所以不需要更新❌.</li>
 <li>R6的NET4的hops=3，而R的NET4的hops=8，所以需要更新✔️.</li>
@@ -2646,7 +2646,7 @@
 <li>
 <p>传输层在网络体系结构中的重要位置</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network117.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network117.png" srcset="/img/loading.gif" alt=""></li>
 <li>传输层位于应用层的下端，为上层的应用进程提供传输层的实体传输服务，同时被下一层的网络层调用它的功能来实现点到点之间的主机之间的通信。</li>
 <li>传输层之间传输的协议数据单元称为TPDU，这里用message代替</li>
 </ul>
@@ -2662,10 +2662,10 @@
 <p>为什么会出现网络层的数据丢失和乱序呢？网络层的下一层，也就是数据链路层不是已经保证数据真的可靠传输了嘛？而网络层的协议数据单元也就是分组时封装在数据帧当中传输的，而帧的传输的可靠性已经由数据链路层保证了，为什么还要考虑分组的丢失和乱序的情况呢？必须要先明确两个概念—点到点的传输、端到端的传输</p>
 <ul>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network118.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network118.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
-<p><img src="%5Cimg%5Carticle_img%5Ccomputer_network119.png" srcset="/img/loading.gif" alt=""></p>
+<p><img src="/img/article_img/computer_network119.png" srcset="/img/loading.gif" alt=""></p>
 </li>
 <li>
 <p>主机A要向主机B发送一个报文，从上图可以看出，可以选择的路径很多。比如R1到R2，或者R1，R3，R2；同时如果主机C要向主机A发送一个报文的话，它也可以选择多条路径。那么在这些路径里，假设主机A和主机B之间选择了R1到R2这条路径，那么很显然A要向B投递一个报文时需要有四段这样的路程。首先A要形成一个报文；然后A将报文从A传递到R1；再从R1传递到R2；再从R2投递到B。那么在这个过程中我们称A到B之间的通信是端到端的，而A到R1，R1到R2，R2到B的通信是点到点的通信。</p>
@@ -2704,7 +2704,7 @@
 <li>
 <p>TCP协议的传输实体</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network120.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network120.png" srcset="/img/loading.gif" alt=""></li>
 <li>可以是一个软件：也就是一个用户进程</li>
 <li>也可以是操作系统中的某一部分，用来管理TCP字节流，实现与IP层的接口</li>
 </ul>
@@ -2752,12 +2752,12 @@
 <li>socket构成就是由端口号和主机ip地址动态绑定形成的。</li>
 <li>socket通信当中，端口号是一个重要指标，用于进程寻址的。
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network121.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network121.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 </li>
 <li>FTP应用连接端口举例说明进程间如何利用端口号实现进程寻址
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network121.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network121.png" srcset="/img/loading.gif" alt=""></li>
 <li>假设这里有个FTP服务器，我们知道FTP服务器打开的服务端口是21号端口，也就是一个众所周知的端口。假设它的ip地址是18.22.67.7。客户端假设它的ip地址为128.8.6.4.194，那么它打开的端口应该是一个临时端口，也就是操作系统为它动态分配的一个端口。当客户端连接服务器端时，作为初始的连接请求，客户端连接请求会将21号端口作为自己的目的端口号，这样的话它就会将自己的源端口号也就是1234捎带给对方主机。也就是ftp服务器，这样ftp服务器就能够获得客户端的通信端口号了，从而与对方建立连接，实现1234端口与21号端口之间的连接的数据通信。</li>
 </ul>
 </li>
@@ -2782,7 +2782,7 @@
 <li>
 <p>TCP的封装</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network123.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network123.png" srcset="/img/loading.gif" alt=""></li>
 <li>TCP报文格式在这里应该说是它的数据部分承载了用户的数据，并且在应用数据的基础上增加了一个TCP的头部，我们称它为一个报文/报文段。整个tcp报文/报文段再向下调用网络层功能，封装成ip分组，分别加上ip的头部。再继续向下交给链路层，这就是tcp报文的封装过程。</li>
 <li>那tcp头部包含那些字段，这些字段有什么作用呢？</li>
 </ul>
@@ -2790,7 +2790,7 @@
 <li>
 <p>TCP首部</p>
 <ul>
-<li><img src="%5Cimg%5Carticle_img%5Ccomputer_network124.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network124.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
 <li></li>
