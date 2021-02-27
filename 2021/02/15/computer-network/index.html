@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      30.3k 字
+      38.5k 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      319
+      405
        分钟
     </span>
   
@@ -255,7 +255,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年2月25日 晚上
+                  本文最后更新于：2021年2月27日 晚上
                 
               </p>
             
@@ -2793,24 +2793,616 @@
 <li><img src="/img/article_img/computer_network124.png" srcset="/img/loading.gif" alt=""></li>
 </ul>
 <ol>
-<li></li>
+<li>源端口号和目的端口号：是整个TCP报文段来自于哪一个应用进程，要到目的主机的哪一个进程去，由源端口号和目的端口号来标识出来，分别占用16个bit。</li>
+<li>序列号和确认号：TCP的报文段是要被封装在IP分组当中投递的，而IP分组在投递的过程中是有可能乱序和丢失的，为了能够使乱序和丢失的报文重传重排TCP报文段，必须自己给自己编号才行。所以这个序列号就是TCP报文段自己给自己的编号；而确认号是接收端的TCP实体。用于向对方确认已经收到了哪一个序列号的报文，而希望收到的下一个报文段的编号。</li>
+<li>偏移：偏移字段占用4个bit，这四个bit实际上是TCP报文的头部长度，单位是4字节。如果偏移字段是10，那么整个TCP报文段的长度是40字节。</li>
+<li>保留：保留字段6bit，目前没有具体应用功能。</li>
+<li>标志字段：标志字段字段也是6bit。<code>[URG][ACK][PSH][RST][SYN][FIN]</code>
+<ul>
+<li>URG----urgent：为1时，整个报文段头部中的<strong>紧急指针字段</strong>有效；为0，紧急指针字段无效。紧急指针字段是一个16bit的字段，里面存放的是数据部分需要被紧急处理的那一部分的最后一个字节的字节编号。</li>
+<li>ACK----acknowledge：为1时，<strong>确认字段</strong>有效；为0，确认字段无效，即当前发送的TCP报文段只有序列号没有确认号。</li>
+<li>PSH----push：指的是在整个TCP报文段中，接收方在接收了多个TCP报文段时会将TCP报文段进行缓冲，缓冲到一定长度后才会向上交给应用层去处理。当某一个TCP报文段需要被整段的紧急处理时，很显然它不希望被缓冲在接收方的缓冲区里，这时候它就将它的PSH比特设置为1，这是TCP接收方在接受到这个TCP报文段时就会不用等缓冲区满而将他上传给它的上一层应用程序来处理。</li>
+<li>RST----reset：适用于当连接崩溃或出现错误连接时，用于连接复位的</li>
+<li>SYN----synchronous：用于建立连接时使用。TCP协议是一个面向连接的协议，很显然，发送方在发送数据之前要与对方建立连接，这时候它就希望接收方要给它一些回应。首先它就给对方发送一个SYN=1的TCP报文，如果对方同意建立连接就向它返回一个SYN=1且ACK=1的TCP报文；如果对方不同意建立连接就返回一个SYN=1且ACK=0的TCP报文段；这样接收方就能区分发送方是否请求与它建立了连接，而发送方也可以区分接收方是否同意与它建立连接。</li>
+<li>FIN----finally：适用于断开连接时使用。当发送方没有数据要向对方发送时，它就要请求与对方断开这个连接，这时候它就向对方发送一个FIN=1的TCP报文段，如果对方也同意断开连接就返回一个FIN=1的TCP报文段，不同意则返回一个FIN=0的TCP报文段。</li>
+</ul>
+</li>
+<li>窗口：窗口字段是窗口的尺寸，占16bit，是接收端向发送端发送的用于控制发送端的发送的报文段的尺寸，防止接收端的缓冲区溢出。</li>
+<li>校验和：校验和字段的用途类似于IP数据报的头部当中的校验和字段的用途。IP头部的校验和字段只校验头部，而TCP头部当中的校验和字段是对整个的TCP报文段的校验，运算原理相同。</li>
+<li>到紧急指针字段一共20字节，这是TCP头部的固定长度，也就是说任何一个TCP报文段起码要包含这20个字节的头部，其他还有任选的部分。</li>
 </ol>
 </li>
 <li>
-<p>TCP协议的保留端口</p>
+<p>TCP的流量控制–滑动窗口</p>
+<ul>
+<li><img src="/img/article_img/computer_network125.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>
+<p>使用选择重传的ARQ</p>
 </li>
 <li>
-<p>TCP连接举例</p>
+<p>发送段可以连续发送多个TCP报文段，只要是在发送窗口中的都可以发送走。而接收端也有一个接收窗口，只有在接收窗口中的TCP报文段接收方才会接收成功，并且返回ACK给发送方，这样发送方就可以确认这一报文段已经被成功接收。那么已经被ACK过的报文段就可以出发送端口，使得发送端口继续向下滑动。</p>
+</li>
+<li>
+<p>窗口字段如何实现流量控制的呢？</p>
+<ul>
+<li><img src="/img/article_img/computer_network126.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network127.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>发送端发送了一个Seq=1也就是发送序号等于1的TCP报文段，假设长度为100B。由于第一个报文段和第二个报文段都在发送窗口，显然可以不用等待应答而继续发送第二个报文段，假设发送序号是101，长度100B。
+<ul>
+<li>序号为什么不是1，2，3…，？因为发送序号是字节编号，TCP是面向字节流的流逝协议，那么在每一个报文段中，它的发送序号都是这个报文段当中第一个字节的字节编号。第一个报文段的第一个字节是1的话，且长度为100B，显然这个报文段的序列号是1，下一个报文段的序列号是101。<strong>这个第一个序列号是0还是1看文档怎么给出它的定义的</strong>。</li>
+</ul>
+</li>
+<li>第三个报文段Seq=201，100B。假设在传输时第三个报文段发生了丢失。显然接收方只能对前两个报文段进行确认，那么它发回的ACKno.=201，200B，也就是希望收到的下一个报文段的发送序号。</li>
+<li>这里接收端就会向发送段发回一个窗口尺寸，这个窗口尺寸就是接收端的缓冲区当中还有的剩余空间的量。有了这个发送尺寸后，发送段可以连续发送TCP报文段但是长度不能超过这200个字节。这很显然就实现了对发送端流量的控制。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>TCP运行原理</p>
+<ol>
+<li>
+<p>在TCP的运行中，还有两个问题必须考虑：一个是超时计时器的初值设定问题、第二是TCP如何利用滑动窗口原理来实现拥塞控制的</p>
+</li>
+<li>
+<p>超时计时器的设定</p>
+<ol>
+<li>
+<p>计时器设置的过短时，当计时器超时了，这时候可能正常的一个TCP报文段还没有传到接收端，而在发送端就已经超时了，这样会导致额外的重复发送。而超时计时器设置的过长时，就是会产生已经丢失了，但是由于计时器还没有超时这样还会多等待一些时间造成时间的浪费。</p>
+</li>
+<li>
+<p>加权平均进行设定</p>
+<ul>
+<li>至于权数多大，不同系统有不同设定，具体情况具体分析。</li>
+</ul>
+<ol>
+<li>$RTO=RTT_s + 4 \times RTT_D$.</li>
+<li>$RTT_s = (1-a) \times RTT_{s_{old}} + a \times RTT_{new}$.</li>
+<li>$RTT_D = (1-\beta) \times RTT_{D_{old}} + \beta \times |RTT_S - RTT_{new}|$.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>TCP拥塞控制</p>
+<ol>
+<li>当TCP报文段发送过程中产生拥塞时，我们希望发送端减少发送或减缓发送，使得发送的压力不是那么大。</li>
+<li>一般情况：在发送端设定一个拥塞窗口，拥塞窗口初值cwnd=发送窗口大小swnd。</li>
+<li>在一个超时计时器时间内最多能发送的报文段的多少就由这个拥塞窗口来决定。</li>
+<li>除此之外还要设定阈值，用于控制拥塞窗口的大小，拥塞窗口的大小应该小于等于这个阈值。$cwnd \le ssthresh$.</li>
+<li>TCP报文段传输的是否顺利看：如果顺利，在规定的RTT时间里，发送段就会收到一个应答；如果在RTT时间内没有收到应答，我们可以判定线路上在传输TCP报文段时一定出现了问题，这时候认为是拥塞问题，这是拥塞窗口就要产生变化。cwnd是变化的，由小变大，初值为1.</li>
+<li>cwnd变化规则：
+<ol>
+<li>首先拥塞窗口的初值为1。</li>
+<li>如果拥塞窗口小于所给的阈值时—$cwnd &lt; ssthresh$，若在每一个RTT时间内，都能接受到应答报文，说明这个报文段已经这却被接受了，cwnd加倍；若超时—没有在RTT时间内收到应答，说明出现了拥塞，启动拥塞避免算法。</li>
+<li>若拥塞窗口大于所给的阈值时—$cwnd &gt; ssthresh$，若在每一个RTT时间内，都能接受到应答报文，则cwnd加1.否则，启动拥塞避免算法。</li>
+<li>若$cwnd = ssthresh$，加倍加1都可以。</li>
+</ol>
+</li>
+<li>拥塞避免算法（慢启动算法）
+<ol>
+<li>只要没有在规定时间内收到ACK，ssthresh立刻减半，但不小于2.</li>
+<li>并且将cwnd重新置为1.</li>
+<li>执行上述cwnd变化（拥塞控制）算法。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>TCP的连接和释放</p>
+<ol>
+<li>
+<p>为了保证TCP协议运行过程中双方为这次通信预留足够多的资源，TCP采用面向连接的方法—连接之前，有一方发起连接请求，在双方明确同意的情况下，才开始数据的通信；数据传输结束后亦然。</p>
+</li>
+<li>
+<p>之所以讲解TCP的连接和释放的原理，因为TCP提供的是可靠的端到端传输服务，为了能够保证一次数据传输的可靠性，必须要明确知道通信双方为这次通信准备了什么资源，这就需要在真正的数据通讯之前，双方要与对方打好招呼，为这次通信预留资源，这个过程就叫做建立连接。</p>
+</li>
+<li>
+<p>如何能在网络层提供不可靠的IP分组投递的基础上，能够使对方明确的知道自己的存在，并且能够明确的为这次通信分配预定的资源呢？</p>
+<ol>
+<li>
+<p>典型例子----两军问题</p>
+<ul>
+<li><img src="/img/article_img/computer_network128.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>假设有两伙蓝军分别位于两个山峰之上，而它们的敌人—一伙白军位于山谷之中。两伙蓝军分别向白军发起进攻时，它们都不能取胜。如果它们协同作战则可以战胜白军。</li>
+<li>假设蓝军派出通信兵穿越白军的阵地，去到另一伙蓝军的阵地通风报信。那么如果这个通信是不可靠的，如何找出一种方法使得两伙蓝军能够同时发起进攻，确保这次战争的胜利？</li>
+</ol>
+</li>
+<li>
+<p>上述例子就是可靠的建立连接的TCP传输所要面临的问题—也就是说当服务器和客户机即TCP连接的两端想要知道对方的状态和发起这一次连接请求时，他们的目的是确保对方知道自己的存在，并且能够确保为这次通信预留它们所需要的传输资源。</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>三次握手建立TCP连接</strong></p>
+<ul>
+<li><img src="/img/article_img/computer_network129.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>
+<p>假设主机A是发起通信请求的客户端，那么它就会向服务器端也就是主机B发送一个请求建立连接的TCP报文，这个TCP报文的SYN=1。假设它的序号是SEQ=x。</p>
+</li>
+<li>
+<p>这是主机B收到这个请求就要向主机A发送一个应答来表明它已经接收了这个请求。</p>
+<ul>
+<li>
+<blockquote>
+<p>当然主机A如果收到了这个应答，就应该知道主机B同意这次连接，可以开始双方通信了。但是前提就向两军问题一样，这个应答报文是有可能丢失的，所以主机B在发出应答报文时，并不知道这个报文是否能够到达主机A。也就是说主机B在发出应答时，并不确定主机A是否能够开始这一次通信，所以在主机B发出应答报文时，就为这次传输预留空间很显然是一件莽撞的决定。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p>所以为了能够保证主机B发给主机A的应答报文被主机A正确接收，所以主机A还要再向主机B发送一个对于应答报文的应答，这就是第三个报文。</p>
+<ul>
+<li>
+<blockquote>
+<p>这个过程称为三次握手。因为在连接过程中需要传输三个TCP报文段分别用于请求、应答、对于应答的应答才能够建立起一次TCP连接。如果这三个报文都正确接受了，这时才说TCP连接建立起来了，才可以开始下此真正的数据通信。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>释放连接</p>
+<ol>
+<li>
+<p>释放TCP连接同样很重要：必须在数据传输结束后由发送方和接收方同时将用于这次通信的资源释放掉，这样这些资源才能被其他进程所继续使用。</p>
+</li>
+<li>
+<p>非对称释放</p>
+<ol>
+<li>发送释放请求后单方终止连接</li>
+<li>有可能丢失对方发送的数据</li>
+</ol>
+</li>
+<li>
+<p>对称释放</p>
+<ol>
+<li>各自独立发出释放连接请求</li>
+<li>收到对方的释放确认后才可以释放连接</li>
+<li>Two-army问题</li>
+</ol>
+</li>
+<li>
+<p><img src="/img/article_img/computer_network130.png" srcset="/img/loading.gif" alt=""></p>
+<ol>
+<li>
+<p>当结束了向主机B的数据发送时，显然A希望与主机B断开连接释放本地资源。这是主机A就向主机B发送一个FIN=1的TCP报文段，请求与主机B断开连接。</p>
+</li>
+<li>
+<p>主机B如果同意与主机A断开连接，这时候主机B就发回一个应答报文。</p>
+</li>
+<li>
+<p>主机A在收到这个应答报文后，为了告诉主机B它以经收到了这个应答报文，显然它还要对应答报文进行应答。</p>
+<ul>
+<li>
+<blockquote>
+<p>这是一种情况，考虑如果主机B不同意与主机A断开连接，这种情况也是经常发生的。主机A的发送缓冲区中已经没有数据了，而主机仍有数据要向主机A发送。因为TCP连接是一个全双工通信，所以前面描述的情况是有可能的。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><img src="/img/article_img/computer_network131.png" srcset="/img/loading.gif" alt=""></p>
+<ol>
+<li>主机A向主机B提出断开连接的请求，发送FIN=1的TCP报文段。</li>
+<li>主机B尽管收到了这个报文段，并且给出了回答，但是主机B不同意断开连接，所以这个应答报文段的FIN=0。</li>
+<li>在FIN=0的应答报文段发出后，主机B仍然可以向主机A发送TCP报文段。只有主机B的发送缓冲区也清空的情况下，也就是主机B要发送的所有报文段都已经发送完毕时，主机B才向主机A再发送一个FIN=1的TCP报文段进行再次的确认。</li>
+<li>这时主机A才能确认主机B也没有数据向主机A发送了，也就是说主机B同意断开连接。这时，主机A再对这个FIN=1的应答报文进行再次确认，这是双方的连接才最终断开。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 </li>
 </ol>
 </li>
 </ol>
 <h3 id="三、无连接的UDP协议">三、无连接的UDP协议</h3>
+<ol>
+<li>
+<p>UDP协议提供的是无连接的数据报服务----对于UDP的用户来说，它交给UDP的数据，UDP协议将在没有与对方建立连接的情况下发送出去，并且也不提供序号服务和流量控制功能。</p>
+</li>
+<li>
+<p>UDP协议概述</p>
+<ol>
+<li>为应用进程提供无连接的数据传输服务</li>
+<li>使用于传输实时数据</li>
+<li>主要特点：节省了建立和释放连接和重传的开销</li>
+<li>由应用层解决纠错和丢失问题</li>
+<li>由RFC768定义</li>
+</ol>
+</li>
+<li>
+<p>UDP的端点标识（Port）：在UDP中仍然完成了端口寻址问题</p>
+<ol>
+<li>
+<p>用16bit区分$2<sup>{16}$个端口—区分$2</sup>{16}$个不同的应用进程</p>
+</li>
+<li>
+<p>发送端</p>
+<ul>
+<li>
+<p>分配的16bit端口是由操作系统随机分配的</p>
+</li>
+<li>
+<p>分配源端口，指定宿端口，构造UDP数据报，交IP</p>
+</li>
+<li>
+<p>节省建立和释放连接和重传的开销</p>
+</li>
+</ul>
+</li>
+<li>
+<p>接收端</p>
+<ul>
+<li>而连接的另外一端也就是接收端，如果是服务器得话，服务器的端口仍然是固定端口</li>
+<li>匹配UDP头部宿端口的应用进程</li>
+<li>匹配成功，数据报排入相应的队列，若端口队列满，则丢弃数据报</li>
+<li>匹配不成功，丢弃数据包，回送“宿端口不可达”的ICMP报文</li>
+</ul>
+</li>
+<li>
+<p>UDP保留端口举例</p>
+<ul>
+<li><img src="/img/article_img/computer_network132.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>由于没有建立连接、序号确认、流量控制等功能，UDP报文格式简化很多，运行起来也简单很多。</p>
+</li>
+<li>
+<p>UDP数据报的封装</p>
+<ul>
+<li><img src="/img/article_img/computer_network133.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p>UDP首部</p>
+<ul>
+<li><img src="/img/article_img/computer_network134.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>源端口号：16bit，用于标识源进程</li>
+<li>目的端口号：16bit，用于标识UDP报文段的目的进程</li>
+<li>UDP报文长度：16bit（最小为8）</li>
+<li>UDP校验和：16bit，校验和运算方法同IP分组头部以及TCP头部中的校验和运算方法相同。<strong>注意</strong>：由于UDP是一种乐观的协议，当UDP校验和全0时，表示不适用校验和校验。全1表示校验和0.</li>
+</ol>
+</li>
+<li>
+<p>UDP伪首部</p>
+<ul>
+<li><img src="/img/article_img/computer_network135.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>伪头部12字节，伪头部只参与校验和的运算，不被真正的发送出去。因为接收端也可以从接收端的头部组成一个伪首部。这是因为UDP头部过短所造成的校验和容易产生差错的情况而故意增加的用于运算的一个伪首部。</li>
+<li>4字节源IP地址，4字节宿IP地址，8bit0，8bit协议字段值固定17，16bitUDP长度。</li>
+</ol>
+</li>
+<li>
+<p>UDP传输某种报文的过程-----传输RIP报文</p>
+<ul>
+<li><img src="/img/article_img/computer_network136.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>
+<p>路由请求</p>
+<ul>
+<li><img src="/img/article_img/computer_network137.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p>RIP：请求路由信息</p>
+<ul>
+<li><img src="/img/article_img/computer_network138.png" srcset="/img/loading.gif" alt=""></li>
+<li>假设RIP报文的数据格式如上图，即24字节的RIP协议报文。里面是一个请求，是发给邻居路由器请求邻居路由器将自己的路由信息填在这个报文当中的空白位置的一个RIP请求路由信息。</li>
+</ul>
+<ol>
+<li>
+<p>UDP分配端口：</p>
+<ul>
+<li><img src="/img/article_img/computer_network139.png" srcset="/img/loading.gif" alt=""></li>
+<li>首先将这24个字节作为UDP的数据部分，加上UDP的8字节头部。由于RIP协议固定的目的端口号是520，源端口号也是520，所以源端口和目的端口被填上了520。数据部分24字节加上头部8字节，所以长度32字节。校验和就是按照Check sum的方法计算的校验和。</li>
+</ul>
+</li>
+<li>
+<p>IP：赋予IP地址</p>
+<ul>
+<li>
+<p><img src="/img/article_img/computer_network140.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li>
+<p>上述的UDP报文向下交给IP协议，再由IP协议封装成IP报文，那么这个IP报文的数据部分就是刚才封装好的UDP的32字节的数据报。而IP的头部是固定的20字节的头部，相应的值也填进去。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Ethernet：赋予以太网地址</p>
+<ul>
+<li><img src="/img/article_img/computer_network141.png" srcset="/img/loading.gif" alt=""></li>
+<li>再将IP报文封装在物理网络数据帧中，以太网帧的数据部分就是上述封装好了的IP分组。IP头部20字节，IP数据部分是UDP报文32字节，所以总体长度52字节。还有就是数据链路层的数据帧的头部当中的各个字节把它填充好。由于这个RIP协议需要广播发送，所以目的地址填全1。这样一个以太网的数据帧可以在以太网中进行传输了。任何接受到这个数据帧的主机由于目的地址是全1，就会将它接受到自己的缓冲区当中，然后逐层解析，最终拿到RIP报文。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 <h2 id="八、应用层">八、应用层</h2>
 <h3 id="一、电子邮件Email">一、电子邮件Email</h3>
+<ol>
+<li>
+<p>Internet Email的工作模型</p>
+<ul>
+<li><img src="/img/article_img/computer_network142.png" srcset="/img/loading.gif" alt=""></li>
+<li>首先Email的服务提供者一定要向用户提供一个用户接口。假设用户现在要发送一封邮件，它要先在用户接口中输入必要的信息，然后将发送的邮件放在发出邮件缓冲区，由客户机进行后台发送。这时客户机要做的工作就是立即与原邮件服务器建立TCP连接，再由原邮件服务器与对方的接收邮件的服务器建立TCP连接，最终将这个邮件传送给目的端的邮件服务器，这是发送一封邮件的过程。</li>
+<li>在接收一封邮件时，我们要在自己的邮件服务器当中提供用户名和密码，也是通过用户接口的方式。然后到自己的邮箱当中按照一定的规则取出自己想要的邮件，这是一封邮件在传输过程中的工作模型。</li>
+<li>上述存在的问题：传输过程中各个协议如何协调工作的、email格式是什么样子的</li>
+</ul>
+</li>
+<li>
+<p>Email格式</p>
+<ol>
+<li>
+<p>Internet Email的格式在RFC822中定义，由两部分组成：header、body</p>
+</li>
+<li>
+<p>header：</p>
+<ul>
+<li><img src="/img/article_img/computer_network143.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network144.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p>Body：内容是任意的，但必须是7位标准ASCII字符集。</p>
+</li>
+<li>
+<p>扩展Email的格式：扩展Email称为MIME（Multipurpose Internet Mail Extensions），最初在RFC1314中定义的，修订版发布在RFC1521中。主要是Email中存在诸多不足和限制而提出的。</p>
+</li>
+<li>
+<p>RFC822Email的缺点</p>
+<ol>
+<li>
+<p>不能传送可执行文件或其他二进制对象。</p>
+<blockquote>
+<p>人们试图将二进制文件转换成SMTP使用的ASCII文本，例如流行的UNIX UUencode/UUdecode 方案，但这些均未形成“正式标准或事实上的标准”。</p>
+</blockquote>
+</li>
+<li>
+<p>限于传送7位的ASCII字符。</p>
+<blockquote>
+<p>许多非英语国家的文字（如中文、俄文、甚至带重音符号的法文或德文）就无法传送。即使在SMTP转换成ASCII码时也会遇到一些麻烦。</p>
+</blockquote>
+</li>
+<li>
+<p>服务器会拒绝超过一定长度的邮件。</p>
+<blockquote>
+<p>RFC822对于超长的邮件是拒绝发送的，所以MIME中对这个问题也进行了修复。</p>
+</blockquote>
+</li>
+<li>
+<p>某些实现并没有完全按照的标准。</p>
+<blockquote>
+<p>常见问题如下：</p>
+<ul>
+<li>回车、换行的删除和增加</li>
+<li>超过76个字符时的处理：截断或自动换行</li>
+<li>后面多余空格的删除</li>
+<li>将制表符转换为多个空格</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p>MIME的处理方法：MIME利用了RFC822的格式，但又加入了一个扩展的头部（实际上位于RFC822的header中）。主要是为了克服RFC822只能传输标准7位ASCII文本的缺点，使Email既可以传输标准ASCII码文本，也可以传输像图片、声音、各种语言文本等。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>邮件的传送是一种客户服务器的交互模式，为了保证邮件传输的可靠性，邮件传输协议都是基于TCP协议的。</p>
+<ul>
+<li><img src="/img/article_img/computer_network145.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network146.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>上图中分为三个阶段，前两个阶段有一个共同点—接收方都是服务器，这就使得在传输邮件时，可以以比较简单的方式去链接服务器上WLAN的端口来传输一封Email。这种传输邮件的协议称为SMTP协议（Simple Mail Transfer Protocol，Defined in RFC 821）。</li>
+<li>SMTP协议的服务器是在本机的25号端口上进行监听，当有连接请求进来时，接受链接，然后传输邮件，传输完毕后再将连接断开。</li>
+<li>SMTP是一个纯ASCII字符的协议，所有命令和数据均以标准ASCII字符传输。</li>
+</ol>
+</li>
+<li>
+<p>邮件传输例子</p>
+<ul>
+<li><img src="/img/article_img/computer_network147.png" srcset="/img/loading.gif" alt=""></li>
+<li>假设某个用户—mail.neu.edu.cn这个邮件服务器的用户，现在他想发送一封邮件给xyz@126.net这样的用户。首先用户在自己的客户机上打开一个进程，这个进程是由操作系统随机分配的进程号。那么与本地的服务器的25号端口建立连接，将这样的Email按照上文822数据格式组织好发送给本地的Email服务器的25号端口。本地的Email服务器在收到这个Email后就会再随机打开本地的一个端口号，假设是5000，然后去链接目的邮件服务器，也就是126.net的25号端口，将这样的邮件发送给126.net的25号端口，然后这个邮件服务器收到了这个邮件之后就会保存在本地的邮箱当中，等待接收端即xyz这个用户来取邮件。</li>
+</ul>
+</li>
+<li>
+<p>取邮件</p>
+<ul>
+<li>
+<p><img src="/img/article_img/computer_network148.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li>
+<p>大多数用户是在个人计算机上来收邮件的，而个人计算机不能长时间连网，即使连接在网上也不一定有固定的域名或ip地址，因此不能作为smtp服务器。这一点是个人计算机和服务器的本质区别。因此如果需要在Internet上面来接收邮件，那么用户就一定要将自己的PC机主动的与Email服务器建立连接，提供自己的用户名、密码、以及接收邮件的请求，这时候才能接收邮件，显然这个接收邮件的协议与SMTP协议不同。这个协议就是POP3（第三个版本）协议----邮局协议。</p>
+</li>
+<li>
+<p><img src="/img/article_img/computer_network149.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li>
+<p><img src="/img/article_img/computer_network150.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+</ul>
+<ol>
+<li>POP3工作过程：POP服务器监听110号端口，等待用户连接请求。用户发出链接请求后，POP3服务器接受请求并与之建立TCP连接。客户端在建立连接后就要提供用户名、密码、以及它需要取出的邮件的序号等等。POP3服务器更具用户民、密码确定邮箱入口地址，同时将用户要求的邮件返回给用户。</li>
+</ol>
+</li>
+<li>
+<p>总结：发信人的用户代理向源邮件服务器发送邮件，源邮件服务器向目的邮件服务器发送邮件使用的都是SMTP协议；POP3等协议只是从目的邮件服务器上读取邮件。</p>
+</li>
+</ol>
 <h3 id="二、文件传输协议FTP">二、文件传输协议FTP</h3>
+<ol>
+<li>File Transfer Protocol，一种文件传输协议，支持异构的计算机进行文件传输，支持ASCII文件和纯二进制文件的传输，是在RFC的959中定义的。</li>
+<li>例子：QQ这种即时通讯软件中，常用离线文件传输的功能。你的朋友同你分隔两地并且需要向你发送一个600M的文件，如何实现？</li>
+<li>FTP协议的宗旨是允许我们在Internet的范围内上传和下载文件，这就需要有一个文件服务器，它有一个大大的存储空间，并且打开固定端口，等待用户的上传和下载的需求，同时FTP服务还应该包含一些用户名的验证，这样才能防止非法上传和下载。</li>
+<li>FTP的工作模式
+<ul>
+<li><img src="/img/article_img/computer_network151.png" srcset="/img/loading.gif" alt=""></li>
+<li>客户端首先要有一个用户接口，在用户接口用户提出上传某个文件或是下载某个文件的需求，然后由用户的协议的解析器来解析这些命令是上传还是下载，文件的位置具体在哪，这是文件的解析器就能够理解用户的需求了。然后按照用户的需求与文件服务器建立连接，而文件服务器这时一定要打开的是21号端口等待用户的连接请求。同时FTP协议还有另外一个固定端口就是20号端口。21号端口用于命令传输，20号端口用于数据的传输。在20号端口即server端，接受了用户的请求和命令后，就将命令进行解析，然后来到本地的文件系统找到用户要上传或者下载的文件的位置，然后将文件交到20号端口，再由20号端口与对方建立连接，将数据下载给客户端。客户端收到下载数据后，再将它存放在本地的文件系统中。这就完成了一次数据的下载，数据上传基本一样。</li>
+</ul>
+</li>
+</ol>
 <h3 id="三、WWW应用">三、WWW应用</h3>
+<ol>
+<li>
+<p>WWW起源</p>
+<ul>
+<li><img src="/img/article_img/computer_network152.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p>WWW系统必须解决的问题</p>
+<ul>
+<li><img src="/img/article_img/computer_network153.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>
+<p>WWW的工作模式</p>
+<ul>
+<li><img src="/img/article_img/computer_network154.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>WWW的工作模型中，首先要有一个WWW的服务器，它是等待用户的连接请求的。用户想要访问一个WWW服务器，那么就要连接它的80端口与他建立TCP连接，然后将自己要访问的WWW文档的地址发给这个服务器，这个服务器再到自己的WWW文档库中找到相应的文档返回给客户端，在这个过程中就要解决刚才的3个问题。</li>
+</ol>
+</li>
+<li>
+<p>如何标识一个WWW文档：标识的方法就是----URL（Uniform Resource Locator—统一资源定位符）的缩写，用来解决上述第一个问题。</p>
+<ul>
+<li>
+<p>URL是能对从Internet上得到的资源的位置和访问方法的一种简洁的表示。</p>
+</li>
+<li>
+<p><img src="/img/article_img/computer_network155.png" srcset="/img/loading.gif" alt=""></p>
+</li>
+<li>
+<p>格式：<code>&lt;访问方式&gt;://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt;</code>。</p>
+</li>
+<li>
+<p>访问WWW服务器是http的方式，由于统一资源定位符还允许我们采用其他方法访问其他类型的主机的其他端口，所以实际上的访问方法很多。</p>
+</li>
+</ul>
+<ol>
+<li>URL访问方式
+<ul>
+<li><img src="/img/article_img/computer_network156.png" srcset="/img/loading.gif" alt=""></li>
+<li>访问www服务器时并没有给出端口号，这是因为访问所使用的用户接口将这个端口号进行了默认设置，默认80。但如果一个www服务器它使用的不是80端口等待用户等的请求，有些是8080或是3128，这时候我们就一定要在浏览器中用冒号8080或冒号3128的形式指明端口号</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>如何标识一个www文档使得再异构计算机上通过浏览器或是翻译器使它能展现相同的风格：方法是采用HTML语言—超文本的标记语言</p>
+<ul>
+<li><img src="/img/article_img/computer_network157.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+<ol>
+<li>HTML Tags
+<ul>
+<li><img src="/img/article_img/computer_network158.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>客户和服务器之间传输www文档使用的协议：http超文本传输协议</p>
+<ul>
+<li><img src="/img/article_img/computer_network159.png" srcset="/img/loading.gif" alt=""></li>
+<li>基于Client &amp; Server模式的交互协议，也是一个纯文本协议。是由客户端发送请求，Server端相应这个请求按照客户的要求在将相应的www文档返回给客户的这样一种协议，基于TCP连接的。</li>
+</ul>
+</li>
+</ol>
 <h3 id="四、DNS应用">四、DNS应用</h3>
+<ol>
+<li>Internet上每台主机的唯一标识是它的IP地址，当要访问某台主机时，必须要知道它的IP地址才行。实际上，我们更多的是通过主机的名字而不是地址来访问的，这是因为在Internet当中提供了一种可以将主机的名字和IP地址互相转换的应用层协议，这就是DNS协议。</li>
+<li>DNS概述
+<ol>
+<li>DNS应用也叫域名字系统的应用，主要任务是将一个域名翻译成对应的IP地址。
+<ul>
+<li>如何实现这种翻译呢？简单想法是：设计一个大大的数据库，里面存放所有的域名和IP地址的对应关系。如果某个客户想要知道这一个对应关系，那么就发来传输请求来进行查询。这种方式在Internet中不可行，原因是：第一—没办法保证数据库的完整性，数据库的更新非常频繁；第二—这个数据库要接受来自全Internet的访问要求，这是非常大的负担。</li>
+</ul>
+</li>
+<li>Internet的域名系统：DNS被设计成为一个联机分布数据库系统、DNS采用客户服务器模式、DNS由若干台域名服务器组成（1.太多域名的转换都是在本地映射；2.少数域名在Internet网上通信映射）。</li>
+</ol>
+</li>
+<li>Internet域名结构：采用层次树状结构的名命方法
+<ol>
+<li>说明：
+<ol>
+<li>域名的结构由若干个分量组成，各分量之间用点隔开；如<code>.qcxy.hb.cn</code>：最右边的是顶级域名，从右往左域名等级依次下降。</li>
+<li>每一级的域名都由英文字母和数据组成（&lt;63个，不分大小写）</li>
+<li>级别最低的域名在最左边，最高的在最右边。（整个域名长度&lt;255）</li>
+</ol>
+</li>
+<li><img src="/img/article_img/computer_network160.png" srcset="/img/loading.gif" alt="">
+<ul>
+<li>域名只是逻辑概念，并不反映出计算机所在的物理地点/网络信息。</li>
+</ul>
+</li>
+<li>顶级域名由Internet的有关机构ICANN管理决定。</li>
+<li>目前顶级域名分为3类：
+<ol>
+<li>国家顶级域名：采用ISO3166规定。cn：中国、us：美国、uk：英国、jp：日本、sg：新加披</li>
+<li>国际顶级域名：采用int国际性组织可在int下注册</li>
+<li>通用顶级域名：根据[RFC1591]规定（最早6个+新增7个=13个）
+<ul>
+<li><img src="/img/article_img/computer_network161.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>二级域名由国家自行确定
+<ul>
+<li><img src="/img/article_img/computer_network162.png" srcset="/img/loading.gif" alt=""></li>
+</ul>
+</li>
+<li>三级域名的申请注册
+<ol>
+<li>我国三级域名的管理和申请（除edu网外），应向中国互联网信息中心CNNIC申请。</li>
+<li>域名有相对域名和绝对域名之分
+<ol>
+<li>相对域名：至某一级的域名的下属域名，如：nju是edu下属的一个相对域名。</li>
+<li>绝对域名：是一个完整的域名，一直写出根域名（又称：完全合格的域名.FQDN）如：<a target="_blank" rel="noopener" href="http://nju.edu.cn">nju.edu.cn</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>DNS查询流程
+<ul>
+<li><img src="/img/article_img/computer_network163.png" srcset="/img/loading.gif" alt=""></li>
+<li><img src="/img/article_img/computer_network164.png" srcset="/img/loading.gif" alt=""></li>
+<li>xyz、abc都是小范围的DNS服务器—本地域名服务器，在其之上有顶级/二级域名服务器（com）。</li>
+<li>在主机M上，</li>
+</ul>
+</li>
+</ol>
 
             </div>
             <hr>
