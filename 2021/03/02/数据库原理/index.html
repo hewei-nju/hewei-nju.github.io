@@ -1,0 +1,961 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+
+  <meta name="baidu-site-verification" content="code-ScK1jEZEOO" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#c9d6de">
+  <meta name="description" content="">
+  <meta name="author" content="He wei">
+  <meta name="keywords" content="">
+  <title>数据库原理 - BrightHewei</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hewei-nju.github.io","root":"/","version":"1.8.6","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"copy_btn":true,"image_zoom":{"enable":true},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mr.Bright</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据库原理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      He wei
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-02 16:05" pubdate>
+        2021年3月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库原理</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年3月2日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1>数据库原理</h1>
+<h1>1. 数据库系统概述</h1>
+<h2 id="1-数据">1. 数据</h2>
+<blockquote>
+<ol>
+	<li>数据的定义</li>
+    <li>数据的性质</li>
+    <li>数据的分类形式</li>
+</ol>
+</blockquote>
+<ol>
+<li>数据：是数据库中存储的基本对象，是描述现实世界中各种具体事务或抽象事物的符号，可以是数字，可以是文字、声音、图形、图像、视频等，它们经过处理后存储在数据库中。</li>
+<li>数据的性质：
+<ol>
+<li>数据和其语义环境密切相关。</li>
+<li>关系模型中，数据通过<strong>型</strong>来给出数据的语义。</li>
+<li>现实生活中的数据往往不是孤立存在的，它们之间是有联系的。</li>
+</ol>
+</li>
+<li>数据的一种分类形式：
+<ol>
+<li>结构化数据：二维表。</li>
+<li>半结构化数据：HTML文档，一般是自描述的，数据的结构和内容混在一起，没有明显区分。</li>
+<li>非结构化数据：所有格式的文档，文本，图片，报表，图像，音频，视频等。</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-数据库">2. 数据库</h2>
+<blockquote>
+<ol>
+    <li>数据库的定义</li>
+    <li>数据库的特点</li>
+    <li>数据库的基本操作</li>
+    <li>对数据库的要求</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>数据库技术<strong>本质</strong>是一种数据管理技术。</p>
+</li>
+<li>
+<p>数据管理，顾名思义就是对数据的管理，具体来说是指使用电子计算机对数据进行分类、组织、存储、检索和维护。</p>
+</li>
+<li>
+<p>数据库（Database，简称DB）：是持久存储在计算机中、有组织的、可共享的大量数据的集合。</p>
+</li>
+<li>
+<p>数据库的特点：</p>
+<ol>
+<li>数据库中的数据按一定数据模型组织、描述和存储：模型是现实世界的抽象，数据模型是数据特征的抽象，是用来在计算机世界中对数据进行建模的。</li>
+<li>可以被各种用户共享。</li>
+<li>较小的冗余度：同文件管理系统相比，具有更小的冗余度。</li>
+<li>较高的独立性：应用程序独立于数据的逻辑结构或物理结构，即当数据的物理结构或逻辑结构改变时，应用程序不需要改变。</li>
+<li>易于扩展。</li>
+</ol>
+</li>
+<li>
+<p>数据库基本操作：</p>
+<ol>
+<li>数据查询</li>
+<li>数据插入</li>
+<li>数据修改</li>
+<li>数据删除</li>
+<li>数据插入、修改、删除统称数据的更新。</li>
+</ol>
+</li>
+<li>
+<p>实际应用对数据操作的要求</p>
+<ol>
+<li>并发访问：并发访问可能导致数据不正确，因此必须对并发访问进行控制。</li>
+<li>面临故障：断电、硬盘损坏等，发生故障可能会导致数据库中的数据不正确，因此遇到故障时必须对故障进行恢复，保证数据库中的数据是正确的。</li>
+<li>数据库的安全性：防止非法用户登录数据库，并防止合法用户对数据库进行非法操作。</li>
+<li>数据的完整性：保证数据库中的数据符合语义。</li>
+</ol>
+</li>
+<li>
+<p>以上要求加上查询条件的多样性和复杂性，使得数据查询和更新很复杂。开发专门的软件系统管理数据，这种软件系统就是<strong>数据库管理系统</strong>，即DBMS。</p>
+</li>
+</ol>
+<h2 id="3-数据库管理系统">3. 数据库管理系统</h2>
+<blockquote>
+<ol>
+	<li>数据库管理系统的概念</li>
+    <li>数据库管理系统的主要功能</li>
+    <li>数据库系统的定义</li>
+</ol>
+</blockquote>
+<ol>
+<li>数据库管理系统（Database Management System，简称DBMS）：是位于用户和计算机操作系统之间的数据管理软件，专门来管理数据，是计算机系统的基础软件。主要有：ORACLE、MySQL、SQLServer、DB2。</li>
+<li>数据库管理系统的主要功能：
+<ol>
+<li>数据定义：定义数据库中各种数据对象和它们的结构。</li>
+<li>数据操纵：实现对数据库的基本操作。</li>
+<li>事务管理和运行管理：存在并发访问、发生故障等问题，要确保数据的一致性、安全性和完整性。</li>
+<li>数据存储和查询处理：确定数据的物理组织和存取方式，提供数据的持久存储和有效访问。</li>
+<li>数据库的建立和维护：提供实用程序完成数据批量装载，介质故障恢复，数据库的重组织和性能监控等。</li>
+<li>其他功能：数据导入导出、和其他软件通信等。</li>
+</ol>
+</li>
+<li>数据库系统：由数据库、DBMS（及其开发工具）、应用系统和数据库管理员（DBA）组成。
+<ul>
+<li>DBA的主要职责：负责维护数据库的日常运行并监控数据库的使用。</li>
+<li>数据最终在物理磁盘上存储。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-数据模型">4. 数据模型</h2>
+<blockquote>
+<ol>
+    <li>数据模型的概念</li>
+    <li>数据模型的三个构成要素</li>
+    <li>概念模型</li>
+    <li>数据模型</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>数据模型是数据库技术的核心概念。</p>
+</li>
+<li>
+<p>所有DBMS都基于某种数据模型实现，所有数据库应用都建立在某种数据模型之上。</p>
+</li>
+<li>
+<p>数据模型是一种形式机制，用于数据建模，描述数据、数据之间的联系、数据的语义、数据上的操作和数据的完整性约束条件。</p>
+</li>
+<li>
+<p>数据模型的层次（两个不同的层次）</p>
+<ol>
+<li>概念模型：也称信息模型，按用户的观点来对现实世界进行数据建模。</li>
+<li>数据模型：按计算机系统的观点对信息世界进行数据建模。</li>
+</ol>
+<ul>
+<li>从现实世界到概念模型/信息世界是第一层抽象，从概念模型/信息世界到数据模型/机器世界是第二层抽象。</li>
+</ul>
+</li>
+<li>
+<p>概念模型</p>
+<ol>
+<li>从现实世界到计算机世界的跨度较大，需要一个中间层次，这就是信息世界。</li>
+<li>概念模型就是对现实世界进行建模，是数据库设计人员了解了现实世界后在大脑中的第一次抽象。</li>
+<li>概念模型通常和计算机世界无关。</li>
+</ol>
+<ul>
+<li>一方面能够方便、直接表达现实世界；另一方面还应该很简单，易于用户理解。</li>
+</ul>
+<ol start="4">
+<li>实体—联系（Entity—relationship）模型（最常用的概念模型）
+<ol>
+<li>E-R模型基于：现实世界有一些称为实体的基本对象和这些对象之间的联系组成。</li>
+<li>实体：往往由若干属性刻画。</li>
+<li>联系：可以由属性，也可以没有属性。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>数据模型</p>
+<ol>
+<li>数据模型是实际DBMS所支持的模型。</li>
+<li>数据模型的三个要素：
+<ol>
+<li>数据结构：描述数据库中的对象和对象之间的联系，是对系统静态特性的描述；刻画了数据模型的静态特性。有层次模型，网状模型和关系模型。</li>
+<li>数据操作：查询和更新（包括插入、删除、修改）；刻画了数据模型的动态特性。</li>
+<li>完整性约束：是一组规则，保证数据的正确、有效和相容；刻画了数据模型的约束条件。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-常见数据模型">5. 常见数据模型</h2>
+<blockquote>
+<ol>
+    <li>常见数据模型</li>
+    <li>关系模型的特点</li>
+    <li>关系模型的三个要素</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>常见数据模型主要有：层次模型、网状模型、关系模型、面向对象模型、对象-关系模型。</p>
+</li>
+<li>
+<p>层次模型、网状模型：因为数据结构和数据操作复杂已被淘汰。</p>
+</li>
+<li>
+<p>网状模型：数据结构简单，采用非过程化的数据语言，成为主流模型。</p>
+</li>
+<li>
+<p>面向对象模型：采用面向对象的方法设计数据库，多用于多媒体应用以及复杂的很难在关系数据库中模拟和处理的关系。</p>
+</li>
+<li>
+<p>对象关系模型：为解决面向对象与关系数据库互不匹配而引入的。</p>
+</li>
+<li>
+<p>关系模型的特点：</p>
+<ul>
+<li>具有坚实的数据基础</li>
+<li>简洁的数据表示形式</li>
+<li>支持非过程语言</li>
+</ul>
+</li>
+<li>
+<p>关系模型的三个要素：</p>
+<ul>
+<li>关系模型的数据结构：
+<ol>
+<li>关系模型只有一种数据结构–关系。现实世界中的对象和对象之间的联系都用关系表示。</li>
+<li>关系模型要求关系必须是规范化的：关系的每个属性只能取原子值，换句话说，表中不能包含子表。</li>
+</ol>
+</li>
+<li>关系模型的操作：
+<ol>
+<li><a href="#a1">关系代数</a></li>
+<li><a href="#a2">关系演算</a></li>
+<li>结构化查询语言SQL</li>
+</ol>
+</li>
+<li>关系模型的完整性约束（包括有）：
+<ol>
+<li>实体完整性：是对主码取值的约束；实体完整性规则要求在主码上不能取重复值。</li>
+<li>参照完整性：是对外码的约束；如：选修表中的学号是外码，参照完整性规则要求选修表中的学号只能是学生表中已经存在的一个学号。</li>
+<li>用户自定义完整性：和具体应用有关的约束。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-数据库系统结构">6. 数据库系统结构</h2>
+<blockquote>
+<ol> 
+    <li>数据库的内部结构</li>
+    <li>三级模式和两级映像结构</li>
+    <li>数据独立性的概念</li>
+    <li>如何保证物理独立性和逻辑独立性？</li>
+</ol>
+</blockquote>
+<ol>
+<li>
+<p>数据库系统的外部结构（用户角度）：</p>
+<ul>
+<li>单用户系统</li>
+<li>主从式系统</li>
+<li>分布式系统</li>
+<li>客户服务器系统</li>
+<li>浏览器-服务器系统</li>
+</ul>
+</li>
+<li>
+<p>数据库系统的内部结构（3模式2映像）：</p>
+<ul>
+<li>外模式</li>
+<li>模式</li>
+<li>内模式</li>
+<li>外模式-模式映像</li>
+<li>模式-内模式映像</li>
+</ul>
+</li>
+<li>
+<p>美国国家标准协会于1978年将数据库内部结构标准为3级模式2级映像结构：</p>
+<ul>
+<li>
+<img src="/img/article_img/database1.png" srcset="/img/loading.gif" width="250px">
+</li>
+</ul>
+<ol>
+<li>面向用户/程序员的外模式</li>
+<li>面向建立和维护数据库的模式</li>
+<li>面向系统程序员的内模式</li>
+<li>定义外模式和模式之间对应关系为外模式-模式映像</li>
+<li>定义模式和内模式之间的对应关系的模式-内模式映像</li>
+</ol>
+</li>
+<li>
+<p>在数据库体系结构中，外模式面向具体的应用程序，定义在模式之上，但独立于存储模式和存储设备；模式出于中间层，和具体应用没有关系，和物理存储也没有关系；内模式依赖于全局逻辑结构，但独立于数据库的用户视图，也独立于具体的存储设备。</p>
+</li>
+<li>
+<p>模式（schema）：也称逻辑模式、概念模式。</p>
+<ul>
+<li>模式是数据库中全体数据的总体逻辑结构描述，是所有用户的公共数据视图</li>
+<li>模式处于数据库系统模式结构的中间层</li>
+<li>模式的定义包括：数据项的名字、类型、取值范围、数据之间的联系、数据有关安全性和 完整性的要求</li>
+</ul>
+</li>
+<li>
+<p>外模式（external schema）：也称子模式或用户模式</p>
+<ul>
+<li>介于模式和应用之间，是特定数据库用户的数据视图，是与某一具体应用相关的数据局部逻辑结构的描述。</li>
+<li>理想的，所有应用都建立在一个外模式上，实际上，DBMS都允许应用程序直接访问模式。</li>
+</ul>
+</li>
+<li>
+<p>内模式（internal schema）：也称存储模式或物理模式</p>
+<ul>
+<li>内模式是数据物理结构和存储方式的描述，定义数据在数据库内部的表示方式。（如：文件记录的存储方式（顺序存储、按照B树结构存储、按照Hash方法存储）、索引的组织方式、数据是否压缩存储、数据是否加密、记录是否跨页）</li>
+<li>内模式到物理存储器的映射通常由操作系统实现。</li>
+</ul>
+</li>
+<li>
+<p>以逻辑模式为框架组成的数据库为概念数据库，以外模式为框架组成的数据库为用户数据库，以内模式为框架组成的数据库为物理数据库。只有物理数据库真实存在与计算机外存中，其他两种数据库是通过两种映射由物理数据库映射而成。</p>
+</li>
+<li>
+<p>外模式-模式映射：外模式-模式映像定义外模式与模式之间的对应关系</p>
+<ul>
+<li>每一个外模式都有一个对应的外模式-模式映像，建立外模式中的数据对象与模式中的数据对象之间的对应关系。</li>
+<li>外模式-模式映像可以保证外模式的相对稳定性，为数据的逻辑独立性提供了保证。
+<ul>
+<li>当逻辑改变时，即数据的逻辑结构改变，数据库管理员可以修改有关的外模式-模式映像使外模式保持不变，建立在外模式之上的应用程序就不需要改变。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>模式-内模式映射：定义数据全局逻辑结构与存储结构之间的对应关系</p>
+<ul>
+<li>模式-内模式映像可以保证模式的相对稳定性，从而保证数据的物理独立性。</li>
+<li>数据的存储结构（内模式）改变时，数据库管理员可以修改模式-内模式映像，使得模式不变，这为数据的物理独立性提供了保证。</li>
+</ul>
+</li>
+<li>
+<p>数据独立性保证了应用程序的独立性和稳定性，除非应用需求发生改变，一般应用程序不需要修改，从而使得数据的定义和描述从应用程序中分离出去，体现了以数据为中心的思想。</p>
+<ul>
+<li>物理独立性</li>
+<li>逻辑独立性</li>
+</ul>
+</li>
+</ol>
+<h1>2. 实体-联系模型</h1>
+<h2 id="1-实体">1. 实体</h2>
+<h2 id="2-联系">2. 联系</h2>
+<h2 id="3-实体-联系图">3. 实体-联系图</h2>
+<h2 id="4-弱实体集">4. 弱实体集</h2>
+<h1>3. 关系数据模型</h1>
+<h2 id="1-关系">1. 关系</h2>
+<h2 id="2-关系的码">2. 关系的码</h2>
+<h2 id="3-关系模型">3. 关系模型</h2>
+<h2 id="4-从E-R模型到关系模型">4. 从E-R模型到关系模型</h2>
+<h2 id="5-关系的完整约束性">5. 关系的完整约束性</h2>
+<h2 id="6-关系代数的五种基本运算">6. 关系代数的五种基本运算</h2>
+<h2 id="7-附加的关系运算">7. 附加的关系运算</h2>
+<h2 id="8-关系代数表达查询">8. 关系代数表达查询</h2>
+<h1>4. 关系数据库标准语言SQL</h1>
+<h2 id="1-SQL概述">1. SQL概述</h2>
+<h2 id="2-数据类型">2. 数据类型</h2>
+<h2 id="3-模式的定义和删除">3. 模式的定义和删除</h2>
+<h2 id="4-表的定义和删除">4. 表的定义和删除</h2>
+<h2 id="5-索引的创建和删除">5. 索引的创建和删除</h2>
+<h2 id="6-SELECT语句介绍">6. SELECT语句介绍</h2>
+<h2 id="7-简单查询">7. 简单查询</h2>
+<h2 id="8-排序和分组">8. 排序和分组</h2>
+<h2 id="9-连接查询">9. 连接查询</h2>
+<h2 id="10-嵌套查询">10. 嵌套查询</h2>
+<h2 id="11-集合查询">11. 集合查询</h2>
+<h2 id="12-数据更新">12. 数据更新</h2>
+<h2 id="13-视图">13. 视图</h2>
+<h2 id="14-嵌入式SQL">14. 嵌入式SQL</h2>
+<h2 id="15-不使用游标的SQL语句">15. 不使用游标的SQL语句</h2>
+<h2 id="16-使用游标的SQL语句">16. 使用游标的SQL语句</h2>
+<h1>5. 完整性</h1>
+<h2 id="1-完整性概述">1. 完整性概述</h2>
+<h2 id="2-实体完整性">2. 实体完整性</h2>
+<h2 id="3-参照完整性">3. 参照完整性</h2>
+<h2 id="4-用户自定义的完整性">4. 用户自定义的完整性</h2>
+<h2 id="5-触发器">5. 触发器</h2>
+<h1>6. 安全性</h1>
+<h2 id="1-安全性概述">1. 安全性概述</h2>
+<h2 id="2-用户标识与鉴别">2. 用户标识与鉴别</h2>
+<h2 id="3-自主存取权限">3. 自主存取权限</h2>
+<h2 id="4-强制存取控制">4. 强制存取控制</h2>
+<h2 id="5-视图与授权">5. 视图与授权</h2>
+<h2 id="6-其他安全手段">6. 其他安全手段</h2>
+<h1>7. 关系数据库设计理论</h1>
+<h2 id="1-问题提出">1. 问题提出</h2>
+<h2 id="2-函数依赖">2. 函数依赖</h2>
+<h2 id="3-Armstrong公理">3. Armstrong公理</h2>
+<h2 id="4-属性集的闭包">4. 属性集的闭包</h2>
+<h2 id="5-函数依赖集的极小覆盖">5. 函数依赖集的极小覆盖</h2>
+<h2 id="6-关系模型的范式">6. 关系模型的范式</h2>
+<h2 id="7-保持无损连接的分解">7. 保持无损连接的分解</h2>
+<h2 id="8-保持函数依赖的分解">8. 保持函数依赖的分解</h2>
+<h2 id="9-分解成高级范式">9. 分解成高级范式</h2>
+<h2 id="10-在设计中使用规范化理论">10. 在设计中使用规范化理论</h2>
+<h1>8. 数据库设计</h1>
+<h2 id="1-数据库设计概述">1. 数据库设计概述</h2>
+<h2 id="2-需求分析">2. 需求分析</h2>
+<h2 id="3-概念结构设计">3. 概念结构设计</h2>
+<h2 id="4-逻辑结构设计">4. 逻辑结构设计</h2>
+<h2 id="5-物理结构设计">5. 物理结构设计</h2>
+<h2 id="6-数据库的实施和维护">6. 数据库的实施和维护</h2>
+<h1>9. 查询处理与优化</h1>
+<h2 id="1-查询处理概述">1. 查询处理概述</h2>
+<h2 id="2-选择运算的实现">2. 选择运算的实现</h2>
+<h2 id="3-连接运算的实现">3. 连接运算的实现</h2>
+<h2 id="4-查询优化概述">4. 查询优化概述</h2>
+<h2 id="5-代数优化">5. 代数优化</h2>
+<h1>10. 事物与并发控制</h1>
+<h2 id="1-事物">1. 事物</h2>
+<h2 id="2-并发控制概述">2. 并发控制概述</h2>
+<h2 id="3-封锁及封锁协议">3. 封锁及封锁协议</h2>
+<h2 id="4-活锁与死锁">4. 活锁与死锁</h2>
+<h2 id="5-并发调度的可串行化">5. 并发调度的可串行化</h2>
+<h2 id="6-两阶段封锁">6. 两阶段封锁</h2>
+<h2 id="7-多粒度封锁">7. 多粒度封锁</h2>
+<h1>11. 数据库恢复技术</h1>
+<h2 id="1-数据库恢复概述">1. 数据库恢复概述</h2>
+<h2 id="2-存储器的类型">2. 存储器的类型</h2>
+<h2 id="3-基于日志的恢复技术">3. 基于日志的恢复技术</h2>
+<h2 id="4-基于检查点的恢复技术">4. 基于检查点的恢复技术</h2>
+<h2 id="5-介质故障恢复技术">5. 介质故障恢复技术</h2>
+<h2 id="6-其他恢复技术">6. 其他恢复技术</h2>
+<h1>12. 补充说明</h1>
+<ol>
+<li>
+<p id="a1">关系代数</p> 
+ <ul>
+ 	<li>关系代数显式的定义了一些关系运算</li>
+     <li>关系运算的运算对象和运算结果都是关系</li>
+     <li>查询用关系代数表达事表示</li>
+     <li>更新用关系代数表达式向关系变量的赋值表示</li>
+ </ul>
+</li>
+<li>
+<p id="a2">关系演算</p>
+ <ul>
+     <li>关系演算并不显式定义基本运算，而是用一个逻辑公式表示查询结果必须满足的条件</li>
+     <li>元组关系演算</li>
+     <li>域关系演算</li>
+ </ul>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/CS-NOTES/">CS-NOTES</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/01/javascript-learning/">
+                        <span class="hidden-mobile">javascript-learning</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: 'd3a61c01092e540b35cf',
+          clientSecret: 'fd5b647d5589db2d810105ac37aa2eec9759e0e9',
+          repo: 'Blog-Comment',
+          owner: 'hewei-nju',
+          admin: ["hewei-nju"],
+          id: '1155c81bf179cd7ef3f0a775fec1cc69',
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: false,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":200})
+    NProgress.start()
+    document.addEventListener('DOMContentLoaded', function() {
+      window.NProgress && window.NProgress.inc();
+    })
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
