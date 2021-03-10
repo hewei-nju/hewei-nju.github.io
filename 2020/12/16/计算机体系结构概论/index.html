@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="He wei">
   <meta name="keywords" content="">
-  <title>javascript-learning - BrightHewei</title>
+  <title>概论 - BrightHewei</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="javascript-learning">
+            <span class="h2" id="subtitle" title="概论">
               
             </span>
 
@@ -191,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-01 20:43" pubdate>
-        2021年3月1日 晚上
+      <time datetime="2020-12-16 20:45" pubdate>
+        2020年12月16日 晚上
       </time>
     </span>
   
@@ -203,7 +203,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2 字
+      968 字
     </span>
   
 
@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      10
        分钟
     </span>
   
@@ -251,16 +251,124 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">javascript-learning</h1>
+            <h1 style="display: none">概论</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月1日 晚上
+                  本文最后更新于：2020年12月16日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h1>javascript-learning</h1>
+              <h1>概论</h1>
+<h3 id="1-结构和组织">1. 结构和组织</h3>
+<ul>
+<li>计算机结构：对程序员可见的系统属性，这些属性直接决定了程序的逻辑执行
+<ul>
+<li>指令集、数据类型、输入输出机制、寻址技术</li>
+</ul>
+</li>
+<li>计算机组成：实现结构规范的操作单元及其互连
+<ul>
+<li>硬件细节，如控制信号、计算机和外设的接口以及存储器使用的技术</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-冯诺伊曼机">2. 冯诺伊曼机</h2>
+<ul>
+<li>组成部分：
+<ul>
+<li>存储器：地址和存储的内容</li>
+<li>处理单元：执行信息的实际处理</li>
+<li>控制单元：指挥信息的处理</li>
+<li>输入设备：将信息送入计算机中</li>
+<li>输出设备：将处理结果以某种形式显示在计算机外</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/intro1.png" srcset="/img/loading.gif" alt="冯诺依曼机结构图"></p>
+<ul>
+<li>重要思想：存储程序，及把数中据和程序存储到计算机中</li>
+</ul>
+<h2 id="3-摩尔定律">3. 摩尔定律</h2>
+<ul>
+<li>内容：单芯片上包含的晶体管数量每年/18个月翻一番</li>
+<li>影响：
+<ul>
+<li>因为单片芯片的价格不变而导致芯片的逻辑电路和存储器电路成本显著下降</li>
+<li>更小的体积使得更容易放置在各种环境中</li>
+<li>更短的电路提高了芯片的工作速度</li>
+<li>减少了电能的消耗和冷却的要求</li>
+<li>集成电路上的连接比焊接更加可靠，由于芯片电路的增加，减少了芯片之间的连接。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/article_img/intro2.png" srcset="/img/loading.gif" alt="data process"></p>
+<h2 id="4-计算机性能">4. 计算机性能</h2>
+<ul>
+<li>重要参数：外观、价格、大小、安全性、稳定性、续航</li>
+<li>用来评估的一些标准：
+<ul>
+<li>CPU： speed</li>
+<li>Memory：capacity、speed</li>
+<li>I/O：capacity、speed</li>
+</ul>
+</li>
+</ul>
+<p><strong>main goal/driver</strong>： increase of CPU speed</p>
+<h2 id="5-CPU性能">5. CPU性能</h2>
+<ul>
+<li>
+<p>系统时钟：</p>
+<ul>
+<li>时钟频率/时钟速度：一秒钟内计算运转的周期数</li>
+<li>clock cycle/clock tick：单次CPU的脉冲/时钟称为一个时钟周期/时钟滴答声</li>
+<li>周期时间：两次脉冲间的时间</li>
+<li>处理器的速度由时钟产生的脉冲频率来指示，用每秒周期数/赫兹数测量</li>
+</ul>
+</li>
+<li>
+<p>指令执行速度：</p>
+<ul>
+<li>处理器由时钟驱动，时钟固定频率为$f$或等价为固定时钟周期$t$, $t = 1/ f$</li>
+<li>$I_{c}$: 一个程序的指令条数</li>
+<li>$CPI(average cycle per instruction)$:每条指令的平均周期数</li>
+<li>$CPI_{i}$: $i$类型执行所需周期数；$I_{i}$：某一给定程序中所执行的$i$类型指令的条数</li>
+<li><img src="/img/article_img/intro3.png" srcset="/img/loading.gif" alt="CPI"></li>
+<li>处理器执行完一个给定的程序所需的时间$T = I_{c} * CPI * t$</li>
+<li><img src="/img/article_img/intro4.png" srcset="/img/loading.gif" alt="T"></li>
+<li><img src="/img/article_img/intro5.png" srcset="/img/loading.gif" alt="MIPS"></li>
+<li>$R_{i}$时第i个程序高级语言指令执行的速度</li>
+<li><img src="/img/article_img/intro6.png" srcset="/img/loading.gif" alt="平均结果"></li>
+</ul>
+</li>
+<li>
+<p><strong>基本来说，用户更加关心系统的执行时间，而非它的执行速度。如果我们获得了各种测试程序的指令执行速度的算术平均值，那么我们就一定能得到一个与执行时间倒数之和成正比的结果，但这不与执行时间之和成反比。</strong></p>
+</li>
+<li>
+<p><strong>指令执行速度的算术平均值并不能准确地刻画执行时间；另一方面，指令执行速度的调和平均值是平均执行时间的倒数</strong></p>
+</li>
+<li>
+<p>阿姆达尔定律：</p>
+<ul>
+<li>
+<p>考虑系统性能，人们会通过改变技术/设计来提高性能，如并行处理器、cache的使用、高速I/O访问等。</p>
+</li>
+<li>
+<p>但之加速技术/设计的一个方面并不能很好的提高性能的相应改善。</p>
+</li>
+<li>
+<p>一个程序在多处理器上运行与单处理器上运行的加速比：</p>
+<p>假设一个程序有$f$可以无限并行，无调度负载；$(1-f)$只能串行；$T_{sin}$:单个处理器上运行的时间；$T_{n}$:n个处理器系统上运行的时间；则</p>
+<p>$speedup = T_{sin} / T_{n} = [T(1-f) + Tf] / [T(1-f) + Tf/ n] = 1 / [1-f + f / n]$</p>
+<ol>
+<li>f非常小，使用并行处理器有一些影响</li>
+<li>n的增大，加速比被限制</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr>
@@ -270,7 +378,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/CS-NOTES/">CS-NOTES</a>
+                      <a class="hover-with-bg" href="/categories/20COA-NOTES/">20COA-NOTES</a>
                     
                   </div>
                 
@@ -278,7 +386,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/javascript/">javascript</a>
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">计算机体系结构</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CS/">CS</a>
                     
                   </div>
                 
@@ -291,9 +401,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/02/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8E%9F%E7%90%86/">
+                      <a href="/2020/12/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BA%92%E8%BF%9E%E7%9A%84%E9%A1%B6%E5%B1%82%E8%A7%86%E5%9B%BE/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库原理</span>
+                        <span class="hidden-mobile">计算机功能和互连的顶层视图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -301,8 +411,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-                        <span class="hidden-mobile">计算机网络</span>
+                      <a href="/2020/12/16/Cache%E5%AD%98%E5%82%A8%E5%99%A8/">
+                        <span class="hidden-mobile">Cache存储器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -328,7 +438,7 @@
           repo: 'Blog-Comment',
           owner: 'hewei-nju',
           admin: ["hewei-nju"],
-          id: 'a698b48cb4e63021337a36379b6607ce',
+          id: '16f2205c115066e5e8b0b1689892fd78',
           language: 'zh-CN',
           labels: ["Gitalk"],
           perPage: 10,
@@ -519,6 +629,45 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
 
 
 
