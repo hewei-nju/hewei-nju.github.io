@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>github访问问题</title>
+    <link href="/2021/03/27/github%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/03/27/github%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1>github访问问题</h1><p>不知道为什么，我有时候开了chrome的一些插件，但是访问GitHub仍然非常的慢，然后通过了修改hosts文件，现在访问速度得到了极大的提升。</p><blockquote><ol><li><p>进入<code>C:\Windows\System32\drivers\etc</code></p></li><li><p>将hosts文件移到桌面即可，在里面添加这些内容即可，当然，怎么来的，为什么，你可以stfw，就不多说了：</p> <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># localhost name resolution is handled within DNS itself.</span><br><span class="hljs-meta">#127.0.0.1       localhost</span><br><span class="hljs-meta">#::1             localhost</span><br><span class="hljs-number">192.30</span><span class="hljs-number">.255</span><span class="hljs-number">.113</span> github.com<br><span class="hljs-meta">#备用地址1</span><br><span class="hljs-meta">#13.250.177.223 github.com   </span><br><span class="hljs-meta">#备用地址2</span><br><span class="hljs-meta">#52.74.223.119  github.com</span><br><span class="hljs-number">199.232</span><span class="hljs-number">.5</span><span class="hljs-number">.194</span> github.global.ssl.fastly.net<br></code></pre></td></tr></table></figure></li><li><p>然后将文件保存后，替换上面目录下的hosts文件即可。</p></li><li><p>因为在那个目录下修改hosts文件要设置一些权限，相对麻烦，就这样吧。</p></li></ol></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>问题求解</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>npm-vue-unit-e2e-test</title>
     <link href="/2021/03/10/npm-vue-unit-e2e-test/"/>
     <url>/2021/03/10/npm-vue-unit-e2e-test/</url>
