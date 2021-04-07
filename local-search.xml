@@ -158,6 +158,31 @@
   
   
   <entry>
+    <title>C++define语句块问题</title>
+    <link href="/2021/01/18/C++define%E8%AF%AD%E5%8F%A5%E5%9D%97%E9%97%AE%E9%A2%98/"/>
+    <url>/2021/01/18/C++define%E8%AF%AD%E5%8F%A5%E5%9D%97%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h1>C++define语句块问题</h1><h5 id="1-错误使用方式：">1. 错误使用方式：</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> print(x, y) (std::cout &lt;&lt; x + y &lt;&lt; std::endl;)</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>, y = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>)<br>        print(x, y);<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;error&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>why? <code>#define print(x, y) (std::cout &lt;&lt; x + y &lt;&lt; std::endl;)</code> 这条宏定义其实就是一条语句，因为本身我们也都会习惯性的会去在语句末端加上<code>;</code>，而此时在if语句中，我们认为只有一个语句，使用宏定义后，也会加上<code>;</code>，这就导致在宏定义语句后面多了一条空语句，所以else没有匹配的if而出现报错。</p><p>为此，我们会经常将上述宏定义语句较长的加上do{}while(0)来使其成为一条语句，从而更符合常规使用习惯！</p></blockquote><h5 id="2-改正优化后的效果">2. 改正优化后的效果</h5><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> print(x, y) do &#123; std::cout &lt;&lt; x + y &lt;&lt; std::endl; &#125; while(0)</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> x = <span class="hljs-number">1</span>, y = <span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">1</span>)<br>        print(x, y);<br>    <span class="hljs-keyword">else</span><br>        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;error&quot;</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>C++</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>define</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>内存</title>
     <link href="/2021/01/07/%E5%86%85%E5%AD%98/"/>
     <url>/2021/01/07/%E5%86%85%E5%AD%98/</url>
